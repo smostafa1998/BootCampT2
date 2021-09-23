@@ -7,6 +7,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -173,16 +174,26 @@ public class BaseClass {
         js.executeScript("arguments[0].click();", element);
     }
 
-    public List<WebElement> getListOfElements(By by) {
+    public void getListOfElements(List<WebElement> elements) {
         try {
-            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return driver.findElements(by);
+        try {
+            for(WebElement element : elements){
+                System.out.println(element.getText());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
+    public void hoverAction(WebElement element){
+        Actions a = new Actions(driver);
+        waitForElementToBeVisible(element);
+        a.moveToElement(element).build().perform();
+    }
 
     /*
     SYNC Methods
