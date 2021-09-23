@@ -195,7 +195,11 @@ public class BaseClass {
 
     public void hoverAction(WebElement element){
         Actions a = new Actions(driver);
-        waitForElementToBeVisible(element);
+        try {
+            waitForElementToBeVisible(element);
+        }catch(StaleElementReferenceException e){
+            e.printStackTrace();
+        }
         a.moveToElement(element).build().perform();
     }
 
@@ -203,7 +207,11 @@ public class BaseClass {
     SYNC Methods
      */
     public void waitForElementToBeVisible(WebElement element) {
-        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOf(element));
+        }catch(StaleElementReferenceException e){
+            e.printStackTrace();
+        }
     }
 
     public void waitForElementToContainText(WebElement element, String text) {
