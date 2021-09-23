@@ -189,6 +189,10 @@ public class BaseClass {
         }
     }
 
+    public void clearElement(WebElement element){
+        element.clear();
+    }
+
     public void hoverAction(WebElement element){
         Actions a = new Actions(driver);
         waitForElementToBeVisible(element);
