@@ -1,4 +1,6 @@
 package testPom;
 
-public class TestHomepage {
+import testBase.TestBase;
+
+public class TestHomepage extends TestBase {
 }
