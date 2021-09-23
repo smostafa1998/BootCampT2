@@ -21,10 +21,12 @@ import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+
 public class BaseClass {
 
     public static WebDriver driver;
-    public static WebDriverWait driverWait;
+    public static WebDriverWait webDriverWait;
     public static ExtentReports extent;
 
     @BeforeSuite(alwaysRun = true)
@@ -48,7 +50,7 @@ public class BaseClass {
     @BeforeMethod (alwaysRun = true)
     public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
-        driverWait = new WebDriverWait(driver, 20);
+        webDriverWait = new WebDriverWait(driver, 20);
 
         driver.get(url);
         driver.manage().deleteAllCookies();
@@ -138,13 +140,13 @@ public class BaseClass {
     }
 
     public void sendKeysToInput(WebElement element, String keys) {
-        driverWait.until(ExpectedConditions.visibilityOf(element));
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
 
         element.sendKeys(keys);
     }
 
     public void dropdownSelectByVisibleText(WebElement element, String visibleText) {
-        driverWait.until(ExpectedConditions.visibilityOf(element));
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
 
         Select select = new Select(element);
         select.selectByVisibleText(visibleText);
@@ -152,7 +154,7 @@ public class BaseClass {
 
     public void clickOnElement(WebElement element) {
         try {
-            driverWait.until(ExpectedConditions.elementToBeClickable(element));
+            webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
         } catch (StaleElementReferenceException e1) {
             e1.printStackTrace();
         } catch (Exception e) {
@@ -171,10 +173,29 @@ public class BaseClass {
         js.executeScript("arguments[0].click();", element);
     }
 
+    public List<WebElement> getListOfElements(By by) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(by));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return driver.findElements(by);
+    }
+
+
     /*
     SYNC Methods
      */
     public void waitForElementToBeVisible(WebElement element) {
-        driverWait.until(ExpectedConditions.visibilityOf(element));
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForElementToContainText(WebElement element, String text) {
+        try {
+            webDriverWait.until(ExpectedConditions.textToBePresentInElement(element, text));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
