@@ -8,11 +8,11 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
-            <!--<class name="testPom.TestHomepage"/> -->
-            <class name="testPom.TestDecorHomePage"/>
-        </classes>
-    </test>
+            <!--  <class name="testPom.TestHomepage"/> -->
+             <class name="testPom.TestFlightsHomePage"/>
+         </classes>
+     </test>
 
-    <parameter name="url" value="https://www.overstock.com"/>
-    <parameter name="browser" value="chrome"/>
-</suite>
+     <parameter name="url" value="https://www.expedia.com"/>
+     <parameter name="browser" value="chrome"/>
+ </suite>
