@@ -9,9 +9,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.io.FileHandler;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -20,6 +18,7 @@ import reporting.ExtentTestManager;
 
 import java.io.File;
 import java.lang.reflect.Method;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +50,7 @@ public class BaseClass {
     @BeforeMethod (alwaysRun = true)
     public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
-        webDriverWait = new WebDriverWait(driver, 30);
+        webDriverWait = new WebDriverWait(driver, 20);
 
         driver.get(url);
         driver.manage().deleteAllCookies();
@@ -174,6 +173,17 @@ public class BaseClass {
         js.executeScript("arguments[0].click();", element);
     }
 
+
+    public void createJSAlert(String alertText) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("alert('" + alertText + "');");
+    }
+
+    public void scrollJS(int numOfPixelsToScroll) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
+    }
+
     public void getListOfElements(List<WebElement> elements) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
@@ -221,4 +231,10 @@ public class BaseClass {
             e.printStackTrace();
         }
     }
+
+    public void fluentWaitMethod (WebElement element){
+        Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
+        fluentWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
 }
