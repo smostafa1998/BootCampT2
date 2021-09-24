@@ -51,7 +51,7 @@ public class BaseClass {
     @BeforeMethod (alwaysRun = true)
     public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
-        webDriverWait = new WebDriverWait(driver, 20);
+        webDriverWait = new WebDriverWait(driver, 30);
 
         driver.get(url);
         driver.manage().deleteAllCookies();

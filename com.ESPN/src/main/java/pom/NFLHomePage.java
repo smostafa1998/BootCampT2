@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class NFLHomePage extends BaseClass {
     public NFLHomePage(){
         PageFactory.initElements(driver,this);
@@ -35,6 +37,16 @@ public class NFLHomePage extends BaseClass {
     @FindBy (xpath = "//*[@id=\"events\"]/div/h2")
     public WebElement dateHallofFame;
 
+    @FindBy (xpath = "//*[@id=\"global-nav\"]/ul/li[1]//ul[2]//a")
+    public List<WebElement> listOfNFLTeams;
 
+    @FindBy (xpath = "//*[@id=\"news-feed\"]/section[4]/section[2]/figure/picture/span")
+    public WebElement playVideoFeed;
+
+    @FindBy (xpath = "//*[@id=\"vjs_video_3\"]/div[6]/button[3]")
+    public WebElement skipForwardsVideo;
+
+    @FindBy (xpath = "//*[@id=\"vjs_video_3\"]/div[6]/button[1]")
+    public WebElement pauseVideo;
 
 }
