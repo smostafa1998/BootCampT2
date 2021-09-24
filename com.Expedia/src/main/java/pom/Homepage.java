@@ -23,11 +23,12 @@ public class Homepage extends BaseClass {
         return new FlightsHomePage();
     }
 
-    public void setUpLocations(WebElement location,WebElement locationText,String text, WebElement firstResult){
+    public void setUpLocations(WebElement location, WebElement locationText, String text, WebElement firstResult){
         clickOnElement(location);
         sendKeysToInput(locationText,text);
         clickOnElement(firstResult);
     }
+
 
     public void selectBox(WebElement input){
         clickOnElement(input);

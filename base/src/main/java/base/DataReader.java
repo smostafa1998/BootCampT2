@@ -10,6 +10,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DataReader {
 
@@ -48,6 +51,7 @@ public class DataReader {
         return data;
     }
 
+
     // RETURNS STRING ARRAY (XSSF)
     public String[] fileReaderStringXSSF(String path, String sheetName) throws IOException {
         String[] data;
@@ -75,12 +79,32 @@ public class DataReader {
         xssfSheet = xssfWorkbook.createSheet();
         xssfRows = xssfSheet.createRow(rowNum);
         xssfRows.setHeightInPoints(10);
-
         fio = new FileOutputStream(new File(path));
         xssfWorkbook.write(fio);
         for (int i = 0; i < xssfRows.getLastCellNum(); i++) {
             xssfRows.createCell(i);
             xssfCell.setCellValue(value);
+        }
+        fio.close();
+        xssfWorkbook.close();
+    }
+
+
+    // CREATES EXCEL WORKBOOK AND WRITES STRING VALUES INTO A SHEET (XSSF)
+    public void writeBackListXSSF(List<String> value, String path) throws IOException {
+        xssfWorkbook = new XSSFWorkbook();
+        xssfSheet = xssfWorkbook.createSheet("Sample Sheet");
+        rowNum = value.size();
+
+        fio = new FileOutputStream(new File(path));
+        xssfWorkbook.write(fio);
+
+        //Set value to new values
+        xssfRows = xssfSheet.createRow(1);
+        //xssfRows.setHeightInPoints(10);
+        for (int i = 0 ; i < rowNum ; i++) {
+            xssfRows.createCell(i).setCellValue(value.get(i));
+            //xssfCell.setCellValue(value.get(i));
         }
         fio.close();
         xssfWorkbook.close();
@@ -110,10 +134,11 @@ public class DataReader {
                 data[i][j] = cellData;
             }
         }
+        System.out.println(Arrays.toString(data));
         return data;
     }
 
-    // RETURNS INTEGER ARRAY (XSSF)
+    // RETURNS INTEGER ARRAY (XSSF) WORKS
     public int[] fileReaderIntegerXSSF(String path, String sheetName) throws IOException {
         int[] data = {};
         File file = new File(path);
@@ -133,6 +158,7 @@ public class DataReader {
                 data[i] = cellData;
             }
         }
+        System.out.println(Arrays.toString(data));
         return data;
     }
 

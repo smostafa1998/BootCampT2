@@ -26,7 +26,7 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy (xpath = "//*[@id=\"mainContent\"]/section[1]//div[2]")
     public List<WebElement> dollBrands;
 
-    @FindBy(xpath="//*[@id=\"mainContent\"]/section[2]//a[1]/div[2]")
+    @FindBy(xpath="//*[@id=\"mainContent\"]/section[1]/div[2]/a[1]")
     public WebElement comicsLabel;
 
     @FindBy(xpath="//*[@id=\"s0-16-13-0-1[3]-0-0-0\"]/ul/li[2]/a")
