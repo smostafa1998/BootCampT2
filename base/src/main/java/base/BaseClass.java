@@ -13,27 +13,58 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class BaseClass {
 
     public static WebDriver driver;
     public static WebDriverWait webDriverWait;
     public static ExtentReports extent;
+    public static DataReader dataReader;
+    public MySQLConnection database;
+
+    private Properties properties;
+    public final String ABSOLUTE_PATH = System.getProperty("user.dir");
+    private final String PROPERTIES_RELATIVE_PATH = "/src/main/resources/secret.properties";
+    private final String PROP_FILE_PATH = ABSOLUTE_PATH + PROPERTIES_RELATIVE_PATH;
 
     @BeforeSuite(alwaysRun = true)
     public void beforeSuiteExtentSetup(ITestContext context) {
         ExtentManager.setOutputDirectory(context);
         extent = ExtentManager.getInstance();
     }
+
+    @BeforeSuite (alwaysRun = true)
+    public void setUp() {
+        try {
+            properties = new Properties();
+            FileInputStream fis = new FileInputStream(PROP_FILE_PATH);
+            properties.load(fis);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            dataReader = new DataReader();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            database = new MySQLConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @BeforeMethod(alwaysRun = true)
     public static void beforeEachMethodExtentInit(Method method) {
@@ -184,7 +215,7 @@ public class BaseClass {
         js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
     }
 
-    public void getListOfElements(List<WebElement> elements) {
+    public void getListOfElements(List<WebElement> elements,List<String> elementCopied) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
         } catch (Exception e) {
@@ -193,6 +224,7 @@ public class BaseClass {
         try {
             for(WebElement element : elements){
                 System.out.println(element.getText());
+                elementCopied.add(element.getText());
             }
         }catch(Exception e){
             e.printStackTrace();

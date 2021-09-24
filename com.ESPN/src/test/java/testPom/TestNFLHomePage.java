@@ -1,5 +1,6 @@
 package testPom;
 
+import base.MySQLConnection;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,10 +10,13 @@ import pom.Homepage;
 import pom.NFLHomePage;
 import testBase.TestBase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestNFLHomePage extends TestBase {
 
     //warning this one has a glitch work on it later
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyNFLHomePage1(){
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
@@ -39,12 +43,20 @@ public class TestNFLHomePage extends TestBase {
     }
 
     // database or excel
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void verifyNFLHomePage2(){
         Homepage homepage = getHomepage();
+        List<String> elementCopied = new ArrayList<>();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
         hoverAction(homepage.nfl);
-        getListOfElements(nflHomePage.listOfNFLTeams);
+        getListOfElements(nflHomePage.listOfNFLTeams,elementCopied);
+        database.insertDataFromListToSqlTable(elementCopied,"NFLPage","Teams");
+        for(String s:elementCopied){
+            System.out.println(s);
+        }
+        System.out.println("done");
+        //List<WebElement>
+
     }
 
     //gitch work on this

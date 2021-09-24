@@ -4,6 +4,9 @@ import pom.ArtCollectionHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is for ebay tests
  */
@@ -15,13 +18,14 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test(enabled=true,description="testing List<elements>")
+    @Test(enabled=false,description="testing List<elements>")
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
+        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection();
         waitForElementToBeVisible(artCollection.teddyLabel);
         clickOnElement(artCollection.teddyLabel);
-        getListOfElements(artCollection.dollBrands);
+        getListOfElements(artCollection.dollBrands,elementCopied);
         //remember to so assert here can use database or excel
         System.out.println("done");
     }
@@ -32,6 +36,7 @@ public class TestArtCollectionHomePage extends TestBase {
     @Test(enabled=true)
     public void verifyArtCollectionTest2(){
         Homepage homepage = getHomepage();
+        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
         waitForElementToBeVisible(artCollection.comicsLabel);
         clickOnElement(artCollection.comicsLabel);
@@ -40,23 +45,25 @@ public class TestArtCollectionHomePage extends TestBase {
         hoverAction(artCollection.auctionSortButton);
         hoverAction(artCollection.mostBids);
         clickOnElement(artCollection.mostBids);
-        getListOfElements(artCollection.numOfResults);
+        getListOfElements(artCollection.numOfResults,elementCopied);
+        database.insertDataFromListToSqlTable(elementCopied,"EbayList","itemsBid");
 
     }
 
     /**
      * This one tests send keys. assert here tooo with database
      */
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void verifyArtCollectionTest3(){
         Homepage homepage = getHomepage();
+        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
         waitForElementToBeVisible(artCollection.antiquesLink);
         clickOnElement(artCollection.antiquesLink);
         clickOnElement(artCollection.stylesLink);
         sendKeysToInput(artCollection.keywordSearch,"carpet");
         clickOnElement(artCollection.keywordSearchButton);
-        getListOfElements(artCollection.productList);
+        getListOfElements(artCollection.productList,elementCopied);
         //waitForElementToBeVisible(artCollection.artlabel);
         //String actualText = artCollection.artlabel.getText();
        // String expectedText = "Collectibles & Art";
