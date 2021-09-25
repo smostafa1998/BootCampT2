@@ -48,6 +48,20 @@ public class DecorHomePage extends BaseClass {
     @FindBy (xpath ="//*[@id=\"price-$30-$40\"]")
     public WebElement checkBoxPrice;
 
+    @FindBy(xpath="//*[@id=\"refinementNav\"]/div[1]/ul/li[2]/a")
+    public WebElement checkBoxPriceConfirm;
+
+    @FindBy(xpath="//*[@id=\"1\"]/article/a/div/div[2]/div[1]/p")
+    public List<WebElement> listOfFireplace;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[2]/div/a[5]")
+    public WebElement throwPillows;
+
+    @FindBy(xpath="//*[@id=\"rugsStoreHub\"]/div/section[1]/ul/li/div[1]/a")
+    public WebElement pillowClick;
+
+    @FindBy(xpath="//*[@id=\"1\"]/article[1]/a")
+    public WebElement textProduct;
 
 
 }

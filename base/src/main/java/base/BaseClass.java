@@ -215,6 +215,18 @@ public class BaseClass {
         js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
     }
 
+    public void dismissAlert() {
+        driver.switchTo().alert().dismiss();
+    }
+
+    public void confirmAlert() {
+        driver.switchTo().alert().accept();
+    }
+
+    public String getTextFromAlert() {
+        return driver.switchTo().alert().getText();
+    }
+
     public void getListOfElements(List<WebElement> elements,List<String> elementCopied) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));

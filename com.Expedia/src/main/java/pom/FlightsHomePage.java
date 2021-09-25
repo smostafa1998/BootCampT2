@@ -45,7 +45,6 @@ public class FlightsHomePage extends BaseClass {
     public WebElement multiCity;
 
 
-
     @FindBy(xpath = "//*[@id=\"location-field-leg1-origin-menu\"]/div[1]/button")
     public WebElement originLocationMT;
 

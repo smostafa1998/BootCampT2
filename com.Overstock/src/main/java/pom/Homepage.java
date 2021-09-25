@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 public class Homepage extends BaseClass {
 
     public Homepage() {
+
         PageFactory.initElements(driver, this);
     }
 
@@ -29,6 +30,7 @@ public class Homepage extends BaseClass {
 
     public DecorHomePage hoverToDecor(){
         hoverAction(decorTab);
+        clickOnElement(decorTab);
         return new DecorHomePage();
     }
 
