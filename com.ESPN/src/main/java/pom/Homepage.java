@@ -19,10 +19,6 @@ public class Homepage extends BaseClass {
     @FindBy(xpath="//*[@id=\"global-nav\"]/ul/li[1]/a/span/span[1]")
     public WebElement nfl;
 
-    /**
-     * This is to navigate to the art collections page of ebay
-     * @return
-     */
 
     public NFLHomePage navigateToNFLHomePage() {
         waitForElementToBeVisible(nfl);
