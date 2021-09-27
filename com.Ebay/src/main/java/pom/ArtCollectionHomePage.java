@@ -16,7 +16,6 @@ public class ArtCollectionHomePage extends BaseClass {
      * Put all elements under here for the art page
      */
 
-
     @FindBy(xpath="//*[@id=\"s0-15-6-0-1[1]-0\"]/div[1]/div[2]/h1")
     public WebElement artlabel;
 

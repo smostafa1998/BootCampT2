@@ -8,7 +8,8 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
-            <class name="testPom.TestHomepage"/>
+            <!--<class name="testPom.TestHomepage"/>-->
+            <class name="testPom.TestBuyHousesHomePage"/>
         </classes>
     </test>
 
