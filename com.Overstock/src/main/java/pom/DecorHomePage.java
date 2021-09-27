@@ -63,5 +63,17 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"1\"]/article[1]/a")
     public WebElement textProduct;
 
+    @FindBy(xpath="//*[@id=\"headerContent\"]/header/div[2]/div[2]/div[3]/div[2]/button")
+    public WebElement inputAccount;
+
+    @FindBy(xpath="//*[@id=\"loginIframe\"]")
+    public WebElement loginIframe;
+
+    @FindBy(xpath="//*[@id=\"register-email\"]")
+    public WebElement inputEmail;
+
+    @FindBy(xpath="//*[@id=\"register-password\"]")
+    public WebElement inputPassword;
+
 
 }

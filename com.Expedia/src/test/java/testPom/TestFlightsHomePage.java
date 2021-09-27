@@ -16,6 +16,7 @@ public class TestFlightsHomePage extends TestBase {
         homepage.setUpLocations(flights.originLocation,flights.originLocationText,"nyc",flights.firstResult);
         homepage.setUpLocations(flights.destinationLocation,flights.destinationLocationText,"norway",flights.firstResult2);
         clickOnElement(flights.searchButton);
+        waitForElementToBeVisible(flights.confirmWEBElement);
         //dropdownSelectByVisibleText(flights.dropDown,"Duration (Longest)");
         //5:55pm - 12:00pm (1 stop)
         scrollJS(500);
@@ -41,7 +42,7 @@ public class TestFlightsHomePage extends TestBase {
     /**
      *
      */
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void verifyFlightsTest3() {
         Homepage homepage = getHomepage();
         FlightsHomePage flights = homepage.navigateToFlight();

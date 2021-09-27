@@ -22,6 +22,7 @@ import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.*;
+import java.util.NoSuchElementException;
 
 public class BaseClass {
 
@@ -196,6 +197,14 @@ public class BaseClass {
             element.click();
         } catch (Exception e1) {
             clickJScript(element);
+        }
+    }
+
+    public void foundIframe(WebElement element){
+        try{
+            driver.switchTo().frame(element);
+        }catch (NoSuchElementException e){
+            e.printStackTrace();
         }
     }
 

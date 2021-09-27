@@ -22,5 +22,49 @@ public class SoccerHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"page-content\"]/div[1]/div[2]/ul/li/a/h3")
     public List<WebElement> linksArticles;
 
+    @FindBy(xpath="//*[@id=\"Newsletter\"]/div[1]/form/input[8]")
+    public WebElement emailInput;
+
+    @FindBy(xpath="//*[@id=\"Newsletter\"]/div[1]/form/input[9]")
+    public WebElement submitButton;
+
+    @FindBy(xpath="//*[@id=\"Newsletter\"]/div[2]")
+    public WebElement errorMessage;
+
+    @FindBy(xpath="//*[@id=\"CheckButton-checkbox\"]")
+    public WebElement checkboxSub;
+
+    @FindBy(xpath="//*[contains(@id,\"uid-\")]/ul[1]/li[1]/h5/a")
+    public WebElement articleButton;
+
+    @FindBy(xpath="//*[@id=\"article0\"]/article/div[3]/h2")
+    public WebElement headlineText;
+
+    @FindBy(xpath="//*[@id=\"cbs-site-nav\"]/div/nav/ul/li[10]")
+    public WebElement dotdotdotButton;
+
+    @FindBy(xpath="//*[@id=\"cbs-site-nav\"]/div/nav/ul/li[10]/ul/li[8]/a")
+    public WebElement shopLink;
+
+    @FindBy(xpath="//div[2]//header/div[3]/nav/ul/li[9]")
+    public WebElement shopSoccer;
+
+    @FindBy(xpath="//div[2]//div[3]//li[9]//div[3]/div[2]//a[8]")
+    public WebElement irishLink;
+
+    @FindBy(xpath="//*[@id=\"sort-by\"]")
+    public WebElement sortBy;
+
+    @FindBy(xpath="//*[@id=\"side-nav\"]//div[6]/div[2]/ul/li[3]")
+    public WebElement radioButton;
+
+    @FindBy(xpath="//div[2]//div[7]/div[2]/div[5]//div[2]/div/div/div[2]/div/a")
+    public List<WebElement> listOfHats;
+
+
+
+
+
+
 
 }

@@ -74,7 +74,15 @@ public class TestDecorHomePage extends TestBase {
         //waitForElementToBeVisible(decor.textProduct);
         //webDriverWait.until(ExpectedConditions.urlToBe("https://www.overstock.com/Home-Garden/Talco-Shaggy-Boho-Stripe-22-inch-Throw-Pillow/30756554/product.html?guid=5ca41708-d9b4-4010-a84c-d419b50804bc&kwds=&osp=true&refccid=RZ4HGAFSCCIKWX2G7K4NF6KG6M&rfmt=pattern%3ATextured&searchidx=0"));
         driver.switchTo().window(parentTab);
+    }
 
+    @Test
+    public void verifyDecorTest4(){
+        Homepage homepage = getHomepage();
+        DecorHomePage decor = homepage.navigateToDecor();
+        clickOnElement(decor.inputAccount);
+        foundIframe(decor.loginIframe);
+        homepage.enterUserInfo(decor.inputEmail,"smostafa1998@gmail.com",decor.inputPassword,"testing123");
     }
 
 

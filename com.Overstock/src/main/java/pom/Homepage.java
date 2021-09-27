@@ -34,6 +34,15 @@ public class Homepage extends BaseClass {
         return new DecorHomePage();
     }
 
+    public void enterUserInfo(WebElement email, String emailName, WebElement password, String passwordName){
+        waitForElementToBeVisible(email);
+        clickOnElement(email);
+        sendKeysToInput(email,emailName);
+        waitForElementToBeVisible(password);
+        clickOnElement(password);
+        sendKeysToInput(password,passwordName);
+    }
+
 
 
 
