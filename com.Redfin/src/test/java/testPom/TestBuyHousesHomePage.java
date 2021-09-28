@@ -1,4 +1,6 @@
 package testPom;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,7 +14,7 @@ import java.util.Set;
 
 
 public class TestBuyHousesHomePage extends TestBase {
-    @Test(enabled=false)
+    @Test()
     public void verifyBuyHousesTest1(){
         Homepage homepage = getHomepage();
         List<String> elementCopied = new ArrayList<>();

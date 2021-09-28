@@ -8,11 +8,11 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
-            <!-- <class name="testPom.TestHomepage"/>-->
-           <class name="testPom.TestCheckingsHomePage"/>
-       </classes>
-   </test>
+           <!-- <class name="testPom.TestHomepage"/> -->
+            <class name="testPom.TestArtCollectionHomePage"/>
+        </classes>
+    </test>
 
-   <parameter name="url" value="https://www.chase.com"/>
-   <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="https://www.ebay.com"/>
+    <parameter name="browser" value="chrome"/>
 </suite>

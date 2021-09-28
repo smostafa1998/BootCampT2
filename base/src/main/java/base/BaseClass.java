@@ -224,6 +224,17 @@ public class BaseClass {
         js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
     }
 
+    public static WebElement getShadowRoot(WebElement shadowHost) {
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        return (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
+    }
+
+    public static WebElement getShadowElement(WebElement shadowHost, String cssOfShadowElement) {
+        WebElement shardowRoot = getShadowRoot(shadowHost);
+        return shardowRoot.findElement(By.cssSelector(cssOfShadowElement));
+    }
+
+
     public void dismissAlert() {
         driver.switchTo().alert().dismiss();
     }

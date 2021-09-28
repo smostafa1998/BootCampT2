@@ -1,5 +1,6 @@
 package testPom;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.DecorHomePage;
 import pom.Homepage;
@@ -45,7 +46,6 @@ public class TestDecorHomePage extends TestBase {
         database.insertDataFromListToSqlTable(elementCopied, "fireplaceList", "Items");
     }
 
-    // this is a glitch and put imap coding into it
     @Test(enabled = false)
     public void verifyDecorTest3() {
         Homepage homepage = getHomepage();
@@ -54,29 +54,19 @@ public class TestDecorHomePage extends TestBase {
         clickOnElement(decor.throwPillows);
         waitForElementToBeVisible(decor.pillowClick);
         clickOnElement(decor.pillowClick);
-
-        String parentTab = driver.getWindowHandle();
-        Set<String> tabHandles = driver.getWindowHandles();
-        Iterator<String> iterator = tabHandles.iterator();
-
         waitForElementToBeVisible(decor.textProduct);
         clickOnElement(decor.textProduct);
-
-        while (iterator.hasNext()) {
-            String childTab = iterator.next();
-
-            if (!(childTab.equalsIgnoreCase(parentTab))) {
-                driver.switchTo().window(childTab);
-                break;
-            }
-        }
-
-        //waitForElementToBeVisible(decor.textProduct);
-        //webDriverWait.until(ExpectedConditions.urlToBe("https://www.overstock.com/Home-Garden/Talco-Shaggy-Boho-Stripe-22-inch-Throw-Pillow/30756554/product.html?guid=5ca41708-d9b4-4010-a84c-d419b50804bc&kwds=&osp=true&refccid=RZ4HGAFSCCIKWX2G7K4NF6KG6M&rfmt=pattern%3ATextured&searchidx=0"));
-        driver.switchTo().window(parentTab);
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        waitForElementToBeVisible(decor.productName);
+        String actualText = decor.productName.getText();
+        String expectedText = "nuLOOM Textured Moroccan Ottoman Pouf";
+        Assert.assertEquals(expectedText, actualText);
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
     }
 
-    @Test
+    @Test(enabled = false)
     public void verifyDecorTest4(){
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();
