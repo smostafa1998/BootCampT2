@@ -32,4 +32,18 @@ public class Homepage extends BaseClass {
         clickOnElement(maxPrice);
     }
 
+    public void clearSearch(WebElement searchButtonLocation,WebElement clearButton){
+        clickOnElement(searchButtonLocation);
+        clickOnElement(clearButton);
+    }
+
+    public void sendKeywordLocation(WebElement keywordSearch,String location,WebElement firstChoice){
+        sendKeysToInput(keywordSearch,location);
+        clickOnElement(firstChoice);
+    }
+
+
+
+
+
 }
