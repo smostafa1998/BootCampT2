@@ -46,7 +46,7 @@ public class TestDecorHomePage extends TestBase {
         database.insertDataFromListToSqlTable(elementCopied, "fireplaceList", "Items");
     }
 
-    @Test(enabled = false)
+    @Test()
     public void verifyDecorTest3() {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();

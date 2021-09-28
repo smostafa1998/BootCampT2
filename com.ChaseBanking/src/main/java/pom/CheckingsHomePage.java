@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class CheckingsHomePage extends BaseClass {
     public  CheckingsHomePage(){
         PageFactory.initElements(driver,this);
@@ -53,8 +55,30 @@ public class CheckingsHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"cancel\"]")
     public WebElement cancelButton;
 
-    @FindBy(xpath="//*[@id=\"tabs-text\"]/h3")
+    @FindBy(xpath="//*[@id=\"compare\"]//div[2]/div[2]//div[1]/h2")
     public WebElement messageKids;
+
+    @FindBy(xpath="//*[@id=\"nav-bar\"]/div/div[3]/div[2]/button")
+    public WebElement CDTab;
+
+    @FindBy(xpath="//*[@id=\"HeaderCtrl1_HeaderMain_NavSavingsCDsDesktop\"]")
+    public WebElement CDLink;
+
+    @FindBy(xpath="//*[@id=\"prePopulated\"]")
+    public WebElement inputZipCode;
+
+    @FindBy(xpath="/html/body/div[1]/div/div/div/div/div[4]/div[5]/button")
+    public WebElement submitButton;
+
+    @FindBy(xpath="//*[@id=\"dynamicContentDropZone0\"]//div[6]//div[3]/div[2]//table/tbody/tr[1]/td")
+    public List<WebElement> firstMonth;
+
+    @FindBy(xpath="//*[@id=\"dynamicContentDropZone0\"]//div[6]//div[3]/div[2]//table/thead/tr/th")
+    public List<WebElement> columnsCD;
+
+    @FindBy(xpath="//*[@id=\"dynamicContentDropZone0\"]//div[6]//div[3]/div[2]//table/tbody/tr/td[7]")
+    public List<WebElement> richColumn;
+
 
 
 }

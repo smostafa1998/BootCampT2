@@ -10,12 +10,13 @@ import testBase.TestBase;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 
 public class TestCheckingsHomePage extends TestBase {
 
-    @Test(enabled= false)
+    @Test(enabled=false)
     public void verifyCheckingsTest1(){
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
@@ -28,11 +29,11 @@ public class TestCheckingsHomePage extends TestBase {
         ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
 
-        WebElement shadowHost = driver.findElement(By.cssSelector("#viewer"));
-        WebElement shadowTreeL1= getShadowElement(shadowHost,"#toolbar");
-        WebElement shadowTreeL2 = getShadowElement(shadowTreeL1,"#downloads");
-        WebElement shadowTreeL3 = getShadowElement(shadowTreeL2,"#download");
-        clickJScript(shadowTreeL3);
+       // WebElement shadowHost = driver.findElement(By.cssSelector("#viewer"));
+       // WebElement shadowTreeL1= getShadowElement(shadowHost,"#toolbar");
+       // WebElement shadowTreeL2 = getShadowElement(shadowTreeL1,"#downloads");
+       // WebElement shadowTreeL3 = getShadowElement(shadowTreeL2,"#download");
+        //clickJScript(shadowTreeL3);
 
         //WebElement root1 = driver.findElement(By.xpath("//*[@id=\"viewer\"]"));
         //WebElement shadowRoot1 = expandRootElement(root1);
@@ -76,7 +77,7 @@ public class TestCheckingsHomePage extends TestBase {
 
 
 
-    @Test
+    @Test(enabled = false)
     public void verifyCheckingsTest2(){
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
@@ -93,10 +94,23 @@ public class TestCheckingsHomePage extends TestBase {
 
     }
 
-    @Test(enabled=false)
+    //has a glitch thats annoying gotta work at
+    @Test(enabled = false)
     public void verifyCheckingsTest3(){
         Homepage homepage = getHomepage();
+        List<String> elementCopied = new ArrayList<>();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+        clickOnElement(checkings.CDTab);
+        clickOnElement(checkings.CDLink);
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        clickOnElement(checkings.inputZipCode);
+        sendKeysToInput(checkings.inputZipCode,"11377");
+        clickOnElement(checkings.submitButton);
+        getListOfElements(checkings.columnsCD, elementCopied);
+        database.insertDataFromListToSqlTable(elementCopied, "ChaseBank", "columsCD");
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
 
     }
 }
