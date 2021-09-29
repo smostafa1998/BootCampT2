@@ -8,10 +8,12 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
-            <class name="testPom.TestHomepage"/>
-        </classes>
-    </test>
+            <!-- <class name="testPom.TestHomepage"/>-->
+            <class name="testPom.TestMortagesHomePage"/>
 
-    <parameter name="url" value="https://www.trulia.com"/>
-    <parameter name="browser" value="chrome"/>
-</suite>
+         </classes>
+     </test>
+
+     <parameter name="url" value="https://www.trulia.com"/>
+     <parameter name="browser" value="chrome"/>
+ </suite>

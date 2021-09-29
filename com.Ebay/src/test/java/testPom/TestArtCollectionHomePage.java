@@ -19,7 +19,7 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test(enabled=false,description="testing List<elements>")
+    @Test(enabled=true)
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
         List<String> elementCopied = new ArrayList<>();
@@ -35,7 +35,7 @@ public class TestArtCollectionHomePage extends TestBase {
     /**
      * This one tests hover actions, add assert here
      */
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void verifyArtCollectionTest2(){
         Homepage homepage = getHomepage();
         List<String> elementCopied = new ArrayList<>();

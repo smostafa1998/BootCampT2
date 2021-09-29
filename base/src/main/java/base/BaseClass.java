@@ -177,11 +177,21 @@ public class BaseClass {
         element.sendKeys(keys);
     }
 
+    public void clearInputText(WebElement element){
+        element.sendKeys(Keys.COMMAND+"a");
+        element.sendKeys(Keys.DELETE);
+    }
+
     public void dropdownSelectByVisibleText(WebElement element, String visibleText) {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
 
         Select select = new Select(element);
         select.selectByVisibleText(visibleText);
+    }
+
+    public void dropdownSelectByIndex(WebElement element,int number) {
+        Select select = new Select(element);
+        select.selectByIndex(number);
     }
 
     public void clickOnElement(WebElement element) {
@@ -276,6 +286,12 @@ public class BaseClass {
         }
         a.moveToElement(element).build().perform();
     }
+
+    public void slideAction(WebElement element,int x,int y){
+        Actions action = new Actions(driver);
+        action.dragAndDropBy(element, x, y).perform();
+    }
+
 
     /*
     SYNC Methods
