@@ -17,7 +17,7 @@ public class Homepage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"gnav20-Shop-L2-4\"]")
     public WebElement accessoriesTab;
 
-    @FindBy(xpath = "//*[@id=\"gnav20-Shop-L3-48\"]")
+    @FindBy(xpath = "//*[@id=\"gnav20-Shop-L3-46\"]")
     public WebElement shopAllAccessories;
 
     public AccessoriesHomePage navigateToAccessories(){
