@@ -8,10 +8,11 @@
         <!--            </run>-->
         <!--        </groups>-->
         <classes>
-            <class name="testPom.TestHomepage"/>
-        </classes>
-    </test>
+            <!--    <class name="testPom.TestHomepage"/> -->
+              <class name="testPom.TestAccessoriesHomePage"/>
+          </classes>
+      </test>
 
-    <parameter name="url" value="https://www.verizon.com"/>
-    <parameter name="browser" value="chrome"/>
-</suite>
+      <parameter name="url" value="https://www.verizon.com"/>
+      <parameter name="browser" value="chrome"/>
+  </suite>

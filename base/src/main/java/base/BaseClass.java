@@ -284,6 +284,12 @@ public class BaseClass {
         }
     }
 
+    public List<String> oneDList(List<WebElement> elements1){
+        List<String> elementCopied1 = new ArrayList<>();
+        getListOfElements(elements1, elementCopied1);
+        return elementCopied1;
+    }
+
     public void clearElement(WebElement element){
         element.clear();
     }
