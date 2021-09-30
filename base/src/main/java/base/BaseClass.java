@@ -194,6 +194,17 @@ public class BaseClass {
         select.selectByIndex(number);
     }
 
+    public void buttonSelect(WebElement element,WebElement selected){
+        clickOnElement(element);
+        clickOnElement(selected);
+    }
+
+    public void addingKeyboardInput(WebElement element,String value){
+        clickOnElement(element);
+        clearInputText(element);
+        sendKeysToInput(element, value);
+    }
+
     public void clickOnElement(WebElement element) {
         try {
             webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
@@ -213,7 +224,7 @@ public class BaseClass {
     public void foundIframe(WebElement element){
         try{
             driver.switchTo().frame(element);
-        }catch (NoSuchElementException e){
+        }catch (StaleElementReferenceException e){
             e.printStackTrace();
         }
     }

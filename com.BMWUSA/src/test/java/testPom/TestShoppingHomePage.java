@@ -23,9 +23,7 @@ public class TestShoppingHomePage extends TestBase {
     public void verifyShoppingTest2() {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
-        clickOnElement(shopping.zipCode);
-        clearInputText(shopping.zipCode);
-        sendKeysToInput(shopping.zipCode, "11377");
+        addingKeyboardInput(shopping.zipCode,"11377");
         clickOnElement(shopping.shopNew);
         List<String> elementCopied = new ArrayList<>();
         getListOfElements(shopping.pricesNewCars, elementCopied);
@@ -37,17 +35,11 @@ public class TestShoppingHomePage extends TestBase {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.estimateButton);
-
         clickOnElement(shopping.series);
         dropdownSelectByIndex(shopping.series, 3);
-
         clickOnElement(shopping.model);
         dropdownSelectByIndex(shopping.model, 4);
-
-        clickOnElement(shopping.inputZIP);
-        clearInputText(shopping.inputZIP);
-        sendKeysToInput(shopping.inputZIP, "11377");
-
+        addingKeyboardInput(shopping.inputZIP,"11377");
         clickOnElement(shopping.estimatePayments);
         waitForElementToBeVisible(shopping.confirmYear);
         String actualText = shopping.confirmYear.getText();
@@ -93,9 +85,7 @@ public class TestShoppingHomePage extends TestBase {
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.leaseAndFinancing);
 
-        clickOnElement(shopping.zipCodeInput);
-        clearInputText(shopping.zipCodeInput);
-        sendKeysToInput(shopping.zipCodeInput, "11377");
+        addingKeyboardInput(shopping.zipCodeInput,"11377");
 
         clickOnElement(shopping.vehicleSelect);
         dropdownSelectByIndex(shopping.vehicleSelect, 4);
