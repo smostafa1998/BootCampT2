@@ -22,7 +22,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(decor.decorLabel);
         String actualText = decor.decorLabel.getText();
         String expectedText = "Home Decor";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND DECOR WEBSITE");
     }
 

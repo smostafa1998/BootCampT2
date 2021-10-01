@@ -45,7 +45,7 @@ public class TestBuyHousesHomePage extends TestBase {
         waitForElementToBeVisible(houses.noResults);
         String actualText = houses.noResults.getText();
         String expectedText = "No results!";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
 
     }
     @Test (enabled=false) //not perfect but will work
@@ -69,7 +69,7 @@ public class TestBuyHousesHomePage extends TestBase {
         waitForElementToBeVisible(houses.addressText);
         String actualText = houses.addressText.getText();
         String expectedText = "$498,500";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("DONE");
         driver.switchTo().window(parentTab);
     }

@@ -1,12 +1,9 @@
 package testPom;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.ArtCollectionHomePage;
 import pom.Homepage;
 import testBase.TestBase;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This is for ebay tests
@@ -19,16 +16,13 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
-        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection();
         waitForElementToBeVisible(artCollection.teddyLabel);
         clickOnElement(artCollection.teddyLabel);
-        getListOfElements(artCollection.dollBrands,elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied,"dollList","Brands");
-        //remember to so assert here can use database or excel
+        database.insertDataFromListToSqlTable(oneDList(artCollection.dollBrands),"dollList","Brands");
         System.out.println("done");
     }
 
@@ -38,7 +32,6 @@ public class TestArtCollectionHomePage extends TestBase {
     @Test(enabled=false)
     public void verifyArtCollectionTest2(){
         Homepage homepage = getHomepage();
-        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
         waitForElementToBeVisible(artCollection.comicsLabel);
         clickOnElement(artCollection.comicsLabel);
@@ -47,33 +40,26 @@ public class TestArtCollectionHomePage extends TestBase {
         hoverAction(artCollection.auctionSortButton);
         hoverAction(artCollection.mostBids);
         clickOnElement(artCollection.mostBids);
-        getListOfElements(artCollection.numOfResults,elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied,"EbayList","itemsBid");
+        oneDList(artCollection.numOfResults);
+        database.insertDataFromListToSqlTable(oneDList(artCollection.numOfResults),"EbayList","itemsBid");
 
     }
 
     /**
      * This one tests send keys. assert here tooo with database
+     * loading into the database as actual
+     * using microsoft excel for expected or another database
      */
     @Test(enabled=false)
-    public void verifyArtCollectionTest3() throws IOException {
+    public void verifyArtCollectionTest3() {
         Homepage homepage = getHomepage();
-        List<String> elementCopied = new ArrayList<>();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
         waitForElementToBeVisible(artCollection.antiquesLink);
         clickOnElement(artCollection.antiquesLink);
         clickOnElement(artCollection.stylesLink);
         sendKeysToInput(artCollection.keywordSearch,"carpet");
         clickOnElement(artCollection.keywordSearchButton);
-        getListOfElements(artCollection.productList,elementCopied);
-        //loading into the database as actual
-        //using microsoft excel for expected or another database
-        database.insertDataFromListToSqlTable(elementCopied,"EbayListProducts","productList");
-
-
-
-
-
+        database.insertDataFromListToSqlTable(oneDList(artCollection.productList),"EbayListProducts","productList");
 
         //String relPath = ABSOLUTE_PATH+"/src/main/resources/blah.xlsx";
         //dataReader.fileReaderIntegerXSSF(relPath,"sheet0");
@@ -92,5 +78,61 @@ public class TestArtCollectionHomePage extends TestBase {
            // softAssert.assertEquals(actualTextWebElementList.get(i), expectedText[i]);
        // }
     }
+
+    @Test(enabled=false)
+    public void verifyArtCollectionTest4(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
+        clickOnElement(artCollection.categoryBox);
+        dropdownSelectByValue(artCollection.selectCategory,"220");
+        sendKeysToInput(artCollection.searchBox,"shang chi");
+        clickOnElement(artCollection.searchButton);
+        clickOnElement(artCollection.DisneyCheckbox);
+        oneDList(artCollection.disneySCList);
+    }
+
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest5(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
+        clickOnElement(artCollection.vintageAntiqueCategory);
+        clickOnElement(artCollection.AGI);
+        buttonSelect(artCollection.buttonBrand,artCollection.newBox);
+        oneDList(artCollection.jewleryList);
+        waitForElementToBeVisible(artCollection.numofJewleryResults);
+        String actualText = artCollection.numofJewleryResults.getText();
+        String expectedText = "22 Results";
+        Assert.assertEquals(actualText,expectedText);
+    }
+
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest6(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
+        clickOnElement(artCollection.sellSomething);
+        clickOnElement(artCollection.popularFeaturedButton);
+        database.insertDataFromListToSqlTable(oneDList(artCollection.categoryList),"CategoryList","Category");
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest7(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
+        clickOnElement(artCollection.sellSomething);
+        clickOnElement(artCollection.popularFeaturedButton);
+        clickOnElement(artCollection.videoAndGame);
+        buttonSelect(artCollection.conditionBox,artCollection.condition);
+        buttonSelect(artCollection.brandBox,artCollection.brand);
+        buttonSelect(artCollection.modelBox,artCollection.model);
+        buttonSelect(artCollection.platformBox,artCollection.platform);
+        buttonSelect(artCollection.regionBox,artCollection.region);
+        waitForElementToBeVisible(artCollection.avgPrice);
+        String actualText = artCollection.avgPrice.getText();
+        String expectedText = "$95-$305";
+        Assert.assertEquals(actualText,expectedText);
+    }
+
 
 }

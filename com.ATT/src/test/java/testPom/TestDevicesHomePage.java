@@ -78,7 +78,7 @@ public class TestDevicesHomePage extends TestBase {
         waitForElementToBeVisible(devices.textStore);
         String actualText = devices.textStore.getText();
         String expectedText = "AT&T Authorized Retailer";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
 

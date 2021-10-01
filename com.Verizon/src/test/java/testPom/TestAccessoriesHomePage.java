@@ -32,7 +32,7 @@ public class TestAccessoriesHomePage extends TestBase {
         waitForElementToBeVisible(accessories.resultCount);
         String actualText = accessories.resultCount.getText();
         String expectedText = "96 results";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @Test(enabled = false)

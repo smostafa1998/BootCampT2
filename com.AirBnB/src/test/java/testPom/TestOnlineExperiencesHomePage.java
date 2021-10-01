@@ -24,7 +24,7 @@ public class TestOnlineExperiencesHomePage extends TestBase {
         waitForElementToBeVisible(onlineExperience.showOffersResults);
         String actualText = onlineExperience.showOffersResults.getText();
         String expectedText = "83 results based on your filters";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND RESULTS OF SOMETHING");
     }
 

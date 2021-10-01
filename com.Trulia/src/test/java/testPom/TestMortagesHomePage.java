@@ -21,7 +21,7 @@ public class TestMortagesHomePage extends TestBase {
         waitForElementToBeVisible(mortages.paragraphNo);
         String actualText = mortages.paragraphNo.getText();
         String expectedText = "Trulia does not display lenders in this area. Fortunately, Trulia is part of the Zillow Group family and you can visit Zillow to see your options.";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         clickOnElement(mortages.cancelButton);
     }
 
@@ -84,7 +84,7 @@ public class TestMortagesHomePage extends TestBase {
         waitForElementToBeVisible(mortages.affordHome);
         String actualText = mortages.affordHome.getText();
         String expectedText = "$281,707";
-        Assert.assertEquals(actualText, expectedText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @Test(enabled = false)

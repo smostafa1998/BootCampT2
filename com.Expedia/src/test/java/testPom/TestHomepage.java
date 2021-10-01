@@ -21,7 +21,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(flights.roundtripLabel);
         String actualText = flights.roundtripLabel.getText();
         String expectedText = "Roundtrip";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND FLIGHT WEBSITE");
     }
 

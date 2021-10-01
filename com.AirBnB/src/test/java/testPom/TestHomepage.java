@@ -19,7 +19,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(onlineExperiences.onlineLabel);
         String actualText = onlineExperiences.onlineLabel.getText();
         String expectedText = "Find unique activities led by one-of-a-kind hosts — all without leaving home.";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND ONLINE WEBSITE");
     }
 

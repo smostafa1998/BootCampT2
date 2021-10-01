@@ -18,7 +18,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(nflHomePage.nflLabel);
         String actualText = nflHomePage.nflLabel.getText();
         String expectedText = "NFL";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND NFL WEBSITE");
     }
 

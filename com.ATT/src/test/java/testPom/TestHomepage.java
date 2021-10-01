@@ -15,7 +15,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(devices.phoneText);
         String actualText = devices.phoneText.getText();
         String expectedText = "Pick your phones";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND DEVICES SITE");
     }
 }

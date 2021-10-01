@@ -19,7 +19,7 @@ public class TestHomepage extends TestBase {
         String actualText = accessories.textAccessories.getText();
         String expectedText = "Get the gear you\n" +
                 "need. Here and now.";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND ACCESSORIES WEBSITE");
     }
 

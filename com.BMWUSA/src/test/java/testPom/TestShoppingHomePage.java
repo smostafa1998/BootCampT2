@@ -44,7 +44,7 @@ public class TestShoppingHomePage extends TestBase {
         waitForElementToBeVisible(shopping.confirmYear);
         String actualText = shopping.confirmYear.getText();
         String expectedText = "2022";
-        Assert.assertEquals(actualText, expectedText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @Test(enabled = false)

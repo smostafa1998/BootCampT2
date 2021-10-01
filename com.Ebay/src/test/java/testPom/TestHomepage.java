@@ -22,7 +22,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(artCollection.artlabel);
         String actualText = artCollection.artlabel.getText();
         String expectedText = "Collectibles & Art";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND ART WEBSITE");
     }
 

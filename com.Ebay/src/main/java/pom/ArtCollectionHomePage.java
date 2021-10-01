@@ -55,5 +55,91 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"s0-27-9-0-1[0]-0-1\"]/ul//div[2]/a/h3")
     public List<WebElement> productList;
 
+    @FindBy (xpath="//*[@id=\"gh-cat-box\"]")
+    public WebElement categoryBox;
+
+    @FindBy (xpath="//*[@id=\"gh-cat\"]")
+    public WebElement selectCategory;
+
+    @FindBy(xpath="//*[@id=\"gh-ac\"]")
+    public WebElement searchBox;
+
+    @FindBy(xpath="//*[@id=\"gh-btn\"]")
+    public WebElement searchButton;
+
+    @FindBy(xpath="//*[@id=\"x-refine__group_1__0\"]/ul/li[2]/div/a/div")
+    public WebElement DisneyCheckbox;
+
+    @FindBy(xpath="//*[@id=\"srp-river-results\"]/ul/li/div/div[2]/a/h3")
+    public List<WebElement> disneySCList;
+
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[2]-0-0-0\"]/ul/li[3]/a")
+    public WebElement vintageAntiqueCategory;
+
+    @FindBy (xpath="//*[@id=\"s0-27-9-0-1[0]-0-1[1]-0-18-list\"]/li[2]/a")
+    public WebElement AGI;
+
+    @FindBy(xpath="//*[@id=\"s0-27-9-0-1[0]-0-1-6-6-4[2]-flyout\"]/button ")
+    public WebElement buttonBrand;
+
+    @FindBy(xpath="//*[@id=\"s0-27-9-0-1[0]-0-1-6-6-4[2]-flyout\"]/div/ul/li[1]/a")
+    public WebElement newBox;
+
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[0]-0-0\"]/ul/li/a")
+    public List<WebElement> jewleryList;
+
+    @FindBy(xpath="//*[@id=\"s0-27-9-0-1[0]-0-1-6-5\"]/div[2]//h2")
+    public WebElement numofJewleryResults;
+
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[4]-0-0-0\"]/ul/li/a")
+    public WebElement sellSomething;
+
+    @FindBy(xpath="//*[@id=\"categories_list\"]/div[1]/button")
+    public WebElement popularFeaturedButton;
+
+    @FindBy(xpath="//*[@id=\"categories_list\"]/div[2]/div/ul/li/a")
+    public List<WebElement> categoryList;
+
+    @FindBy(xpath="//*[@id=\"categories_list\"]/div[2]/div/ul/li[36]/a")
+    public WebElement videoAndGame;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[0]-34-selectField\"]/label/div[2]")
+    public WebElement conditionBox;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[0]-34-menuList-optionsText\"]/li[2]/button")
+    public WebElement condition;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[1]-36-selectField\"]/label/div[1]")
+    public WebElement brandBox;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[1]-36-menuList-optionsText\"]/li[1]/button")
+    public WebElement brand;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[2]-38-selectField\"]/label/div[1]")
+    public WebElement modelBox;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[2]-38-menuList-optionsText\"]/li[3]/button")
+    public WebElement model;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[3]-40-selectField\"]/label/div[1]")
+    public WebElement platformBox;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[3]-40-menuList-optionsText\"]/li/button")
+    public WebElement platform;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[4]-42-selectField\"]/label/div[1]")
+    public WebElement regionBox;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0-ebayCarousel-6[4]-42-menuList-optionsText\"]/li[1]/button")
+    public WebElement region;
+
+    @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0\"]/div[1]/div[2]/div[2]")
+    public WebElement avgPrice;
+
+
+
+
+
+
 
 }

@@ -18,7 +18,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(mortages.mortageText);
         String actualText = mortages.mortageText.getText();
         String expectedText = "Try our helpful mortgage tools";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND MORTAGES WEBSITE");
     }
 

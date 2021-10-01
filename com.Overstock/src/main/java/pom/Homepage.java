@@ -1,6 +1,7 @@
 package pom;
 
 import base.BaseClass;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,6 +19,15 @@ public class Homepage extends BaseClass {
     @FindBy(xpath="//*[@id=\"TopNav\"]/div[1]/div[3]/a")
     public WebElement decorTab;
 
+    @FindBy(xpath="//*[@id=\"push_notifications_container\"]/div[4]/div[1]")
+    public WebElement notification_no_thanks;
+
+    @FindBy(xpath="//*[@id=\"push_notifications_container\"]/svg")
+    public WebElement notification_close;
+
+    @FindBy(xpath="//*[@id=\"notification_allow\"]")
+    public WebElement notification_allow;
+
     /**
      * This is to navigate to the decor collections page of ebay
      * @return
@@ -29,8 +39,8 @@ public class Homepage extends BaseClass {
     }
 
     public DecorHomePage hoverToDecor(){
-        hoverAction(decorTab);
         clickOnElement(decorTab);
+        hoverAction(decorTab);
         return new DecorHomePage();
     }
 
@@ -42,9 +52,6 @@ public class Homepage extends BaseClass {
         clickOnElement(password);
         sendKeysToInput(password,passwordName);
     }
-
-
-
 
 
 }

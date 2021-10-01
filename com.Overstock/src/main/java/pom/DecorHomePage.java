@@ -78,5 +78,88 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"register-password\"]")
     public WebElement inputPassword;
 
+    @FindBy(xpath="//*[@id=\"TopNav\"]/div[1]/div[3]//div[8]/a[4]")
+    public WebElement DecorAdvice;
+
+    @FindBy(xpath="//*[@id=\"lightbox-close-button\"]")
+    public WebElement wheelCloseButton;
+
+    @FindBy(xpath="//*[@id=\"lightbox-close-button2\"]")
+    public WebElement wheelCloseButton2;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/nav/ul/li[3]/a")
+    public WebElement mirrorTab;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]//div[2]//div[1]/div/a[2]/div[4]")
+    public WebElement mirrorOnSales;
+
+    @FindBy(xpath="//*[@id=\"1\"]/article[1]/a")
+    public WebElement mirrorProduct;
+
+    @FindBy(xpath="//*[@title=\"24\"]")
+    public WebElement mirrorSize;
+
+    @FindBy(xpath="//*[@title=\"Walnut\"]")
+    public WebElement mirrorColor;
+
+    @FindBy(xpath="//*[@id=\"register-title\"]")
+    public WebElement registerTitle;
+
+    @FindBy(xpath="//*[@id=\"wp-post-search\"]")
+    public WebElement searchInput;
+
+    @FindBy(xpath="//*[@class=\"search-submit\"]")
+    public WebElement buttonSubmit;
+
+    @FindBy(xpath="//*[contains(@id,\"post-\")]/div[2]/h3/a")
+    public List<WebElement> listOfArticles;
+
+    @FindBy(xpath="//*[@id=\"post-24720\"]/div[2]/h3/a")
+    public WebElement pickArticle;
+
+    @FindBy(xpath="//*[@id=\"author-info\"]/span")
+    public WebElement authorInfo;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/div/a[1]/div[3]/div/div")
+    public WebElement halloweenPic;
+
+    @FindBy(xpath="//*[@id=\"sort-by-wrapper\"]")
+    public WebElement sortBy;
+
+    @FindBy(xpath="//*[@id=\"sort-by-wrapper\"]/div/div[2]/div/div[3]")
+    public WebElement lowToHigh;
+
+    @FindBy(xpath="//*[@id=\"brands-listHeader\"]/button")
+    public WebElement brandsButton;
+
+    @FindBy(xpath="//*[@id=\"brands-list\"]/li/a/div/label/span[1]")
+    public List<WebElement> listOfBrands;
+
+    @FindBy(xpath="//*[@id=\"brands-list\"]/li[1]/a")
+    public WebElement firstBrand;
+
+    @FindBy(xpath="//*[@id=\"brands-list\"]/li/a")
+    public List<WebElement> listOfWebsites;
+
+    @FindBy(xpath="//*[@id=\"1\"]/article[1]/a/div/div[2]/div[2]/div")
+    public WebElement clickArrow;
+
+    @FindBy(xpath=" //*[@class = \"_2prWDD\"]")
+    public WebElement description;
+
+    @FindBy(xpath="//*[@id=\"buyingGuide_tierOneGuideReadmoreBtn__1aq-v\"]")
+    public WebElement clickArticle;
+
+    @FindBy(xpath="//*[@id=\"content\"]//div[5]//div[2]/span/h2")
+    public List<WebElement> listOfSteps;
+
+    @FindBy(xpath="//*[@id=\"movie_player\"]/div[4]/button")
+    public WebElement playButton;
+
+    @FindBy(xpath="//*[@id=\"content\"]//div[6]//iframe")
+    public WebElement videoIframe;
+
+    @FindBy(xpath="//*[@title = \"Pause (k)\"]")
+    public WebElement pauseButton;
 
 }

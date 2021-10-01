@@ -194,6 +194,11 @@ public class BaseClass {
         select.selectByIndex(number);
     }
 
+    public void dropdownSelectByValue(WebElement element,String value) {
+        Select select = new Select(element);
+        select.selectByValue(value);
+    }
+
     public void buttonSelect(WebElement element,WebElement selected){
         clickOnElement(element);
         clickOnElement(selected);
@@ -282,6 +287,28 @@ public class BaseClass {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void getListOfhref(List<WebElement> elements,List<String> elementCopied) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            for(WebElement element : elements){
+                System.out.println(element.getAttribute("href"));
+                elementCopied.add(element.getAttribute("href"));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> oneDhref(List<WebElement> elements1){
+        List<String> elementCopied1 = new ArrayList<>();
+        getListOfhref(elements1, elementCopied1);
+        return elementCopied1;
     }
 
     public List<String> oneDList(List<WebElement> elements1){

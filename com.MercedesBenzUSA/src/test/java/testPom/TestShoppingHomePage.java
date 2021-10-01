@@ -68,7 +68,7 @@ public class TestShoppingHomePage extends TestBase {
         waitForElementToBeVisible(shopping.titleVehicle);
         String actualText = shopping.titleVehicle.getText();
         String expectedText = "2019 AMG G 63 SUV Accessories";
-        Assert.assertEquals(actualText, expectedText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @Test(enabled = false)

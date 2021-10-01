@@ -18,7 +18,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(shopping.buildPrice);
         String actualText = shopping.buildPrice.getText();
         String expectedText = "Build & Price";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND SHOPPING WEBSITE");
     }
 }

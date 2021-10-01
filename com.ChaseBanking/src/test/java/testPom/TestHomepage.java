@@ -19,7 +19,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(checkings.checkingText);
         String actualText = checkings.checkingText.getText();
         String expectedText = "Compare Chase checking accounts and select the one that fits your needs";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND SAVINGS WEBSITE");
 
     }

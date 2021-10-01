@@ -40,7 +40,7 @@ public class TestSoccerHomePage extends TestBase {
         waitForElementToBeVisible(soccer.headlineText);
         String actualText = soccer.headlineText.getText();
         String expectedText = "Martin Green has locked in his English Premier League picks for Brighton vs. Crystal Palace on Monday";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
     }
 
     @Test

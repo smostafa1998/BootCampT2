@@ -18,7 +18,7 @@ public class TestHomepage extends TestBase {
         waitForElementToBeVisible(houses.textBuyHouses);
         String actualText =houses.textBuyHouses.getText();
         String expectedText = "Houses for sale near me";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND HOUSE WEBSITE");
     }
 }
