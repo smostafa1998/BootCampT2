@@ -40,13 +40,67 @@ public class NFLHomePage extends BaseClass {
     @FindBy (xpath = "//*[@id=\"global-nav\"]/ul/li[1]//ul[2]//a")
     public List<WebElement> listOfNFLTeams;
 
-    @FindBy (xpath = "//*[@id=\"news-feed\"]/section[4]/section[2]/figure/picture/span")
-    public WebElement playVideoFeed;
+    @FindBy(xpath = "//*[@id=\"main-container\"]/div/section[3]/div[1]//ul/li/a")
+    public List<WebElement> listOfNFLHeadlines;
 
-    @FindBy (xpath = "//*[@id=\"vjs_video_3\"]/div[6]/button[3]")
-    public WebElement skipForwardsVideo;
+    @FindBy (xpath = "//*[@id=\"main-container\"]/div/section[3]/div[1]//ul/li[1]/a")
+    public WebElement firstResult;
 
-    @FindBy (xpath = "//*[@id=\"vjs_video_3\"]/div[6]/button[1]")
-    public WebElement pauseVideo;
+    @FindBy(xpath="//*[@id=\"article-feed\"]/article[1]//div[2]/div[1]//li/div[2]")
+    public WebElement authorsBio;
+
+    @FindBy(xpath="//*[@id=\"global-nav-secondary\"]/div/ul/li[8]/a/span[1]")
+    public WebElement fantasyFootball;
+
+    @FindBy(xpath="//*[@id=\"fitt-analytics\"]//div[5]//div[3]//div[2]/div[2]/section[1]//button")
+    public WebElement createLeague;
+
+    @FindBy (xpath = "//*[@id=\"fitt-analytics\"]//div[5]//div[2]//div[1]//div/input")
+    public WebElement inputTitle;
+
+    @FindBy(xpath="//*[@id=\"fitt-analytics\"]//div[5]//div[3]//div[2]/div[2]/section[3]//button")
+    public WebElement joinLeague;
+
+    @FindBy(xpath="//*[@id=\"fitt-analytics\"]/div/div[2]/nav/ul/li[3]/a")
+    public WebElement signUp;
+
+    @FindBy(xpath="//*[@id=\"fitt-analytics\"]//div[2]//div[2]/div/label[2]/div/div")
+    public WebElement groupNum;
+
+    @FindBy(xpath="//*[@id=\"fitt-analytics\"]//div[2]//div[3]/div/label[1]/div/div")
+    public WebElement scoringType;
+
+    @FindBy (xpath = "//*[@id=\"fitt-analytics\"]//div[5]//div[2]//div[2]/div/section/div/div/div[1]/label[1]")
+    public WebElement experienceText;
+
+    @FindBy(xpath="//*[@id=\"global-nav-secondary\"]/div/ul/li[10]/a")
+    public WebElement depthCharts;
+
+    @FindBy(xpath="//*[@id=\"article-feed\"]/article[1]/div/div[2]/h2/a")
+    public List<WebElement> hrefLinks;
+
+    @FindBy(xpath="//*[@id=\"article-feed\"]/article[1]/div/div[2]/h2[2]/a")
+    public WebElement buffaloBills;
+
+    @FindBy (xpath = "//*[@id=\"fittPageContainer\"]//div[1]//div[2]/div[4]/div[1]/ul/li")
+    public List<WebElement> listOfGlossary;
+
+    @FindBy(xpath="//*[@id=\"global-nav\"]/ul/li[1]//ul[1]/li[6]/a")
+    public WebElement teamLink;
+
+    @FindBy(xpath="//*[@id=\"fittPageContainer\"]//div[1]/div[1]/div[2]/div[3]//span[3]/a")
+    public WebElement newEnglandPatriots;
+
+    @FindBy (xpath ="//*[@id=\"fittPageContainer\"]//div[1]/div[2]//div[2]/table/tbody/tr/td[2]/div/a")
+    public List<WebElement> rosterNE;
+
+    @FindBy(xpath="//*[@id=\"fittPageContainer\"]/div[2]/div[2]/nav/ul/li[7]")
+    public WebElement injuries;
+
+    @FindBy(xpath="//*[@id=\"fittPageContainer\"]//div/div/a/div/div[2]/h3")
+    public List<WebElement> rosterNamesNE;
+
+    @FindBy(xpath="//*[@id=\"fittPageContainer\"]//div/div//div[2]/div[1]/span[2]")
+    public List<WebElement> rosterStatusNE;
 
 }

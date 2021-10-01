@@ -36,41 +36,78 @@ public class TestNFLHomePage extends TestBase {
         }
         String actualText = nflHomePage.dateHallofFame.getText();
         String expectedText = "Thursday, August 1st";
-        Assert.assertEquals(expectedText, actualText);
+        Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND HALL OF FAME");
         //dropdownSelectByVisibleText(nflHomePage.yearDropdown,"2019");
         //dropdownSelectByVisibleText(nflHomePage.weekDropdown,"Hall of Fame Weekend");
     }
 
     // database or excel
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyNFLHomePage2(){
         Homepage homepage = getHomepage();
-        List<String> elementCopied = new ArrayList<>();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
         hoverAction(homepage.nfl);
-        getListOfElements(nflHomePage.listOfNFLTeams,elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied,"NFLPage","Teams");
-        for(String s:elementCopied){
-            System.out.println(s);
-        }
+        database.insertDataFromListToSqlTable(oneDList(nflHomePage.listOfNFLTeams),"NFLPage","Teams");
         System.out.println("done");
-        //List<WebElement>
-
     }
 
-    //gitch work on this
     @Test(enabled = false)
     public void verifyNFLHomePage3() throws InterruptedException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
-        waitForElementToBeVisible(nflHomePage.playVideoFeed);
-        clickOnElement(nflHomePage.playVideoFeed);
-        webDriverWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"vjs_video_3\"]/div[6]/button[3]")));
-        //Thread.sleep(2000);
-        waitForElementToBeVisible(nflHomePage.skipForwardsVideo);
-        clickOnElement(nflHomePage.skipForwardsVideo);
-        waitForElementToBeVisible(nflHomePage.pauseVideo);
-        clickOnElement(nflHomePage.pauseVideo);
+        clickOnElement(nflHomePage.fantasyFootball);
+        clickOnElement(nflHomePage.createLeague);
+        clickOnElement(nflHomePage.inputTitle);
+        clearInputText(nflHomePage.inputTitle);
+        sendKeysToInput(nflHomePage.inputTitle,"Sabreen's Team 2 2021");
+        clickOnElement(nflHomePage.groupNum);
+        clickOnElement(nflHomePage.scoringType);
+        clickOnElement(nflHomePage.signUp);
+        clickOnElement(nflHomePage.joinLeague);
+        waitForElementToBeVisible(nflHomePage.experienceText);
+        String actualText = nflHomePage.experienceText.getText();
+        String expectedText = "Your Experience Level";
+        Assert.assertEquals(actualText,expectedText);
     }
+
+    @Test(enabled = false)
+    public void verifyNFLHomePage4() {
+        Homepage homepage = getHomepage();
+        NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
+        oneDList(nflHomePage.listOfNFLHeadlines);
+        clickOnElement(nflHomePage.firstResult);
+        waitForElementToBeVisible(nflHomePage.authorsBio);
+        String actualText = nflHomePage.authorsBio.getText();
+        String expectedText = "Michael DiRocco\n" +
+                "ESPN Staff Writer";
+        Assert.assertEquals(actualText,expectedText);
+    }
+
+    @Test(enabled = false)
+    public void verifyNFLHomePage5() {
+        Homepage homepage = getHomepage();
+        NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
+        clickOnElement(nflHomePage.depthCharts);
+        oneDhref(nflHomePage.hrefLinks);
+        clickOnElement(nflHomePage.buffaloBills);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        database.insertDataFromListToSqlTable(oneDList(nflHomePage.listOfGlossary),"GlossaryTable","Terms");
+        //add assert here
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+    }
+
+    @Test(enabled = false)
+    public void verifyNFLHomePage6() {
+        Homepage homepage = getHomepage();
+        NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
+        clickOnElement(nflHomePage.teamLink);
+        clickOnElement(nflHomePage.newEnglandPatriots);
+        oneDList(nflHomePage.rosterNE);
+        clickOnElement(nflHomePage.injuries);
+        database.insertDataFrom2ListsToSqlTable(oneDList(nflHomePage.rosterNamesNE),oneDList(nflHomePage.rosterStatusNE),"InjuriesNFL","Names","Status");
+    }
+
 }

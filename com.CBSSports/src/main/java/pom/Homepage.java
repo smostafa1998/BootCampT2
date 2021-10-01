@@ -35,5 +35,13 @@ public class Homepage extends BaseClass {
         hoverAction(soccerLink);
         return new SoccerHomePage();
     }
+    public void enterUserInfo(WebElement email, String emailName, WebElement password, String passwordName){
+        waitForElementToBeVisible(email);
+        clickOnElement(email);
+        sendKeysToInput(email,emailName);
+        waitForElementToBeVisible(password);
+        clickOnElement(password);
+        sendKeysToInput(password,passwordName);
+    }
 
 }
