@@ -80,8 +80,69 @@ public class BuyHousesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"MapHomeCard_0\"]/div/div/div[2]/a")
     public WebElement firstOffer;
 
-    @FindBy(xpath="//*[@id=\"content\"]/div[12]/div[2]/div[1]/div/div[1]/div/div/div/div[1]/div/div[1]/div")
-    public WebElement addressText;
+    @FindBy(xpath="//*[@id=\"sideBarContent\"]/div/div/div/div[1]/div[1]/div[1]")
+    public WebElement tourText;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[20]/div/div/div[2]/div/a")
+    public List<WebElement> redfinLinks;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[20]/div/div/div[2]/div[1]/a")
+    public WebElement ourMission;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[12]//div[2]//div[3]/a")
+    public WebElement learnMore;
+
+    @FindBy(xpath="//*[@class = \"SvgIcon play-circle\"]")
+    public WebElement playButton;
+
+    @FindBy(xpath="//*[@id=\"wNCOKhnysMk\"]")
+    public WebElement iframeSwitch;
+
+    @FindBy(xpath="//*[@title=\"Pause (k)\"]")
+    public WebElement pauseButton;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[20]/div/div/div[2]/div[4]/a")
+    public WebElement blogButton;
+
+    @FindBy(xpath="//*[@id=\"menu-item-70572\"]/a")
+    public WebElement buyingHome;
+
+    @FindBy(xpath="//*[contains(@id,\"post-\")]//section[2]//div[1]//div[2]//article//h3/a")
+    public List<WebElement> buyingHomeArticles;
+
+    @FindBy(xpath="//*[contains(@id,\"post-\")]//section[2]//div[1]//div[2]//article[1]//h3/a")
+    public WebElement HomeArticlesNumOne;
+
+    @FindBy(xpath="//*[contains(@id,\"post-\")]/div[1]/div/ul[2]/li/span")
+    public List<WebElement> notCovered;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[20]/div/div/div[2]/div[3]/a")
+    public WebElement investorsTab;
+
+    @FindBy(xpath="//*[@id=\"right-container\"]/div/div[1]/div[5]/div/a[2]")
+    public WebElement landForSale;
+
+    @FindBy(xpath="//*[@id=\"right-container\"]/div/div[1]//div[1]/div//div[3]/div[1]/div/div[2]/a")
+    public WebElement caliPick;
+
+    @FindBy(xpath="//*[@id=\"right-container\"]//div[2]//div[2]//span[1]//div[1]//div[12]")
+    public WebElement minPriceCA;
+
+    @FindBy(xpath="//*[@id=\"right-container\"]//div[1]//div[2]//span[2]//div[1]//div[24]")
+    public WebElement maxPriceCA;
+
+    @FindBy(xpath="//*[@id=\"results-display\"]/div[3]//li//a/div/div")
+    public List<WebElement> caliAreas;
+
+    @FindBy(xpath="//*[@id=\"results-display\"]/div[3]//ul/li[3]/div/a")
+    public WebElement clickSF;
+
+    @FindBy(xpath="//*[contains(@id,\"ReactDataTableRow_\")]/td[2]/div/a")
+    public List<WebElement> SFAreas;
+
+
+
+
 
 
 }
