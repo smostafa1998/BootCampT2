@@ -43,7 +43,7 @@ public class BaseClass {
         extent = ExtentManager.getInstance();
     }
 
-    @BeforeSuite (alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     public void setUp() {
         try {
             properties = new Properties();
@@ -78,8 +78,8 @@ public class BaseClass {
         System.out.println("\n\t***" + methodName + "***\n");
     }
 
-    @Parameters ({"browser", "url"})
-    @BeforeMethod (alwaysRun = true)
+    @Parameters({"browser", "url"})
+    @BeforeMethod(alwaysRun = true)
     public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
@@ -117,7 +117,7 @@ public class BaseClass {
         driver.close();
     }
 
-    @AfterSuite (alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     private void afterSuiteTearDown() {
         driver.quit();
         extent.close();
@@ -177,8 +177,8 @@ public class BaseClass {
         element.sendKeys(keys);
     }
 
-    public void clearInputText(WebElement element){
-        element.sendKeys(Keys.COMMAND+"a");
+    public void clearInputText(WebElement element) {
+        element.sendKeys(Keys.COMMAND + "a");
         element.sendKeys(Keys.DELETE);
     }
 
@@ -189,22 +189,22 @@ public class BaseClass {
         select.selectByVisibleText(visibleText);
     }
 
-    public void dropdownSelectByIndex(WebElement element,int number) {
+    public void dropdownSelectByIndex(WebElement element, int number) {
         Select select = new Select(element);
         select.selectByIndex(number);
     }
 
-    public void dropdownSelectByValue(WebElement element,String value) {
+    public void dropdownSelectByValue(WebElement element, String value) {
         Select select = new Select(element);
         select.selectByValue(value);
     }
 
-    public void buttonSelect(WebElement element,WebElement selected){
+    public void buttonSelect(WebElement element, WebElement selected) {
         clickOnElement(element);
         clickOnElement(selected);
     }
 
-    public void addingKeyboardInput(WebElement element,String value){
+    public void addingKeyboardInput(WebElement element, String value) {
         clickOnElement(element);
         clearInputText(element);
         sendKeysToInput(element, value);
@@ -226,32 +226,32 @@ public class BaseClass {
         }
     }
 
-    public void foundIframe(WebElement element){
-        try{
+    public void foundIframe(WebElement element) {
+        try {
             driver.switchTo().frame(element);
-        }catch (StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             e.printStackTrace();
         }
     }
 
     public void clickJScript(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
     }
 
 
     public void createJSAlert(String alertText) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("alert('" + alertText + "');");
     }
 
     public void scrollJS(int numOfPixelsToScroll) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
     }
 
     public static WebElement getShadowRoot(WebElement shadowHost) {
-        JavascriptExecutor js = (JavascriptExecutor)driver;
+        JavascriptExecutor js = (JavascriptExecutor) driver;
         return (WebElement) js.executeScript("return arguments[0].shadowRoot", shadowHost);
     }
 
@@ -273,65 +273,92 @@ public class BaseClass {
         return driver.switchTo().alert().getText();
     }
 
-    public void getListOfElements(List<WebElement> elements,List<String> elementCopied) {
+    public void getListOfElements(List<WebElement> elements, List<String> elementCopied) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
         } catch (Exception e) {
             e.printStackTrace();
         }
         try {
-            for(WebElement element : elements){
-                System.out.println(element.getText());
+            for (WebElement element : elements) {
+                //System.out.println(element.getText());
                 elementCopied.add(element.getText());
             }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
-
-    public void getListOfhref(List<WebElement> elements,List<String> elementCopied) {
-        try {
-            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        try {
-            for(WebElement element : elements){
-                System.out.println(element.getAttribute("href"));
-                elementCopied.add(element.getAttribute("href"));
-            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
-    public List<String> oneDhref(List<WebElement> elements1){
-        List<String> elementCopied1 = new ArrayList<>();
-        getListOfhref(elements1, elementCopied1);
-        return elementCopied1;
-    }
 
-    public List<String> oneDList(List<WebElement> elements1){
+    public List<String> oneDList(List<WebElement> elements1) {
         List<String> elementCopied1 = new ArrayList<>();
         getListOfElements(elements1, elementCopied1);
         return elementCopied1;
     }
 
-    public void clearElement(WebElement element){
+
+    public void getListOfhref(List<WebElement> elements, List<String> elementCopied) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            for (WebElement element : elements) {
+                //System.out.println(element.getAttribute("href"));
+                elementCopied.add(element.getAttribute("href"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> oneDhref(List<WebElement> elements1) {
+        List<String> elementCopied1 = new ArrayList<>();
+        getListOfhref(elements1, elementCopied1);
+        return elementCopied1;
+    }
+
+    public List<String> getRangeFromList(List<WebElement> elements1, int start, int end) {
+        List<String> elementCopied1 = new ArrayList<>();
+        List<String> elementCopied2 = new ArrayList<>();
+        getListOfElements(elements1, elementCopied1);
+        if (end < elementCopied1.size()) {
+            for (int i = start; i <= end; i++) {
+                elementCopied2.add(elementCopied1.get(i));
+            }
+        }
+        return elementCopied2;
+    }
+
+    /**
+     * Works for href and regular list, this returns the STRING form of
+     * elements printed out
+     *
+     * @param elementsCopied1
+     */
+
+    public void printOutListOfElements(List<String> elementsCopied1) {
+        for (String s : elementsCopied1) {
+            System.out.println(s);
+        }
+    }
+
+    public void clearElement(WebElement element) {
         element.clear();
     }
 
-    public void hoverAction(WebElement element){
+    public void hoverAction(WebElement element) {
         Actions a = new Actions(driver);
         try {
             waitForElementToBeVisible(element);
-        }catch(StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             e.printStackTrace();
         }
         a.moveToElement(element).build().perform();
     }
 
-    public void slideAction(WebElement element,int x,int y){
+    public void slideAction(WebElement element, int x, int y) {
         Actions action = new Actions(driver);
         action.dragAndDropBy(element, x, y).perform();
     }
@@ -343,7 +370,7 @@ public class BaseClass {
     public void waitForElementToBeVisible(WebElement element) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOf(element));
-        }catch(StaleElementReferenceException e){
+        } catch (StaleElementReferenceException e) {
             e.printStackTrace();
         }
     }
@@ -356,7 +383,7 @@ public class BaseClass {
         }
     }
 
-    public void fluentWaitMethod (WebElement element){
+    public void fluentWaitMethod(WebElement element) {
         Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
         fluentWait.until(ExpectedConditions.visibilityOf(element));
     }

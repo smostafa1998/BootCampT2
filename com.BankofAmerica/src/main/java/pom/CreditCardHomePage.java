@@ -40,6 +40,65 @@ public class CreditCardHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"termsAndConditions\"]/div[4]/div/div[1]/b")
     public List<WebElement> rowName;
 
+    @FindBy(xpath="//*[@id=\"lifeServicesLink\"]")
+    public WebElement lifeServices;
+
+    @FindBy(xpath="//*[@id=\"powerOfAttorneyLarge\"]")
+    public WebElement powerOfAttorneyLarge;
+
+    @FindBy(xpath="//*[@id=\"commonQuestionsFaqPanel0\"]")
+    public WebElement powerOfAttorneyCQ;
+
+    @FindBy(xpath="//*[@id=\"tabsNav\"]//ul/li/a")
+    public List<WebElement>  lifeServicesLabels;
+
+    @FindBy(xpath="//*[@id=\"commonQuestionsFaqPanel0\"]//p[3]")
+    public WebElement questionTwo;
+
+    @FindBy(xpath="//*[@id=\"cashRewardsCards\"]")
+    public WebElement cashRewardsCards;
+
+    @FindBy(xpath="//*[@id=\"footer_cc_glossary\"]")
+    public WebElement footer_cc_glossary;
+
+    @FindBy(xpath="//*[contains(@id,\"A_id_\")]")
+    public List<WebElement> glossaryA;
+
+    @FindBy(xpath="//*[@id=\"footer-links-2\"]/ul/li/a")
+    public List<WebElement> creditHREF;
+
+    @FindBy(xpath="//*[@id=\"index-K\"]")
+    public WebElement indexK;
+
+    @FindBy(xpath="//*[@id=\"pointsRewardsCards\"]")
+    public WebElement pointsRewardsCards;
+
+    @FindBy(xpath="//*[@id=\"footer_cc_status\"]")
+    public WebElement footer_cc_status;
+
+    @FindBy(xpath="//*[@id=\"lastNameField\"]")
+    public WebElement lastNameField;
+
+    @FindBy(xpath="//*[@id=\"dateOfBirth\"]")
+    public WebElement dateOfBirth;
+
+    @FindBy(xpath="//*[@id=\"lastFourSSN\"]")
+    public WebElement lastFourSSN;
+
+    @FindBy(xpath="//*[@id=\"zipCode\"]")
+    public WebElement zipCode;
+
+    @FindBy(xpath="//*[@id=\"userInfo\"]/div[5]/div/button")
+    public WebElement submitButton;
+
+    @FindBy(xpath="//*[@id=\"appStatusErrorModule\"]//p[1]")
+    public WebElement errorMessage;
+
+
+
+
+
+
 
 
 }

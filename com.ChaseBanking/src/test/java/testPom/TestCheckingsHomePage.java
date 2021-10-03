@@ -1,89 +1,40 @@
 package testPom;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.CheckingsHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 
 public class TestCheckingsHomePage extends TestBase {
 
-    @Test(enabled=false)
-    public void verifyCheckingsTest1(){
+    // remember to add something here
+    @Test(enabled = false)
+    public void verifyCheckingsTest1() {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
-        String parentTab = driver.getWindowHandle();
         clickOnElement(checkings.modalWindow);
         clickOnElement(checkings.modalWindowButton);
         clickOnElement(checkings.modalWindow);
         clickOnElement(checkings.modalPDF);
-
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-
-       // WebElement shadowHost = driver.findElement(By.cssSelector("#viewer"));
-       // WebElement shadowTreeL1= getShadowElement(shadowHost,"#toolbar");
-       // WebElement shadowTreeL2 = getShadowElement(shadowTreeL1,"#downloads");
-       // WebElement shadowTreeL3 = getShadowElement(shadowTreeL2,"#download");
-        //clickJScript(shadowTreeL3);
-
-        //WebElement root1 = driver.findElement(By.xpath("//*[@id=\"viewer\"]"));
-        //WebElement shadowRoot1 = expandRootElement(root1);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
         clickOnElement(checkings.modalWindowButton);
-
-
-
-
-        /*
-        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        Set<String> tabHandles = driver.getWindowHandles();
-        Iterator<String> iterator = tabHandles.iterator();
-
-        while (iterator.hasNext()) {
-            String childTab = iterator.next();
-
-            if (!(childTab.equalsIgnoreCase(parentTab))) {
-                driver.switchTo().window(childTab);
-                break;
-            }
-        }
-        //https://personal.chase.com/personal/checking
-        //clickJScript(checkings.downloadFile);
-        driver.switchTo().window(parentTab);
-
-         */
-
-       // WebElement root1 = driver.findElement(By.xpath("//*[@id=\"viewer\"]"));
-       // WebElement shadowRoot1 = expandRootElement(root1);
-
-        //expandRootElement(checkings.firstRoot);
-
-        //expandRootElement(checkings.secondRoot);
-        //expandRootElement(checkings.thirdRoot);
-        //clickJScript(checkings.thirdRoot);
-
-
     }
 
 
-
     @Test(enabled = false)
-    public void verifyCheckingsTest2(){
+    public void verifyCheckingsTest2() {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
         clickOnElement(checkings.clickStudent);
         clickOnElement(checkings.learnMore);
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(checkings.pressPlay);
         clickOnElement(checkings.playButton);
@@ -96,21 +47,98 @@ public class TestCheckingsHomePage extends TestBase {
 
     //has a glitch thats annoying gotta work at
     @Test(enabled = false)
-    public void verifyCheckingsTest3(){
+    public void verifyCheckingsTest3() {
         Homepage homepage = getHomepage();
-        List<String> elementCopied = new ArrayList<>();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
         clickOnElement(checkings.CDTab);
         clickOnElement(checkings.CDLink);
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(checkings.inputZipCode);
-        sendKeysToInput(checkings.inputZipCode,"11377");
+        sendKeysToInput(checkings.inputZipCode, "11377");
         clickOnElement(checkings.submitButton);
-        getListOfElements(checkings.columnsCD, elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied, "ChaseBank", "columsCD");
+        database.insertDataFromListToSqlTable(oneDList(checkings.columnsCD), "ChaseBank", "columsCD");
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest4() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+        clickOnElement(checkings.nearestBranch);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        sendKeysToInput(checkings.zipCodeInput, "11377");
+        clickOnElement(checkings.submit);
+        oneDList(checkings.locations);
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest5() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+        clickOnElement(checkings.checkingLink);
+        clickOnElement(checkings.privateAccount);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        clickOnElement(checkings.lendingLink);
+        clickOnElement(checkings.homeLoan);
+        oneDList(checkings.homeLoanBenefits);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
 
     }
+
+    @Test()
+    public void verifyCheckingsTest6() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+        clickJScript(checkings.checkingLink);
+        clickOnElement(checkings.privateAccount);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        clickOnElement(checkings.planningBenefits);
+        scrollJS(2000);
+        clickOnElement(checkings.closeButton);
+        clickOnElement(checkings.marketVolitality);
+        clickOnElement(checkings.marriage);
+        clickOnElement(checkings.extraExpences);
+        waitForElementToBeVisible(checkings.eventText);
+        String actualText = checkings.eventText.getText();
+        String expectedText = "Events to consider as you plan";
+        Assert.assertEquals(actualText, expectedText);
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
+
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest7() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest8() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest9() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+    }
+
+    @Test(enabled = false)
+    public void verifyCheckingsTest10() {
+        Homepage homepage = getHomepage();
+        CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
+    }
+
+
 }

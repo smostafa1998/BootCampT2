@@ -13,6 +13,7 @@ public class Homepage extends BaseClass {
 
     /**
      * Put all elements under here for the devices page
+     * Att.com -> devices page
      */
 
     @FindBy(xpath="//*[@id=\"HEADBAND01\"]")

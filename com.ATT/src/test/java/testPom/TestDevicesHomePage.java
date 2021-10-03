@@ -7,14 +7,15 @@ import pom.DevicesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class TestDevicesHomePage extends TestBase {
 
     @Test(enabled = false)
     public void verifyDevicesHomePage1() {
-        Homepage homepage = getHomepage();
-        DevicesHomePage devices = homepage.navigateToDevicesHomePage();
+        Homepage homepage = getHomepage(); // att
+        DevicesHomePage devices = homepage.navigateToDevicesHomePage(); //devices
         waitForElementToBeVisible(devices.favButton1);
         clickOnElement(devices.favButton1);
         clickOnElement(devices.favButton2);
@@ -38,28 +39,22 @@ public class TestDevicesHomePage extends TestBase {
     }
 
 
-    @Test(enabled = false) //few glitches to fix
+    @Test(enabled = false)
     public void verifyDevicesHomePage2() {
         Homepage homepage = getHomepage();
         DevicesHomePage devices = homepage.navigateToDevicesHomePage();
         clickOnElement(devices.prepaidPhone);
         clickOnElement(devices.filterTrayCollapseSection);
-        String parentWindow = driver.getWindowHandle();
         clickOnElement(devices.feedBack);
-        webDriverWait.until(ExpectedConditions.numberOfWindowsToBe(2));
-        Set<String> windowHandles = driver.getWindowHandles();
-        for(String handle : windowHandles) {
-            if (!(handle.equals(parentWindow))) {
-                System.out.println(handle);
-                driver.switchTo().window(handle);
-            }
-        }
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
         waitForElementToBeVisible(devices.rating4);
         clickOnElement(devices.rating4);
         dropdownSelectByVisibleText(devices.selectIssue,"Website Feedback");
         clickOnElement(devices.commentBox);
         sendKeysToInput(devices.commentBox,"This is a good website keep up work!");
-        driver.switchTo().window(parentWindow);
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
 
     }
 

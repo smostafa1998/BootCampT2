@@ -136,7 +136,59 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"s0-11-13-0-1[2]-0-1-0\"]/div[1]/div[2]/div[2]")
     public WebElement avgPrice;
 
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[3]-0-0-0\"]/ul/li[3]/a")
+    public WebElement caseBreaks;
 
+    @FindBy(xpath="//*[@id=\"s0-14-11-0-1-2-6-0-2[1]-20[1]-4\"]/button")
+    public WebElement buttonSports;
+
+    @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div/label/div/div/span[1]")
+    public List<WebElement> columnX;
+
+    @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div/label/div/div/span[1]")
+    public List<WebElement> columnY;
+
+    @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div[1]")
+    public WebElement firstCheckBox;
+
+    @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div[2]")
+    public WebElement secondCheckbox;
+
+    @FindBy(xpath="//*[@id=\"x-overlay__form\"]/div[1]/button")
+    public WebElement closeButton;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]//nav[2]/ul/li[7]/a")
+    public WebElement bullionButton;
+
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[3]-0-0-0\"]/ul/li[1]/a")
+    public WebElement bullionGlossary;
+
+    @FindBy(xpath="//*[@id=\"glossary-nav\"]/div/a[21]")
+    public WebElement sLetter;
+
+    @FindBy(xpath="//*[@id=\"glossary\"]/li/h3")
+    public List<WebElement> glossaryList;
+
+    @FindBy(xpath="//*[@id=\"glossary\"]/li/p")
+    public List<WebElement> glossaryDefinitionList;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[2]/ul/li[8]/a")
+    public WebElement consigmentButton;
+
+    @FindBy(xpath="//*[@id=\"seller-success-stories\"]/div/div[2]/div[1]/div[2]/div[2]/a")
+    public WebElement videoButton;
+
+    @FindBy(xpath="//*[@id=\"video-frame\"]")
+    public WebElement iframe;
+
+    @FindBy(xpath="//*[@class = \"ytp-large-play-button ytp-button\"]")
+    public WebElement playButton;
+
+    @FindBy(xpath="//*[@title =\"Pause (k)\"]")
+    public WebElement pauseButton;
+
+    @FindBy(xpath="//*[@id=\"seller-success-stories\"]//div[1]/div[2]/div[1]/p")
+    public WebElement videoText;
 
 
 

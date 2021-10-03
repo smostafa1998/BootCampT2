@@ -16,12 +16,14 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test(enabled=false)
+    @Test()
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection();
         waitForElementToBeVisible(artCollection.teddyLabel);
         clickOnElement(artCollection.teddyLabel);
+
+        printOutListOfElements(oneDList(artCollection.dollBrands));
         database.insertDataFromListToSqlTable(oneDList(artCollection.dollBrands),"dollList","Brands");
         System.out.println("done");
     }
@@ -133,6 +135,47 @@ public class TestArtCollectionHomePage extends TestBase {
         String expectedText = "$95-$305";
         Assert.assertEquals(actualText,expectedText);
     }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest8(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
+        clickOnElement(artCollection.caseBreaks);
+        clickOnElement(artCollection.buttonSports);
+        oneDList(artCollection.columnX);
+        clickOnElement(artCollection.firstCheckBox);
+        clickOnElement(artCollection.secondCheckbox);
+        clickOnElement(artCollection.closeButton);
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest9(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.bullionButton);
+        clickOnElement(artCollection.bullionGlossary);
+        clickOnElement(artCollection.sLetter);
+        //getRangeFromList(artCollection.glossaryList,145,157); //returns string
+        database.insertDataFromListToSqlTable(getRangeFromList(artCollection.glossaryList,145,156),"Definitions","words");
+       // database.insertDataFrom2ListsToSqlTable(getRangeFromList(artCollection.glossaryList,145,157),getRangeFromList(artCollection.glossaryDefinitionList,145,157),"Definitions","word","Description");
+
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest10(){
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.consigmentButton);
+        waitForElementToBeVisible(artCollection.videoText);
+        String actualText = artCollection.videoText.getText();
+        String expectedText = "See how Ciara brought her business from a dorm room to a warehouse in one year.";
+        Assert.assertEquals(actualText,expectedText);
+        clickOnElement(artCollection.videoButton);
+        foundIframe(artCollection.iframe);
+        clickOnElement(artCollection.playButton);
+        clickOnElement(artCollection.pauseButton);
+    }
+
 
 
 }

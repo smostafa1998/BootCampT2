@@ -27,6 +27,11 @@ public class Homepage extends BaseClass {
 
     //////////these go together///////
 
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]")
+    public WebElement hoverArtCollection;
+
+
+
     /**
      * This is to navigate to the art collections page of ebay
      * @return
@@ -40,6 +45,11 @@ public class Homepage extends BaseClass {
     public ArtCollectionHomePage navigateToArtCollection2(){
         clickOnElement(categoryButton);
         clickOnElement(artCollection2);
+        return new ArtCollectionHomePage();
+    }
+
+    public ArtCollectionHomePage hoverToArt(){
+        hoverAction(hoverArtCollection);
         return new ArtCollectionHomePage();
     }
 
