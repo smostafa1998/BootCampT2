@@ -162,4 +162,48 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath="//*[@title = \"Pause (k)\"]")
     public WebElement pauseButton;
 
+    @FindBy(xpath="//*[@id=\"ft\"]/footer//div[3]/a/span")
+    public List<WebElement> companyInformation;
+
+    @FindBy(xpath="//*[@id=\"ft\"]//div[3]/a[3]")
+    public WebElement newsRoom;
+
+    @FindBy(xpath="//*[@id=\"executive-team\"]/li/div[1]/h4")
+    public List<WebElement> teamNames;
+
+    @FindBy(xpath="//*[@id=\"executive-team\"]/li/div[1]/p")
+    public List<WebElement> teamPositions;
+
+    @FindBy(xpath="//*[@id=\"lpo_app\"]/div/div[5]/div/div[1]/a")
+    public WebElement downloadZIP;
+
+    @FindBy(xpath="//*[@id=\"lpo_app\"]/div/div[5]/div/p")
+    public WebElement textForZIP;
+
+    @FindBy(xpath="//*[@id=\"TopNav\"]/div[1]/div[3]/div/div/div[3]/a[5]")
+    public WebElement clocks;
+
+    @FindBy(xpath="//*[@id=\"footer-wrapper\"]/div[3]/div/div[3]/div/h4/a")
+    public List<WebElement> clockTypes;
+
+    @FindBy(xpath="//*[@id=\"footer-wrapper\"]/div[3]/div/div[3]/div/h4/a")
+    public List<WebElement> clockTypesHREF;
+
+    @FindBy(xpath="//*[@name=\"smileyFeedback\"]")
+    public List<WebElement> feedBack;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/nav/ul/li[9]/a")
+    public WebElement lightningTab;
+
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[2]/div/a/div[2]")
+    public List<WebElement> lighningList;
+
+    @FindBy(xpath="//*[@id=\"buyingGuide_tierOneGuideReadmoreBtn__1aq-v\"]")
+    public WebElement clickReadMore;
+
+    @FindBy(xpath="//*[@id=\"content\"]//div[5]//div[2]/span/h2")
+    public List<WebElement> lighningStyles;
+
+
+
 }

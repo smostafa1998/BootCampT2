@@ -296,6 +296,13 @@ public class BaseClass {
         return elementCopied1;
     }
 
+    public List<String> printOutListOfElements(List<WebElement> elementsCopied1) {
+        List<String> printOut=oneDList(elementsCopied1);
+        for(String s: printOut){
+            System.out.println(s);
+        }
+        return printOut;
+    }
 
     public void getListOfhref(List<WebElement> elements, List<String> elementCopied) {
         try {
@@ -319,6 +326,14 @@ public class BaseClass {
         return elementCopied1;
     }
 
+    public List<String>  printOutHrefListOfElements(List<WebElement> elementsCopied1) {
+        List<String> printOut=oneDhref(elementsCopied1);
+        for(String s: printOut){
+            System.out.println(s);
+        }
+        return printOut;
+    }
+
     public List<String> getRangeFromList(List<WebElement> elements1, int start, int end) {
         List<String> elementCopied1 = new ArrayList<>();
         List<String> elementCopied2 = new ArrayList<>();
@@ -329,19 +344,6 @@ public class BaseClass {
             }
         }
         return elementCopied2;
-    }
-
-    /**
-     * Works for href and regular list, this returns the STRING form of
-     * elements printed out
-     *
-     * @param elementsCopied1
-     */
-
-    public void printOutListOfElements(List<String> elementsCopied1) {
-        for (String s : elementsCopied1) {
-            System.out.println(s);
-        }
     }
 
     public void clearElement(WebElement element) {

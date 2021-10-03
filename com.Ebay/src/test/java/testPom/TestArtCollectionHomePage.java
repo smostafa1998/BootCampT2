@@ -16,14 +16,14 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test()
+    @Test(enabled = false)
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection();
         waitForElementToBeVisible(artCollection.teddyLabel);
         clickOnElement(artCollection.teddyLabel);
 
-        printOutListOfElements(oneDList(artCollection.dollBrands));
+        //printOutListOfElements(oneDList(artCollection.dollBrands));
         database.insertDataFromListToSqlTable(oneDList(artCollection.dollBrands),"dollList","Brands");
         System.out.println("done");
     }

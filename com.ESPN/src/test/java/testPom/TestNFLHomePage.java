@@ -99,7 +99,7 @@ public class TestNFLHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(0));
     }
 
-    @Test(enabled = false)
+    @Test()
     public void verifyNFLHomePage6() {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();

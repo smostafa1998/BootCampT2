@@ -1,10 +1,14 @@
 package testPom;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.DecorHomePage;
 import pom.Homepage;
 import testBase.TestBase;
+
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TestDecorHomePage extends TestBase {
@@ -83,9 +87,9 @@ public class TestDecorHomePage extends TestBase {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.hoverToDecor();
         clickOnElement(decor.DecorAdvice);
-        sendKeysToInput(decor.searchInput,"carpet");
+        sendKeysToInput(decor.searchInput, "carpet");
         clickOnElement(decor.buttonSubmit);
-        oneDList(decor.listOfArticles);
+        printOutListOfElements(decor.listOfArticles);
         clickOnElement(decor.pickArticle);
         waitForElementToBeVisible(decor.authorInfo);
         String actualText = decor.authorInfo.getText();
@@ -122,6 +126,46 @@ public class TestDecorHomePage extends TestBase {
         foundIframe(decor.videoIframe);
         clickOnElement(decor.playButton);
         clickOnElement(decor.pauseButton);
+    }
+
+    @Test(enabled = false)
+    public void verifyDecorTest8() {
+        Homepage homepage = getHomepage();
+        DecorHomePage decor = homepage.navigateToDecor();
+        printOutListOfElements(decor.companyInformation);
+        clickOnElement(decor.newsRoom);
+        printOutListOfElements(decor.teamPositions);
+        database.insertDataFromListToSqlTable(oneDList(decor.teamNames),"overstockTeam","Names");
+        //database.insertDataFrom2ListsToSqlTable(oneDList(decor.teamNames),oneDList(decor.teamPositions),"Overstock Team","Names","Positions");
+        waitForElementToBeVisible(decor.textForZIP);
+        String actualText = decor.textForZIP.getText();
+        String expectedText = "Download our press kit for logos and proper usage guidelines";
+        Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(enabled = false)
+    public void verifyDecorTest9() {
+        Homepage homepage = getHomepage();
+        DecorHomePage decor = homepage.hoverToDecor();
+        clickOnElement(decor.clocks);
+        scrollJS(10000);
+        database.insertDataFrom2ListsToSqlTable(oneDList(decor.clockTypes),oneDhref(decor.clockTypesHREF),"ClockTypes","Names","Links");
+        //List<String> elementCopied = new ArrayList<>();
+        for (WebElement element : decor.feedBack) {
+            System.out.println(element.getAttribute("aria-label"));
+            //elementCopied.add(element.getAttribute("aria-label"));
+        }
+    }
+
+    @Test(enabled = false)
+    public void verifyDecorTest10() {
+        Homepage homepage = getHomepage();
+        DecorHomePage decor = homepage.navigateToDecor();
+        clickOnElement(decor.lightningTab);
+        printOutListOfElements(decor.lighningList);
+        clickOnElement(decor.clickReadMore);
+        printOutListOfElements(decor.lighningStyles);
+        database.insertDataFromListToSqlTable(oneDList(decor.lighningStyles),"overstockLightning","Steps");
     }
 
 
