@@ -14,7 +14,7 @@ import java.util.List;
 public class TestDecorHomePage extends TestBase {
 
 
-    @Test(enabled = false)
+    @Test()
     public void verifyDecorTest1() {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();

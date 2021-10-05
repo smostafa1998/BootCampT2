@@ -115,11 +115,12 @@ public class BaseClass {
     @AfterMethod
     public void driverClose() {
         driver.close();
+        driver.quit();
+
     }
 
     @AfterSuite(alwaysRun = true)
     private void afterSuiteTearDown() {
-        driver.quit();
         extent.close();
     }
 
@@ -176,8 +177,6 @@ public class BaseClass {
 
         element.sendKeys(keys);
     }
-
-
 
 
     public void clearInputText(WebElement element) {
@@ -300,8 +299,8 @@ public class BaseClass {
     }
 
     public List<String> printOutListOfElements(List<WebElement> elementsCopied1) {
-        List<String> printOut=oneDList(elementsCopied1);
-        for(String s: printOut){
+        List<String> printOut = oneDList(elementsCopied1);
+        for (String s : printOut) {
             System.out.println(s);
         }
         return printOut;
@@ -329,9 +328,9 @@ public class BaseClass {
         return elementCopied1;
     }
 
-    public List<String>  printOutHrefListOfElements(List<WebElement> elementsCopied1) {
-        List<String> printOut=oneDhref(elementsCopied1);
-        for(String s: printOut){
+    public List<String> printOutHrefListOfElements(List<WebElement> elementsCopied1) {
+        List<String> printOut = oneDhref(elementsCopied1);
+        for (String s : printOut) {
             System.out.println(s);
         }
         return printOut;
@@ -348,6 +347,36 @@ public class BaseClass {
         }
         return elementCopied2;
     }
+
+    public void getListOfArributes(List<WebElement> elements, List<String> elementCopied) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            for (WebElement element : elements) {
+                elementCopied.add(element.getAttribute("aria-label"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<String> oneDAttributes(List<WebElement> elements1) {
+        List<String> elementCopied1 = new ArrayList<>();
+        getListOfArributes(elements1, elementCopied1);
+        return elementCopied1;
+    }
+
+    public List<String> printOutArributesListOfElements(List<WebElement> elementsCopied1) {
+        List<String> printOut = oneDAttributes(elementsCopied1);
+        for (String s : printOut) {
+            System.out.println(s);
+        }
+        return printOut;
+    }
+
 
     public void clearElement(WebElement element) {
         element.clear();
@@ -390,7 +419,7 @@ public class BaseClass {
 
     public void fluentWaitMethod(WebElement element) {
         FluentWait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
-       // Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
+        // Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
         fluentWait.until(ExpectedConditions.visibilityOf(element));
     }
 

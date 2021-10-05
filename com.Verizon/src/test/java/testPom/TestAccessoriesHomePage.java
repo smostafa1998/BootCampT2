@@ -13,7 +13,7 @@ import testBase.TestBase;
 public class TestAccessoriesHomePage extends TestBase {
 
 
-    @Test(enabled = false)
+    @Test()
     public void verifyAccessoriesTest1() {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();

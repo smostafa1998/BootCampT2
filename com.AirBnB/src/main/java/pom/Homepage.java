@@ -29,4 +29,17 @@ public class Homepage extends BaseClass {
         return new OnlineExperiencesHomePage();
     }
 
+    public void createDates(WebElement clickDate, WebElement startDate,WebElement endDate){
+        clickOnElement(clickDate);
+        clickOnElement(startDate);
+        clickOnElement(endDate);
+    }
+
+    public void createAdultsGuests(WebElement clickGuests, WebElement numAdults){
+        clickOnElement(clickGuests);
+        clickOnElement(numAdults);
+    }
+
+
+
 }
