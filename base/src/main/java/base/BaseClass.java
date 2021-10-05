@@ -177,6 +177,9 @@ public class BaseClass {
         element.sendKeys(keys);
     }
 
+
+
+
     public void clearInputText(WebElement element) {
         element.sendKeys(Keys.COMMAND + "a");
         element.sendKeys(Keys.DELETE);
@@ -386,7 +389,8 @@ public class BaseClass {
     }
 
     public void fluentWaitMethod(WebElement element) {
-        Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(40)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
+        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(10)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
+       // Wait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(20)).pollingEvery(Duration.ofSeconds(1)).ignoring(StaleElementReferenceException.class);
         fluentWait.until(ExpectedConditions.visibilityOf(element));
     }
 

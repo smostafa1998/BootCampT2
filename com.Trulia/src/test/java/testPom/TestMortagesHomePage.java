@@ -21,7 +21,7 @@ public class TestMortagesHomePage extends TestBase {
         waitForElementToBeVisible(mortages.paragraphNo);
         String actualText = mortages.paragraphNo.getText();
         String expectedText = "Trulia does not display lenders in this area. Fortunately, Trulia is part of the Zillow Group family and you can visit Zillow to see your options.";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
         clickOnElement(mortages.cancelButton);
     }
 
@@ -84,7 +84,7 @@ public class TestMortagesHomePage extends TestBase {
         waitForElementToBeVisible(mortages.affordHome);
         String actualText = mortages.affordHome.getText();
         String expectedText = "$281,707";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
@@ -173,5 +173,38 @@ public class TestMortagesHomePage extends TestBase {
 
     }
 
+    @Test(enabled = false)
+    public void verifyMortagesTest9() {
+        Homepage homepage = getHomepage();
+        MortagesHomePage mortages = homepage.navigateToMortagesPage();
+        clickOnElement(mortages.popularCounties);
+        database.insertDataFromListToSqlTable(oneDList(mortages.Top100),"Top100","counties");
+        clickOnElement(mortages.Hamilton);
+        clickOnElement(mortages.otherButton);
+        clickOnElement(mortages.clickSort);
+        dropdownSelectByValue(mortages.selectSort,"Price (Lo-Hi)");
+        clickOnElement(mortages.favoriteButton);
+        clickOnElement(mortages.clickSubmit);
+        clickOnElement(mortages.email);
+        sendKeysToInput(mortages.email,"smostafa1998@gmail.com");
+        waitForElementToBeVisible(mortages.saveText);
+        String actualText = mortages.saveText.getText();
+        String expectedText = "Save this Home";
+        Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(enabled = false)
+    public void verifyMortagesTest10() {
+        Homepage homepage = getHomepage();
+        MortagesHomePage mortages = homepage.navigateToMortagesPage();
+        printOutListOfElements(mortages.truliaArticles);
+        clickOnElement(mortages.firstArticle);
+        printOutListOfElements(mortages.canIAfford);
+        waitForElementToBeVisible(mortages.nextArticleTitle);
+        String actualText = mortages.nextArticleTitle.getText();
+        String expectedText = "How to know when to buy a house";
+        Assert.assertEquals(actualText, expectedText);
+        clickOnElement(mortages.nextArticle);
+    }
 
 }

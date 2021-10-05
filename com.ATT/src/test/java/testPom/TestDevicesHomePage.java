@@ -1,6 +1,5 @@
 package testPom;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.DevicesHomePage;
@@ -8,7 +7,6 @@ import pom.Homepage;
 import testBase.TestBase;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class TestDevicesHomePage extends TestBase {
 
@@ -67,14 +65,64 @@ public class TestDevicesHomePage extends TestBase {
         clickOnElement(devices.productOne);
         clickOnElement(devices.deliveryOptions);
         clickOnElement(devices.changeZip);
-        clickOnElement(devices.inputNum);
-        sendKeysToInput(devices.inputNum,"\b\b\b\b\b11377");
+        addingKeyboardInput(devices.inputNum,"11377");
         clickOnElement(devices.buttonSubmit);
         waitForElementToBeVisible(devices.textStore);
         String actualText = devices.textStore.getText();
         String expectedText = "AT&T Authorized Retailer";
         Assert.assertEquals(actualText,expectedText);
     }
+
+    @Test(enabled = false)
+    public void verifyDevicesHomePage4() {
+        Homepage homepage = getHomepage();
+        DevicesHomePage devices = homepage.navigateToDevicesHomePage();
+        clickOnElement(devices.tabletsAndLaptops);
+        clickOnElement(devices.clickOffersOnWhat);
+        addingKeyboardInput(devices.firstName,"Sabreen");
+        addingKeyboardInput(devices.lastName,"Mostafa");
+        addingKeyboardInput(devices.address,"blahblahblah");
+        addingKeyboardInput(devices.socialsnn,"123456789");
+        clickOnElement(devices.dob);
+        sendKeysToInput(devices.dob,"10091998");
+        addingKeyboardInput(devices.email,"smostafa1998@gmail.com");
+        addingKeyboardInput(devices.phone,"7186665678");
+        clickOnElement(devices.checkBox);
+        clickOnElement(devices.checkNo);
+        waitForElementToBeVisible(devices.dialogText);
+        String actualText = devices.dialogText.getText();
+        String expectedText = "See what you'll pay for your device";
+        Assert.assertEquals(actualText,expectedText);
+        clickOnElement(devices.cancelButton);
+    }
+
+    @Test(enabled = false)//works if i personally slide down
+    public void verifyDevicesHomePage5() {
+        Homepage homepage = getHomepage();
+        DevicesHomePage devices = homepage.navigateToDevicesHomePage();
+        clickOnElement(devices.smartphoneTab);
+        fluentWaitMethod(devices.smartphoneTab);
+        printOutListOfElements(devices.productNames);
+        scrollJS(10000);
+        clickOnElement(devices.clickSmartWatchArticle);
+        printOutListOfElements(devices.healthThings);
+    }
+
+    @Test(enabled = false)
+    public void verifyDevicesHomePage6() {
+        Homepage homepage = getHomepage();
+        DevicesHomePage devices = homepage.navigateToDevicesHomePage();
+        clickOnElement(devices.product0);
+        clickOnElement(devices.clickFeaturesAndSpecs);
+        printOutListOfElements(devices.features);
+        clickOnElement(devices.clickGuide);
+        clickOnElement(devices.clickVideo);
+        clickOnElement(devices.pauseButton);
+        clickOnElement(devices.captions);
+        clickOnElement(devices.closeVidButton);
+    }
+
+
 
 
 }

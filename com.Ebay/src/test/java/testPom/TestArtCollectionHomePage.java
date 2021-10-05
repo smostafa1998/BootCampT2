@@ -16,7 +16,7 @@ public class TestArtCollectionHomePage extends TestBase {
      * This one tests basic buttons and will either test
      * dataabase or excel (NOT COMPLETLY DONE)
      */
-    @Test(enabled = false)
+    @Test()
     public void verifyArtCollectionTest1(){
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection();
