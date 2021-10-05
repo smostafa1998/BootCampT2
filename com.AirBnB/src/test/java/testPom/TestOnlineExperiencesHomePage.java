@@ -9,16 +9,14 @@ import testBase.TestBase;
 
 public class TestOnlineExperiencesHomePage extends TestBase {
 
-    @Test(enabled=true)
+    @Test(enabled=false)
     public void verifyOnlineExperiencesTest1(){
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
         waitForElementToBeVisible(onlineExperience.filterButton);
         clickOnElement(onlineExperience.filterButton);
-        clickOnElement(onlineExperience.priceFilterMin);
-        sendKeysToInput(onlineExperience.priceFilterMin,"\b\b\b\b 50");
-        clickOnElement(onlineExperience.priceFilterMax);
-        sendKeysToInput(onlineExperience.priceFilterMax,"\b\b\b\b 300");
+        addingKeyboardInput(onlineExperience.priceFilterMin,"50");
+        addingKeyboardInput(onlineExperience.priceFilterMax,"300");
         waitForElementToBeVisible(onlineExperience.showResults);
         clickOnElement(onlineExperience.showResults);
         waitForElementToBeVisible(onlineExperience.showOffersResults);
@@ -39,8 +37,28 @@ public class TestOnlineExperiencesHomePage extends TestBase {
         waitForElementToBeVisible(onlineExperience.firstResult);
     }
 
-    @Test(enabled=false)
+    @Test()
     public void verifyOnlineExperiencesTest3(){
+        Homepage homepage = getHomepage();
+        OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
+        clickOnElement(onlineExperience.showMore);
+        printOutListOfElements(onlineExperience.hostList);
+    }
+
+    @Test(enabled=false)
+    public void verifyOnlineExperiencesTest4(){
+        Homepage homepage = getHomepage();
+        OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
+    }
+
+    @Test(enabled=false)
+    public void verifyOnlineExperiencesTest5(){
+        Homepage homepage = getHomepage();
+        OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
+    }
+
+    @Test(enabled=false)
+    public void verifyOnlineExperiencesTest6(){
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
     }

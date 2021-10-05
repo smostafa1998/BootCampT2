@@ -15,7 +15,7 @@ public class Homepage extends BaseClass {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath="//*[@id=\"site-content\"]//div[1]//header//div[2]//form//a/div")
+    @FindBy(xpath="//header/div/div[2]/div[2]/div/div/form/div[1]/div[2]/a")
     public WebElement onlineExperience;
 
 

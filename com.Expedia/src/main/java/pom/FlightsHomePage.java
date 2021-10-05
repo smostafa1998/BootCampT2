@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class FlightsHomePage extends BaseClass {
     public FlightsHomePage(){
         PageFactory.initElements(driver,this);
@@ -90,41 +92,68 @@ public class FlightsHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"preferred-class-input\"]/div/div/a[4]")
     public WebElement classTypeFirst;
 
+    @FindBy(xpath="//*[@id=\"wizard-flight-tab-roundtrip\"]/div[2]/div[2]//div[2]/div[2]/div[1]")
+    public WebElement leftSideOfCalendar;
 
+    @FindBy(xpath="//*[@id=\"wizard-flight-tab-roundtrip\"]/div[2]/div[2]//div[2]/div[2]/div[2]")
+    public WebElement rightSideOfCalendar;
 
+    @FindBy(xpath="//*[@aria-label=\"Oct 20, 2021\"]")
+    public WebElement pickOctTwenty;
 
+    @FindBy(xpath="//*[@aria-label=\"Oct 31, 2021\"]")
+    public WebElement pickOctThirdyOne;
 
+    @FindBy(xpath="//*[@id=\"d1-btn\"]")
+    public WebElement dateButton;
 
+    @FindBy(xpath="//*[@data-stid=\"apply-date-picker\"]")
+    public WebElement doneButton;
 
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]//fieldset[2]/div[2]/div[1]/div[1]")
+    public WebElement nonStop;
 
+    @FindBy(xpath = "//*[@id=\"app-layer-base\"]//fieldset/fieldset[4]/div/div[2]")
+    public WebElement afternoonSelector;
 
-
-
-
-
-
-
-    //IGNORE WACK
-
-    @FindBy(xpath= "//*[@id=\"listings-sort\"]")
-    public WebElement dropDown;
+    @FindBy(xpath="//*[@data-test-id=\"offer-listing\"]/div/div/div/div/div/div/div/div/div/span")
+    public List<WebElement> arrivalTimes;
 
     @FindBy(xpath = "//*[@id=\"stops-1\"]")
     public WebElement confirmWEBElement;
 
-    @FindBy(xpath = "//*[@id=\"departure-airport-JFK\"]")
-    public WebElement departureAirportJFKInput;
+    @FindBy(xpath = "//*[@id=\"uitk-tabs-button-container\"]/div[1]/li[2]/a")
+    public WebElement oneWay;
 
-    @FindBy(xpath = "//*[@id=\"arrival-airport-OSL\"]")
-    public WebElement arrivalAirportOSLInput;
+    @FindBy(xpath="//*[@aria-label=\"Nov 12, 2021\"]")
+    public WebElement pickNovTwelve;
 
-    @FindBy(xpath = "//*[@id=\"departure-time-AFTERNOON\"]")
-    public WebElement afternoonSelector;
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]//div[5]/a")
+    public WebElement sendFeedback;
 
-    @FindBy(xpath = "//*[@id=\"AQr-AgroAnY1LXNvcy02ZTI1Njg5ODVmMjJkNTY3MjI1Mzk1ZGIyNjA3OWMwYi02LTctMX4yLlN-QVFvQ0NBRVNCd2pVQkJBQkdBRW9BbGdDY0FBfkFRcFpDaXNJMUtBQkVnTXlNRElZeEkwQklJdVNBU2pEdHZrQk1OMjUtUUU0UzBBQVdBRnFDRVJKVTBOUFZVNVVDaW9JMUtBQkVnTTNOaklZaTVJQklNNWNLS2k2LVFFd21MejVBVGhMUUFGWUFXb0lSRWxUUTA5VlRsUUtXUW9xQ05TZ0FSSUROell4R001Y0lJdVNBU2pLdlBrQk1MLS0tUUU0VlVBQVdBRnFDRVJKVTBOUFZVNVVDaXNJMUtBQkVnTXlNRGNZaTVJQklNU05BU2phdl9rQk1MckQtUUU0VlVBQldBRnFDRVJKVTBOUFZVNVVFZ29JQVJBQkdBRXFBbFJRR0FFaUJBZ0JFQUVvQWlnREtBUXdBURE9CtejcDeJQCIBASoFEgMKATESPwoWCgoyMDIxLTEwLTA4EgNOWUMaA09TTAoWCgoyMDIxLTEwLTA5EgNPU0waA05ZQxIHEgVDT0FDSBoCEAEgAhoMCAESCBoEKgIIAiIA\"]//button")
-    public WebElement firstFlight;
+    @FindBy(xpath="//*[@id=\"required_box_page_rating\"]/div/div[5]")
+    public WebElement ratingFive;
 
-    @FindBy(xpath = "//*[@id=\"app-layer-base\"]//div[1]//div[2]//h2/span")
-    public WebElement textTime;
+    @FindBy(xpath="//*[@id=\"survey\"]/fieldset[2]/div/div[11]")
+    public WebElement clickTen;
+
+    @FindBy(xpath="//*[@id=\"verbatim\"]")
+    public WebElement clickTextBox;
+
+    @FindBy(xpath="//*[@id=\"email_address\"]")
+    public WebElement email_address;
+
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]//fieldset[3]/div[2]/div/div[2]/button")
+    public WebElement clickAirlines;
+
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]//aside/fieldset/fieldset[3]//div/label/span/div")
+    public List<WebElement> listOfAirlines;
+
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]/div/aside/fieldset/fieldset[3]/div[2]/div/div/div[1]/div/div[2]")
+    public List<WebElement> startingPricesOfAirlines;
+
+
+
+
 
 }

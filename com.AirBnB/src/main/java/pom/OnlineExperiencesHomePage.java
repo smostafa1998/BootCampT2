@@ -52,4 +52,10 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"site-content\"]//div[2]//section//span[5]/span/span/a/span")
     public WebElement location;
 
+    @FindBy(xpath="//*[@id=\"ExploreLayoutController\"]//div[1]/div/div/div/div[2]/div/div/div/div[1]/div[2]/a")
+    public WebElement showMore;
+
+    @FindBy(xpath="//*[@id=\"ExploreLayoutController\"]//div[3]/div//div/div[1]/div[3]/span")
+    public List<WebElement> hostList;
+
 }
