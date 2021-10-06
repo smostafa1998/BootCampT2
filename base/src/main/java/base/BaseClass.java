@@ -192,11 +192,15 @@ public class BaseClass {
     }
 
     public void dropdownSelectByIndex(WebElement element, int number) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+
         Select select = new Select(element);
         select.selectByIndex(number);
     }
 
     public void dropdownSelectByValue(WebElement element, String value) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+
         Select select = new Select(element);
         select.selectByValue(value);
     }
@@ -215,17 +219,22 @@ public class BaseClass {
     public void clickOnElement(WebElement element) {
         try {
             webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
         } catch (StaleElementReferenceException e1) {
-            e1.printStackTrace();
+            clickJScript(element);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        try {
-            element.click();
-        } catch (Exception e1) {
-            clickJScript(element);
+        /*
+        try{
+             element.click();
         }
+        catch(Exception e){
+           clickJScript(element);
+        }
+         */
+
     }
 
     public void foundIframe(WebElement element) {

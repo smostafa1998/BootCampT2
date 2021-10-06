@@ -147,4 +147,115 @@ public class ShoppingHomePage extends BaseClass {
 
     @FindBy(xpath="//*[@class=\"ytp-subtitles-button ytp-button\"]")
     public WebElement subtitlesButton;
+
+    @FindBy(xpath="/html/body/div[1]/header/nav/ul/li[2]/div/div[1]/ul/li[2]//ul/li[5]/a")
+    public WebElement tires;
+
+    @FindBy(xpath="//div[2]/div[5]/div/div/div/div[1]/ul/li")
+    public List<WebElement> reasonsForMercedes;
+
+    @FindBy(xpath="//*[@id=\"vehicleYear\"]")
+    public WebElement vehicleYear;
+
+    @FindBy(xpath="//*[@id=\"vehicleMake\"]")
+    public WebElement vehicleMake;
+
+    @FindBy(xpath="//*[@id=\"vehicleModel\"]")
+    public WebElement vehicleModel;
+
+    @FindBy(xpath="//*[@id=\"vehicleTrim\"]")
+    public WebElement vehicleTrim;
+
+    @FindBy(xpath="//*[@id=\"vehicleOption\"]")
+    public WebElement vehicleOption;
+
+    @FindBy(xpath="//*[@id=\"t1\"]/form/ul/li[6]/button")
+    public WebElement submitButtonVeh;
+
+    @FindBy(xpath="//*[@id=\"zipCode\"]")
+    public WebElement zipCode;
+
+    @FindBy(xpath="//*[@id=\"app\"]/div/div[1]/div[2]/form/div[1]/button")
+    public WebElement searchZip;
+
+    @FindBy(xpath="//*[@id=\"app\"]/div/div[2]/div/div/ul/li/h3/a")
+    public List<WebElement> linksToShops;
+
+    @FindBy(xpath="//*[@id=\"app\"]/div/div/ul/li[2]/a")
+    public WebElement bySize;
+
+    @FindBy(xpath="//*[@id=\"makes\"]")
+    public WebElement makes;
+
+    @FindBy(xpath="//*[@id=\"width\"]")
+    public WebElement width;
+
+    @FindBy(xpath="//*[@id=\"width\"]/option[7]")
+    public WebElement pickedWidth;
+
+    @FindBy(xpath="//*[@id=\"ratios\"]")
+    public WebElement ratios;
+
+    @FindBy(xpath="//*[@id=\"diameters\"]")
+    public WebElement diameters;
+
+    @FindBy(xpath="//*[@id=\"t2\"]/form/div[1]/ul/li[5]/button")
+    public WebElement submitButtonVehSize;
+
+    @FindBy(xpath="//*[@id=\"app\"]/div/div[2]/div/div/ul/li[1]/div[3]/div[1]/ul/li")
+    public List<WebElement> ameneties;
+
+    @FindBy(xpath="//*[@id=\"app\"]/div/div[2]/div/div/ul/li[1]/div[1]/div/button")
+    public WebElement choose;
+
+    @FindBy(xpath="//*[@id=\"firstName\"]")
+    public WebElement firstName;
+
+    @FindBy(xpath="//*[@id=\"lastName\"]")
+    public WebElement lastName;
+
+    @FindBy(xpath="//*[@id=\"email\"]")
+    public WebElement email;
+
+    @FindBy(xpath="//*[@id=\"tel\"]")
+    public WebElement tel;
+
+    @FindBy(xpath="//*[@id=\"comments\"]")
+    public WebElement comments;
+
+    @FindBy(xpath="//ul/li[2]/div//ul/li[3]/div/div[1]/ul/li[1]/a")
+    public WebElement financialServices;
+
+    @FindBy(xpath="//*[@id=\"footer-accordionItem1\"]/ul/li[12]/a")
+    public WebElement getBrochures;
+
+    @FindBy(xpath="//*[@id=\"tabbed-module-accordionItem0\"]/div/section/ul/li/div/h1")
+    public List<WebElement> getVehicleTitles;
+
+    @FindBy(xpath="//*[@id=\"tabbed-module-accordionItem0\"]/div/section/ul/li/div/a[1]")
+    public List<WebElement> downloadPDFs;
+
+    @FindBy(xpath="//*[@id=\"tabbed-module-accordionItem0\"]/div/section/ul/li[1]/div/a[2]")
+    public WebElement clickInventory;
+
+    @FindBy(xpath="//*[@id=\"_kuerhuj6q16iw\"]")
+    public WebElement ZIPCode;
+
+    @FindBy(xpath="//*[@id=\"js-modal\"]//div[3]/div[2]/div/div[2]/button")
+    public WebElement searchButton;
+
+
+    @FindBy(xpath="//*[@id=\"inventory-container\"]/div/div/div[2]//button")
+    public WebElement clickFilter;
+
+    @FindBy(xpath="//*[@id=\"inventory-container\"]/div/div/div[2]/div/div/div/div[2]/div/div[1]/button[1]")
+    public WebElement StyleButton;
+
+
+    //*[@id="inventory-container"]/div/div/div/div/div/div[2]/div[2]/div[3]/div[2]/div/div[1]/div/div[1]/div/label
+
+
+
+
+
 }

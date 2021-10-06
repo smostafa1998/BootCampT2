@@ -91,6 +91,4 @@ public class ShoppingHomePage extends BaseClass {
     @FindBy(xpath="//div[2]//div[3]//bmw-template-switch[2]//ul/li[2]/div//div[2]/div[1]/ul/li")
     public List<WebElement> infoList;
 
-
-
 }

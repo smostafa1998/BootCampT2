@@ -140,9 +140,51 @@ public class BuyHousesHomePage extends BaseClass {
     @FindBy(xpath="//*[contains(@id,\"ReactDataTableRow_\")]/td[2]/div/a")
     public List<WebElement> SFAreas;
 
+    @FindBy(xpath="//*[@id=\"header-content\"]/header[2]/div[2]/div[2]/div/div/div/div[1]/ul/li/a")
+    public WebElement buyWithRefin;
+
+    @FindBy(xpath="//*[@id=\"header-content\"]/header[2]/div[2]/div[2]/div/div/div/div[2]/ul/li/a")
+    public List<WebElement> buywithRedinColumn2;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/section/div[2]//ul/li/a")
+    public List<WebElement> tableOfContents;
 
 
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div/div[1]/span[13]/a")
+    public WebElement pickM;
 
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div/div[2]/div[12]/div/div/a")
+    public List<WebElement> hrefForM;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[10]/section/div/div/div/div[2]/a/h3/span")
+    public List<WebElement> homeSellingGuide;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[10]/section/div/div/div/div[2]/a")
+    public List<WebElement> homeSellingGuideLinks;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[11]/div/div/div/div/h2/span")
+    public List<WebElement> checklist;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[2]/div[1]/div/div/h2")
+    public List<WebElement> openBookTitles;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[2]/div[1]/div/div[1]/ul/li[3]/a")
+    public WebElement Boston;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[2]/div[1]/div/div[2]/a")
+    public WebElement providersLink;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[2]/div/div/div/div/div/a")
+    public List<WebElement> getProvidersNames;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[2]/div/div/div/div/div/span[3]")
+    public List<WebElement> getProvidersRedfin;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[11]/section/div/span/span")
+    public WebElement selectCountyBox;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[12]/section/section/div/h3")
+    public WebElement noClasses;
 
 
 }

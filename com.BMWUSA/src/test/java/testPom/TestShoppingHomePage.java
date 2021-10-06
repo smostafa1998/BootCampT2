@@ -23,7 +23,7 @@ public class TestShoppingHomePage extends TestBase {
     public void verifyShoppingTest2() {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
-        addingKeyboardInput(shopping.zipCode,"11377");
+        addingKeyboardInput(shopping.zipCode, "11377");
         clickOnElement(shopping.shopNew);
         List<String> elementCopied = new ArrayList<>();
         getListOfElements(shopping.pricesNewCars, elementCopied);
@@ -39,12 +39,12 @@ public class TestShoppingHomePage extends TestBase {
         dropdownSelectByIndex(shopping.series, 3);
         clickOnElement(shopping.model);
         dropdownSelectByIndex(shopping.model, 4);
-        addingKeyboardInput(shopping.inputZIP,"11377");
+        addingKeyboardInput(shopping.inputZIP, "11377");
         clickOnElement(shopping.estimatePayments);
         waitForElementToBeVisible(shopping.confirmYear);
         String actualText = shopping.confirmYear.getText();
         String expectedText = "2022";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
@@ -85,7 +85,7 @@ public class TestShoppingHomePage extends TestBase {
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.leaseAndFinancing);
 
-        addingKeyboardInput(shopping.zipCodeInput,"11377");
+        addingKeyboardInput(shopping.zipCodeInput, "11377");
 
         clickOnElement(shopping.vehicleSelect);
         dropdownSelectByIndex(shopping.vehicleSelect, 4);
@@ -98,5 +98,31 @@ public class TestShoppingHomePage extends TestBase {
         getListOfElements(shopping.infoList, elementCopied);
 
     }
+
+    @Test(enabled = false)
+    public void verifyShoppingTest7() {
+        Homepage homepage = getHomepage();
+        ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+
+    }
+
+    @Test(enabled = false)
+    public void verifyShoppingTest8() {
+        Homepage homepage = getHomepage();
+        ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+    }
+
+    @Test(enabled = false)
+    public void verifyShoppingTest9() {
+        Homepage homepage = getHomepage();
+        ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+    }
+
+    @Test(enabled = false)
+    public void verifyShoppingTest10() {
+        Homepage homepage = getHomepage();
+        ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+    }
+
 
 }

@@ -1,33 +1,37 @@
 package testPom;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.BuyHousesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class TestBuyHousesHomePage extends TestBase {
     @Test(enabled = false)
-    public void verifyBuyHousesTest1(){
+    public void verifyBuyHousesTest1() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
-        homepage.doPriceRanges(houses.clickButton,houses.minPrice,houses.clickButton2,houses.maxPrice);
+        homepage.doPriceRanges(houses.clickButton, houses.minPrice, houses.clickButton2, houses.maxPrice);
         clickOnElement(houses.searchButton);
         clickOnElement(houses.checkTable);
-        database.insertDataFromListToSqlTable(oneDList(houses.listAdresses),"RedFinList","addresses");
+        database.insertDataFromListToSqlTable(oneDList(houses.listAdresses), "RedFinList", "addresses");
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest2(){
+    public void verifyBuyHousesTest2() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
-        homepage.clearSearch(houses.searchButtonLocation,houses.clearButton);
+        homepage.clearSearch(houses.searchButtonLocation, houses.clearButton);
         waitForElementToBeVisible(houses.sendKeysToInput);
         clearInputText(houses.sendKeysToInput);
-        homepage.sendKeywordLocation(houses.sendKeysToInput,"maine",houses.mainePick);
-        homepage.doPriceRanges(houses.clickButton,houses.minPrice,houses.clickButton2,houses.maxPrice);
+        homepage.sendKeywordLocation(houses.sendKeysToInput, "maine", houses.mainePick);
+        homepage.doPriceRanges(houses.clickButton, houses.minPrice, houses.clickButton2, houses.maxPrice);
         clickOnElement(houses.searchButton);
         clickOnElement(houses.filterButton);
         clickOnElement(houses.clickHouse);
@@ -39,11 +43,12 @@ public class TestBuyHousesHomePage extends TestBase {
         waitForElementToBeVisible(houses.noResults);
         String actualText = houses.noResults.getText();
         String expectedText = "";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
 
     }
-    @Test (enabled = false) //not perfect but will work
-    public void verifyBuyHousesTest3(){
+
+    @Test(enabled = false) //not perfect but will work
+    public void verifyBuyHousesTest3() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         clickOnElement(houses.firstOffer);
@@ -52,14 +57,14 @@ public class TestBuyHousesHomePage extends TestBase {
         waitForElementToBeVisible(houses.tourText);
         String actualText = houses.tourText.getText();
         String expectedText = "Go tour this home";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
         System.out.println("DONE");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
-    @Test (enabled = false)
-    public void verifyBuyHousesTest4(){
+    @Test(enabled = false)
+    public void verifyBuyHousesTest4() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         oneDList(houses.redfinLinks);
@@ -71,8 +76,8 @@ public class TestBuyHousesHomePage extends TestBase {
 
     }
 
-    @Test (enabled = false)
-    public void verifyBuyHousesTest5(){
+    @Test(enabled = false)
+    public void verifyBuyHousesTest5() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         clickOnElement(houses.blogButton);
@@ -82,25 +87,16 @@ public class TestBuyHousesHomePage extends TestBase {
         oneDList(houses.notCovered);
     }
 
-    /**
-     * SHADOW TAB ENABLED HERE WORK ON LATER
-     */
-    @Test (enabled = false)
-    public void verifyBuyHousesTest6(){
-        Homepage homepage = getHomepage();
-        BuyHousesHomePage houses = homepage.navigateToBuy();
-        clickOnElement(houses.investorsTab);
-    }
 
-    @Test ()
-    public void verifyBuyHousesTest7(){
+    @Test(enabled = false)
+    public void verifyBuyHousesTest6() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         clickOnElement(houses.landForSale);
         waitForElementToBeVisible(houses.sendKeysToInput);
         clearInputText(houses.sendKeysToInput);
-        homepage.sendKeywordLocation(houses.sendKeysToInput,"california",houses.caliPick);
-        homepage.doPriceRanges(houses.clickButton,houses.minPriceCA,houses.clickButton2,houses.maxPriceCA);
+        homepage.sendKeywordLocation(houses.sendKeysToInput, "california", houses.caliPick);
+        homepage.doPriceRanges(houses.clickButton, houses.minPriceCA, houses.clickButton2, houses.maxPriceCA);
         clickOnElement(houses.searchButton);
         clickOnElement(houses.checkTable);
         oneDList(houses.caliAreas);
@@ -111,6 +107,80 @@ public class TestBuyHousesHomePage extends TestBase {
         oneDList(houses.SFAreas);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
+
+    }
+
+    @Test(enabled = false)
+    public void verifyBuyHousesTest7() {
+        Homepage homepage = getHomepage();
+        BuyHousesHomePage houses = homepage.navigateToBuy();
+        hoverAction(homepage.buyHouse);
+        clickOnElement(houses.buywithRedinColumn2.get(1));
+        printOutListOfElements(houses.tableOfContents);
+        clickOnElement(houses.tableOfContents.get(2));
+        clickOnElement(houses.pickM);
+        printOutListOfElements(houses.hrefForM);
+        printOutHrefListOfElements(houses.hrefForM);
+        database.insertDataFrom2ListsToSqlTable(oneDList(houses.hrefForM), oneDhref(houses.hrefForM), "GlossaryForM", "Name", "Links");
+    }
+
+    @Test(enabled = false)
+    public void verifyBuyHousesTest8() {
+        Homepage homepage = getHomepage();
+        BuyHousesHomePage houses = homepage.navigateToBuy();
+        hoverAction(homepage.buyHouse);
+        clickOnElement(houses.buywithRedinColumn2.get(1));
+        clickOnElement(houses.tableOfContents.get(1));
+        printOutListOfElements(houses.homeSellingGuide);
+        System.out.println("\n");
+        clickOnElement(houses.homeSellingGuideLinks.get(0));
+        printOutListOfElements(houses.checklist);
+    }
+
+    @Test(enabled = false)
+    public void verifyBuyHousesTest9() {
+        Homepage homepage = getHomepage();
+        BuyHousesHomePage houses = homepage.navigateToBuy();
+        hoverAction(homepage.buyHouse);
+        clickOnElement(houses.buywithRedinColumn2.get(2));
+        clickOnElement(houses.Boston);
+        printOutListOfElements(houses.openBookTitles);
+        clickOnElement(houses.providersLink);
+        List<String> getRangeOfNames = getRangeFromList(houses.getProvidersNames, 0, 51);
+        for (String name : getRangeOfNames) {
+            System.out.println(name);
+        }
+        List<String> getRangeOfRedfin = getRangeFromList(houses.getProvidersRedfin, 0, 51);
+        for (String name : getRangeOfRedfin) {
+            System.out.println(name);
+        }
+        database.insertDataFrom2ListsToSqlTable(getRangeOfNames, getRangeOfRedfin, "Providers", "Name", "Redfin");
+    }
+
+    @Test()
+    public void verifyBuyHousesTest10() {
+        Homepage homepage = getHomepage();
+        BuyHousesHomePage houses = homepage.navigateToBuy();
+        hoverAction(homepage.buyHouse);
+        clickOnElement(houses.buywithRedinColumn2.get(3));
+        for (int i = 1; i < 10; i++) {
+            clickOnElement(houses.selectCountyBox);
+            WebElement testing = driver.findElement(By.xpath("//*[@id=\"content\"]/div[11]/section/div/span/span/div/div[1]/div/div[" + i + "]"));
+            clickOnElement(testing);
+        }
+        waitForElementToBeVisible(houses.noClasses);
+        String actualText = houses.noClasses.getText();
+        String expectedText = "No Upcoming Classes";
+        Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(enabled = false)
+    public void verifyBuyHousesTest11() {
+        Homepage homepage = getHomepage();
+        BuyHousesHomePage houses = homepage.navigateToBuy();
+        hoverAction(homepage.buyHouse);
+        clickOnElement(houses.buywithRedinColumn2.get(4));
+
     }
 
 }
