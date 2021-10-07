@@ -157,16 +157,24 @@ public class TestBuyHousesHomePage extends TestBase {
         database.insertDataFrom2ListsToSqlTable(getRangeOfNames, getRangeOfRedfin, "Providers", "Name", "Redfin");
     }
 
-    @Test()
+    @Test(enabled = false)
     public void verifyBuyHousesTest10() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
         clickOnElement(houses.buywithRedinColumn2.get(3));
-        for (int i = 1; i < 10; i++) {
+
+        for (int i = 1; i <= 9; i++) {
             clickOnElement(houses.selectCountyBox);
             WebElement testing = driver.findElement(By.xpath("//*[@id=\"content\"]/div[11]/section/div/span/span/div/div[1]/div/div[" + i + "]"));
             clickOnElement(testing);
+        }
+
+        clickOnElement(houses.selectCountyBox);
+        List<String> getRangeOfRedfin = getRangeFromList(houses.elementsNames, 1, 8);
+        for (String element : getRangeOfRedfin) {
+            clickOnElement(houses.selectCountyBox);
+            System.out.println(element);
         }
         waitForElementToBeVisible(houses.noClasses);
         String actualText = houses.noClasses.getText();
@@ -180,7 +188,12 @@ public class TestBuyHousesHomePage extends TestBase {
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
         clickOnElement(houses.buywithRedinColumn2.get(4));
-
+        clickOnElement(houses.Demand);
+        printOutListOfElements(houses.housingDemandTitles);
+        printOutListOfElements(houses.housingDemandPercentages);
+        database.insertDataFrom2ListsToSqlTable(oneDList(houses.housingDemandTitles),oneDList(houses.housingDemandPercentages),"HousingDemand","Titles","Percentages");
+        //add assert here
+        printOutListOfElements(houses.competitveTowns);
     }
 
 }

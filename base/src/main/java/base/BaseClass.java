@@ -225,16 +225,6 @@ public class BaseClass {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        /*
-        try{
-             element.click();
-        }
-        catch(Exception e){
-           clickJScript(element);
-        }
-         */
-
     }
 
     public void foundIframe(WebElement element) {
@@ -259,6 +249,13 @@ public class BaseClass {
     public void scrollJS(int numOfPixelsToScroll) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0," + numOfPixelsToScroll + ")");
+    }
+
+    public void changeHiddenJS(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String s = element.getAttribute("aria-hidden");
+        String f = "false";
+        js.executeScript("arguments[0].setAttribute(arguments[1],arguments[2]);", element, s, f);
     }
 
     public static WebElement getShadowRoot(WebElement shadowHost) {
@@ -292,7 +289,6 @@ public class BaseClass {
         }
         try {
             for (WebElement element : elements) {
-                //System.out.println(element.getText());
                 elementCopied.add(element.getText());
             }
         } catch (Exception e) {
@@ -323,7 +319,6 @@ public class BaseClass {
         }
         try {
             for (WebElement element : elements) {
-                //System.out.println(element.getAttribute("href"));
                 elementCopied.add(element.getAttribute("href"));
             }
         } catch (Exception e) {
@@ -386,6 +381,36 @@ public class BaseClass {
         return printOut;
     }
 
+    public List<WebElement> getListOfUnhiddenArributes(List<WebElement> elements) {
+        List<WebElement> elementVisible = new ArrayList<WebElement>();
+        /*
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+         */
+        try {
+            for (WebElement element : elements) {
+                String s = element.getAttribute("aria-hidden");
+                if (s.equals("false")) {
+                    elementVisible.add(element);
+                }
+                /*
+                else{
+                    changeHiddenJS(element);
+                    elementVisible.add(element);
+                }
+
+                 */
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return elementVisible;
+    }
+
 
     public void clearElement(WebElement element) {
         element.clear();
@@ -403,7 +428,12 @@ public class BaseClass {
 
     public void slideAction(WebElement element, int x, int y) {
         Actions action = new Actions(driver);
-        action.dragAndDropBy(element, x, y).perform();
+        try {
+            waitForElementToBeVisible(element);
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
+        }
+        action.dragAndDropBy(element, x, y).build().perform();
     }
 
 

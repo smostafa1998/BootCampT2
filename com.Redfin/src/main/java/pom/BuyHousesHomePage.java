@@ -186,5 +186,22 @@ public class BuyHousesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"content\"]/div[12]/section/section/div/h3")
     public WebElement noClasses;
 
+    @FindBy(xpath="//*[@id=\"content\"]/div[11]/section/div/span/span/div/div[1]/div/div")
+    public List<WebElement> elementsNames;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div[9]/div[1]//div/ul/li[3]/a")
+    public WebElement Demand;
+
+    @FindBy(xpath="//*[@id=\"demand\"]/div/div/div[2]/div[1]/button/div/div[1]")
+    public List<WebElement> housingDemandTitles;
+
+    @FindBy(xpath="//*[@id=\"demand\"]/div/div/div[2]/div[1]/button/div/div[2]/div[1]")
+    public List<WebElement> housingDemandPercentages;
+
+    @FindBy(xpath="//*[@id=\"competition\"]/ol/li/a")
+    public List<WebElement> competitveTowns;
+
+
+
 
 }

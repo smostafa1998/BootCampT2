@@ -1,19 +1,19 @@
 package testPom;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.AccessoriesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.util.List;
+
 
 public class TestAccessoriesHomePage extends TestBase {
 
 
-    @Test()
+    @Test(enabled = false)
     public void verifyAccessoriesTest1() {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();
@@ -49,23 +49,14 @@ public class TestAccessoriesHomePage extends TestBase {
         oneDList(accessories.detailsList);
     }
 
-    @Test(enabled = false) // not working
-    public void verifyAccessoriesTest4() throws InterruptedException {
+    @Test(enabled = false)
+    public void verifyAccessoriesTest4() {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();
         clickOnElement(accessories.chatWithUs);
-        Actions builder = new Actions(driver);
-        clickOnElement(accessories.chatWithUsMove);
-        int x = accessories.chatWithUsMove.getLocation().getX();
-        int y = accessories.chatWithUsMove.getLocation().getY();
-        Point currentDestination = accessories.chatWithUsMove.getLocation();
-
-
-        System.out.println(driver.findElement(By.tagName("body")).getSize());
-        System.out.println(currentDestination);
-        builder.dragAndDropBy(accessories.chatWithUsMove, -295, 0).perform();
-        Thread.sleep(5000);
-
+        hoverAction(accessories.chatWithUsMove);
+        waitForElementToBeVisible(accessories.grabChatBoxText);
+        slideAction(accessories.chatWithUsMove, -200, 0);
     }
 
     @Test(enabled = false)
@@ -100,6 +91,48 @@ public class TestAccessoriesHomePage extends TestBase {
         waitForElementToBeVisible(accessories.compatibilityText);
         String actualText = accessories.compatibilityText.getText();
         String expectedText = "It looks like your device is compatible.";
+        Assert.assertEquals(actualText, expectedText);
+    }
+
+    @Test(enabled = false)
+    public void verifyAccessoriesTest7() {
+        Homepage homepage = getHomepage();
+        AccessoriesHomePage accessories = homepage.navigateToAccessories();
+        clickOnElement(accessories.getNews);
+        clickOnElement(accessories.getParentLink);
+        List<WebElement> elementVisible = getListOfUnhiddenArributes(accessories.twitterTweets);
+        printOutListOfElements(elementVisible);
+    }
+
+    @Test(enabled = false)
+    public void verifyAccessoriesTest8() {
+        Homepage homepage = getHomepage();
+        AccessoriesHomePage accessories = homepage.navigateToAccessories();
+        clickOnElement(accessories.consumerEducation);
+        printOutHrefListOfElements(accessories.whatIs);
+        clickOnElement(accessories.whatIs.get(4));
+        printOutListOfElements(accessories.TermsSecurity);
+        printOutListOfElements(accessories.TermsDefinedSecurity);
+    }
+
+    @Test(enabled = false)
+    public void verifyAccessoriesTest9() {
+        Homepage homepage = getHomepage();
+        AccessoriesHomePage accessories = homepage.navigateToAccessories2();
+        clickOnElement(accessories.clickTablets);
+        clickOnElement(accessories.clickStylus);
+        clickOnElement(accessories.clickFirstCompare);
+        clickOnElement(accessories.clickSecondCompare);
+        clickOnElement(accessories.compareButton);
+        dropdownSelectByIndex(accessories.selectBrand, 2);
+        dropdownSelectByIndex(accessories.selectDevice, 1);
+        clickOnElement(accessories.pickAPhone);
+        sendKeysToInput(accessories.userID, "smostafa1998");
+        sendKeysToInput(accessories.password, "testing123");
+        clickOnElement(accessories.loginButton);
+        waitForElementToBeVisible(accessories.challengequestion);
+        String actualText = accessories.challengequestion.getText();
+        String expectedText = "Secret Question";
         Assert.assertEquals(actualText, expectedText);
     }
 
