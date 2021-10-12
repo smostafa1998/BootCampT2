@@ -22,7 +22,7 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy (xpath = "//*[@id=\"s0-16-13-0-1[0]-0-0\"]/ul/li[1]/a")
     public WebElement teddyLabel;
 
-    @FindBy (xpath = "//*[@id=\"mainContent\"]/section[1]//div[2]")
+    @FindBy (xpath = "//*[@id=\"mainContent\"]/section/div[2]/a")
     public List<WebElement> dollBrands;
 
     @FindBy(xpath="//*[@id=\"mainContent\"]/section[1]/div[2]/a[1]")
@@ -31,14 +31,17 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"s0-16-13-0-1[3]-0-0-0\"]/ul/li[2]/a")
     public WebElement auctionsEndingSoon;
 
-    @FindBy (xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1-6-5-34\"]")
+    @FindBy (xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1-6-5\"]/div[1]/div[2]/div[1]/div/span/button")
     public WebElement auctionSortButton;
 
-    @FindBy (xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1-6-5-34-7-44\"]/ul/li[8]/a/span")
+    @FindBy (xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1-6-5-34-12-content-menu\"]/li[8]/a")
     public WebElement mostBids;
 
     @FindBy (xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1\"]/ul//div[2]/a/h3")
     public List<WebElement> numOfResults;
+
+    @FindBy(xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1\"]/ul/li[1]/div/div[2]/a/h3")
+    public WebElement firstResult;
 
     @FindBy(xpath="//*[@id=\"s0-16-13-0-1[0]-0-0\"]/ul/li[3]/a")
     public WebElement antiquesLink;
@@ -145,6 +148,9 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div/label/div/div/span[1]")
     public List<WebElement> columnX;
 
+    @FindBy(xpath=" //*[@id=\"c3-subPanel\"]/fieldset/div[1]/div[1]/label/div/div/span[1]")
+    public WebElement firstTeam;
+
     @FindBy(xpath="//*[@id=\"c3-subPanel\"]/fieldset/div[1]/div/label/div/div/span[1]")
     public List<WebElement> columnY;
 
@@ -168,6 +174,9 @@ public class ArtCollectionHomePage extends BaseClass {
 
     @FindBy(xpath="//*[@id=\"glossary\"]/li/h3")
     public List<WebElement> glossaryList;
+
+    @FindBy(xpath="//*[@id=\"glossary\"]/li[145]/h3")
+    public WebElement firstSWord;
 
     @FindBy(xpath="//*[@id=\"glossary\"]/li/p")
     public List<WebElement> glossaryDefinitionList;

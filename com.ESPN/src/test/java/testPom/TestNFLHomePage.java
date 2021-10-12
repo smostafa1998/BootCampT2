@@ -10,6 +10,7 @@ import pom.Homepage;
 import pom.NFLHomePage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,6 @@ public class TestNFLHomePage extends TestBase {
         clickOnElement(nflHomePage.weekDropdownSelect);
         try {
             waitForElementToContainText(nflHomePage.dateHallofFame,"Thursday, August 1st");
-            //waitForElementToBeVisible(nflHomePage.dateHallofFame);
         }catch(StaleElementReferenceException e){
             e.printStackTrace();
         }
@@ -38,21 +38,21 @@ public class TestNFLHomePage extends TestBase {
         String expectedText = "Thursday, August 1st";
         Assert.assertEquals(actualText,expectedText);
         System.out.println("FOUND HALL OF FAME");
-        //dropdownSelectByVisibleText(nflHomePage.yearDropdown,"2019");
-        //dropdownSelectByVisibleText(nflHomePage.weekDropdown,"Hall of Fame Weekend");
+
     }
 
     // database or excel
     @Test(enabled = false)
-    public void verifyNFLHomePage2(){
+    public void verifyNFLHomePage2() throws IOException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
         hoverAction(homepage.nfl);
+        List<String> test = oneDList(nflHomePage.listOfNFLTeams);
+        homepage.assertOneDList(test,"NFLT2");
         database.insertDataFromListToSqlTable(oneDList(nflHomePage.listOfNFLTeams),"NFLPage","Teams");
-        System.out.println("done");
     }
 
-    @Test()
+    @Test(enabled = false)
     public void verifyNFLHomePage3() throws InterruptedException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
@@ -85,7 +85,7 @@ public class TestNFLHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyNFLHomePage5() {
+    public void verifyNFLHomePage5() throws IOException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
         clickOnElement(nflHomePage.depthCharts);
@@ -93,19 +93,21 @@ public class TestNFLHomePage extends TestBase {
         clickOnElement(nflHomePage.buffaloBills);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
+        List<String> test = oneDList(nflHomePage.listOfGlossary);
+        homepage.assertOneDList(test,"NFLT5");
         database.insertDataFromListToSqlTable(oneDList(nflHomePage.listOfGlossary),"GlossaryTable","Terms");
-        //add assert here
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyNFLHomePage6() {
+    public void verifyNFLHomePage6() throws IOException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();
         clickOnElement(nflHomePage.teamLink);
         clickOnElement(nflHomePage.newEnglandPatriots);
-        oneDList(nflHomePage.rosterNE);
+        List<String> test = oneDList(nflHomePage.rosterNE);
+        homepage.assertOneDList(test,"NFLT6");
         clickOnElement(nflHomePage.injuries);
         database.insertDataFrom2ListsToSqlTable(oneDList(nflHomePage.rosterNamesNE),oneDList(nflHomePage.rosterStatusNE),"InjuriesNFL","Names","Status");
     }
