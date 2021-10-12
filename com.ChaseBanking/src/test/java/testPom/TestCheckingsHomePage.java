@@ -6,7 +6,9 @@ import pom.CheckingsHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class TestCheckingsHomePage extends TestBase {
@@ -25,6 +27,11 @@ public class TestCheckingsHomePage extends TestBase {
         driver.close();
         driver.switchTo().window(tabs2.get(0));
         clickOnElement(checkings.modalWindowButton);
+        clickOnElement(checkings.modalWindow);
+        waitForElementToBeVisible(checkings.modalTitle);
+        String actualText = checkings.modalTitle.getText();
+        String expectedText = "How to waive fees";
+        Assert.assertEquals(actualText, expectedText);
     }
 
 
@@ -39,15 +46,17 @@ public class TestCheckingsHomePage extends TestBase {
         clickOnElement(checkings.pressPlay);
         clickOnElement(checkings.playButton);
         clickOnElement(checkings.cancelButton);
+        waitForElementToBeVisible(checkings.headerText);
+        String actualText = checkings.headerText.getText();
+        String expectedText = "Debit card for kids";
+        Assert.assertEquals(actualText, expectedText);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
-        waitForElementToBeVisible(checkings.messageKids);
-
     }
 
     //has a glitch thats annoying gotta work at
     @Test(enabled = false)
-    public void verifyCheckingsTest3() {
+    public void verifyCheckingsTest3() throws IOException {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
         clickOnElement(checkings.CDTab);
@@ -57,13 +66,15 @@ public class TestCheckingsHomePage extends TestBase {
         clickOnElement(checkings.inputZipCode);
         sendKeysToInput(checkings.inputZipCode, "11377");
         clickOnElement(checkings.submitButton);
+        List<String> test = oneDList(checkings.columnsCD);
+        homepage.assertOneDList(test, "ChaseT3");
         database.insertDataFromListToSqlTable(oneDList(checkings.columnsCD), "ChaseBank", "columsCD");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyCheckingsTest4() {
+    public void verifyCheckingsTest4() throws IOException {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
         clickOnElement(checkings.nearestBranch);
@@ -71,13 +82,15 @@ public class TestCheckingsHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(1));
         sendKeysToInput(checkings.zipCodeInput, "11377");
         clickOnElement(checkings.submit);
-        oneDList(checkings.locations);
+        List<String> test = oneDList(checkings.locations);
+        homepage.assertOneDList(test, "ChaseT4");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
+    //scroll a bit
     @Test(enabled = false)
-    public void verifyCheckingsTest5() {
+    public void verifyCheckingsTest5() throws IOException {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();
         clickOnElement(checkings.checkingLink);
@@ -86,13 +99,13 @@ public class TestCheckingsHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(checkings.lendingLink);
         clickOnElement(checkings.homeLoan);
-        oneDList(checkings.homeLoanBenefits);
+        List<String> test = oneDList(checkings.homeLoanBenefits);
+        homepage.assertOneDList(test, "ChaseT5");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
-
     }
 
-    @Test()
+    @Test(enabled = false)
     public void verifyCheckingsTest6() {
         Homepage homepage = getHomepage();
         CheckingsHomePage checkings = homepage.navigateToCheckingsPage();

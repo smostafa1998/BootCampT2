@@ -46,6 +46,9 @@ public class CheckingsHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"cancel\"]")
     public WebElement cancelButton;
 
+    @FindBy(xpath = "//*[@id=\"cfb_heading\"]/div/div/h1")
+    public WebElement headerText;
+
     @FindBy(xpath = "//*[@id=\"compare\"]//div[2]/div[2]//div[1]/h2")
     public WebElement messageKids;
 
@@ -117,6 +120,9 @@ public class CheckingsHomePage extends BaseClass {
 
     @FindBy(xpath = "//*[@id=\"main-content-area\"]//section/div[1]/div/div[4]/div/button/span")
     public WebElement extraExpencesTX;
+
+    @FindBy(xpath="//*[@id=\"modal-1\"]/div/div/div[2]/div/h4")
+    public WebElement modalTitle;
 
 
 }
