@@ -55,10 +55,10 @@ public class SoccerHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"sort-by\"]")
     public WebElement sortBy;
 
-    @FindBy(xpath="//*[@id=\"side-nav\"]//div[6]/div[2]/ul/li[3]")
+    @FindBy(xpath="//*[@id=\"side-nav\"]/div[2]/div[2]/div[1]/div[2]/ul/li[1]/a")
     public WebElement radioButton;
 
-    @FindBy(xpath="//div[2]//div[7]/div[2]/div[5]//div[2]/div/div/div[2]/div/a")
+    @FindBy(xpath="//div[2]/div/div[7]//div[2]/div/div/div[2]/div[3]/a")
     public List<WebElement> listOfHats;
 
     @FindBy(xpath="//*[@id=\"cbs-site-nav\"]/div/nav/ul/li[2]/a")
