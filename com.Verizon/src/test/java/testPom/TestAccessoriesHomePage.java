@@ -7,6 +7,7 @@ import pom.AccessoriesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -14,11 +15,15 @@ public class TestAccessoriesHomePage extends TestBase {
 
 
     @Test(enabled = false)
-    public void verifyAccessoriesTest1() {
+    public void verifyAccessoriesTest1() throws IOException {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();
         clickOnElement(accessories.exploreAll);
-        oneDList(accessories.allProducts);
+        waitForElementToBeVisible(accessories.allProducts.get(0));
+        String actualText = accessories.allProducts.get(0).getText();
+        String expectedText = "Incipio\n" +
+                "Duo Case with MagSafe for iPhone 13 mini";
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
@@ -39,14 +44,15 @@ public class TestAccessoriesHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyAccessoriesTest3() {
+    public void verifyAccessoriesTest3() throws IOException {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories2();
         clickOnElement(accessories.gamerTab);
         clickOnElement(accessories.mobileGaming);
         clickOnElement(accessories.pickProduct);
         clickOnElement(accessories.featuresTab);
-        oneDList(accessories.detailsList);
+        List<String> test = oneDList(accessories.detailsList);
+        homepage.assertOneDList(test, "AccT3");
     }
 
     @Test(enabled = false)
@@ -56,6 +62,9 @@ public class TestAccessoriesHomePage extends TestBase {
         clickOnElement(accessories.chatWithUs);
         hoverAction(accessories.chatWithUsMove);
         waitForElementToBeVisible(accessories.grabChatBoxText);
+        String actualText = accessories.grabChatBoxText.getText();
+        String expectedText = "Shop the best tech! Chat now to find out how to save on select tablets, smartwatches and accessories.";
+        Assert.assertEquals(actualText, expectedText);
         slideAction(accessories.chatWithUsMove, -200, 0);
     }
 
@@ -99,20 +108,25 @@ public class TestAccessoriesHomePage extends TestBase {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();
         clickOnElement(accessories.getNews);
+        waitForElementToBeVisible(accessories.getParentLink);
+        String actualText = accessories.getParentLink.getText();
+        String expectedText = "Parenting in a Digital World";
+        Assert.assertEquals(actualText, expectedText);
         clickOnElement(accessories.getParentLink);
         List<WebElement> elementVisible = getListOfUnhiddenArributes(accessories.twitterTweets);
         printOutListOfElements(elementVisible);
     }
 
     @Test(enabled = false)
-    public void verifyAccessoriesTest8() {
+    public void verifyAccessoriesTest8() throws IOException {
         Homepage homepage = getHomepage();
         AccessoriesHomePage accessories = homepage.navigateToAccessories();
         clickOnElement(accessories.consumerEducation);
         printOutHrefListOfElements(accessories.whatIs);
         clickOnElement(accessories.whatIs.get(4));
         printOutListOfElements(accessories.TermsSecurity);
-        printOutListOfElements(accessories.TermsDefinedSecurity);
+        List<String> test = oneDList(accessories.TermsDefinedSecurity);
+        homepage.assertOneDList(test, "AccT8");
     }
 
     @Test(enabled = false)

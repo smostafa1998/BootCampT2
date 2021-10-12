@@ -456,6 +456,15 @@ public class BaseClass {
         }
     }
 
+    public void waitForElementsToBeVisible(List<WebElement> element) {
+        try {
+            webDriverWait.until(ExpectedConditions.visibilityOfAllElements(element));
+        } catch (StaleElementReferenceException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void waitForElementToContainText(WebElement element, String text) {
         try {
             webDriverWait.until(ExpectedConditions.textToBePresentInElement(element, text));

@@ -201,6 +201,9 @@ public class BuyHousesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"competition\"]/ol/li/a")
     public List<WebElement> competitveTowns;
 
+    @FindBy(xpath="//*[@id=\"content\"]/div[11]/section/div/div[2]/div[1]/div[2]/h2/span")
+    public WebElement whyBuy;
+
 
 
 

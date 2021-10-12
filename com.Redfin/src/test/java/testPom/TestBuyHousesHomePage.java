@@ -8,18 +8,21 @@ import pom.BuyHousesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class TestBuyHousesHomePage extends TestBase {
     @Test(enabled = false)
-    public void verifyBuyHousesTest1() {
+    public void verifyBuyHousesTest1() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         homepage.doPriceRanges(houses.clickButton, houses.minPrice, houses.clickButton2, houses.maxPrice);
         clickOnElement(houses.searchButton);
         clickOnElement(houses.checkTable);
+        List<String> test = oneDList(houses.listAdresses);
+        homepage.assertOneDList(test, "BuyT1");
         database.insertDataFromListToSqlTable(oneDList(houses.listAdresses), "RedFinList", "addresses");
     }
 
@@ -64,10 +67,11 @@ public class TestBuyHousesHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest4() {
+    public void verifyBuyHousesTest4() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
-        oneDList(houses.redfinLinks);
+        List<String> test = oneDList(houses.redfinLinks);
+        homepage.assertOneDList(test, "BuyT4");
         clickOnElement(houses.ourMission);
         clickOnElement(houses.learnMore);
         clickOnElement(houses.playButton);
@@ -77,19 +81,20 @@ public class TestBuyHousesHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest5() {
+    public void verifyBuyHousesTest5() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         clickOnElement(houses.blogButton);
         clickOnElement(houses.buyingHome);
-        oneDhref(houses.buyingHomeArticles);
+        printOutHrefListOfElements(houses.buyingHomeArticles);
         clickOnElement(houses.HomeArticlesNumOne);
-        oneDList(houses.notCovered);
+        List<String> test = oneDList(houses.notCovered);
+        homepage.assertOneDList(test, "BuyT5");
     }
 
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest6() {
+    public void verifyBuyHousesTest6() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         clickOnElement(houses.landForSale);
@@ -104,14 +109,15 @@ public class TestBuyHousesHomePage extends TestBase {
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(houses.checkTable);
-        oneDList(houses.SFAreas);
+        List<String> test = oneDList(houses.SFAreas);
+        homepage.assertOneDList(test, "BuyT6");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
 
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest7() {
+    public void verifyBuyHousesTest7() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
@@ -120,12 +126,13 @@ public class TestBuyHousesHomePage extends TestBase {
         clickOnElement(houses.tableOfContents.get(2));
         clickOnElement(houses.pickM);
         printOutListOfElements(houses.hrefForM);
-        printOutHrefListOfElements(houses.hrefForM);
+        List<String> test = oneDhref(houses.hrefForM);
+        homepage.assertOneDList(test, "BuyT7");
         database.insertDataFrom2ListsToSqlTable(oneDList(houses.hrefForM), oneDhref(houses.hrefForM), "GlossaryForM", "Name", "Links");
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest8() {
+    public void verifyBuyHousesTest8() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
@@ -134,11 +141,12 @@ public class TestBuyHousesHomePage extends TestBase {
         printOutListOfElements(houses.homeSellingGuide);
         System.out.println("\n");
         clickOnElement(houses.homeSellingGuideLinks.get(0));
-        printOutListOfElements(houses.checklist);
+        List<String> test = oneDList(houses.checklist);
+        homepage.assertOneDList(test, "BuyT8");
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest9() {
+    public void verifyBuyHousesTest9() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
@@ -147,13 +155,11 @@ public class TestBuyHousesHomePage extends TestBase {
         printOutListOfElements(houses.openBookTitles);
         clickOnElement(houses.providersLink);
         List<String> getRangeOfNames = getRangeFromList(houses.getProvidersNames, 0, 51);
-        for (String name : getRangeOfNames) {
-            System.out.println(name);
-        }
         List<String> getRangeOfRedfin = getRangeFromList(houses.getProvidersRedfin, 0, 51);
         for (String name : getRangeOfRedfin) {
             System.out.println(name);
         }
+        homepage.assertOneDList(getRangeOfNames, "BuyT9");
         database.insertDataFrom2ListsToSqlTable(getRangeOfNames, getRangeOfRedfin, "Providers", "Name", "Redfin");
     }
 
@@ -183,7 +189,7 @@ public class TestBuyHousesHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyBuyHousesTest11() {
+    public void verifyBuyHousesTest11() throws IOException {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();
         hoverAction(homepage.buyHouse);
@@ -191,9 +197,9 @@ public class TestBuyHousesHomePage extends TestBase {
         clickOnElement(houses.Demand);
         printOutListOfElements(houses.housingDemandTitles);
         printOutListOfElements(houses.housingDemandPercentages);
-        database.insertDataFrom2ListsToSqlTable(oneDList(houses.housingDemandTitles),oneDList(houses.housingDemandPercentages),"HousingDemand","Titles","Percentages");
-        //add assert here
-        printOutListOfElements(houses.competitveTowns);
+        database.insertDataFrom2ListsToSqlTable(oneDList(houses.housingDemandTitles), oneDList(houses.housingDemandPercentages), "HousingDemand", "Titles", "Percentages");
+        List<String> test = oneDList(houses.competitveTowns);
+        homepage.assertOneDList(test, "BuyT11");
     }
 
 }

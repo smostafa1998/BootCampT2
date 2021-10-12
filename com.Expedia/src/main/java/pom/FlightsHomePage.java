@@ -76,6 +76,8 @@ public class FlightsHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"location-field-leg2-destination-menu\"]/div[2]/ul/li[1]/button")
     public WebElement destinationLocationResult2MT;
 
+    @FindBy(xpath="//*[@id=\"wizard-flight-tab-multicity\"]/div[2]/div[1]/fieldset[2]/div/div[3]//button[1]")
+    public WebElement date2;
 
     @FindBy(xpath="//*[@id=\"wizard-flight-pwa-1\"]/div[3]/div[2]/button")
     public WebElement searchButtonMT;
@@ -119,7 +121,7 @@ public class FlightsHomePage extends BaseClass {
     @FindBy(xpath="//*[@data-test-id=\"offer-listing\"]/div/div/div/div/div/div/div/div/div/span")
     public List<WebElement> arrivalTimes;
 
-    @FindBy(xpath = "//*[@id=\"stops-1\"]")
+    @FindBy(xpath = "//*[@id=\"app-layer-base\"]/div/div[3]/div[1]/aside/fieldset/div/legend")
     public WebElement confirmWEBElement;
 
     @FindBy(xpath = "//*[@id=\"uitk-tabs-button-container\"]/div[1]/li[2]/a")
@@ -152,8 +154,16 @@ public class FlightsHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]/div/aside/fieldset/fieldset[3]/div[2]/div/div/div[1]/div/div[2]")
     public List<WebElement> startingPricesOfAirlines;
 
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]/div[1]/section/main/ul/li/div/div/div/div/div[1]/div/div/div/div/span[1]")
+    public List<WebElement> TimesOfAirlines;
 
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]/div[1]/section/main/ul/li/div/div/div/div/div[1]/div/div/div/div[2]")
+    public List<WebElement> LocationsOfAirlines;
 
+    @FindBy(xpath="//*[@id=\"app-layer-base\"]/div[2]/div[3]/div/section/main/div[2]/div/h2")
+    public WebElement errorMessage;
 
+    @FindBy(xpath="//*[@id=\"survey-header\"]/p[1]")
+    public WebElement feedbackText;
 
 }

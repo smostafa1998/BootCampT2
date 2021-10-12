@@ -1,6 +1,7 @@
 package pom;
 
 import base.BaseClass;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -54,6 +55,18 @@ public class Homepage extends BaseClass {
             softAssert.assertEquals(tested.get(i), expectedText[i]);
         }
         softAssert.assertAll();
+    }
+
+    public void clickStartDate(WebElement date,String startingDate){
+        clickOnElement(date);
+        WebElement element = driver.findElement(By.xpath("//*[@aria-label=\"" + startingDate + "\"]"));
+        clickOnElement(element);
+    }
+
+    public void clickEndDate(WebElement done,String endingDate){
+        WebElement element = driver.findElement(By.xpath("//*[@aria-label=\"" + endingDate + "\"]"));
+        clickOnElement(element);
+        clickOnElement(done);
     }
 
 
