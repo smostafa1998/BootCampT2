@@ -1,12 +1,16 @@
 package testPom;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pom.DecorHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,21 +18,21 @@ import java.util.List;
 public class TestDecorHomePage extends TestBase {
 
 
-    @Test()
-    public void verifyDecorTest1() {
+    @Test(enabled = false)
+    public void verifyDecorTest1() throws IOException {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();
         database.insertDataFromListToSqlTable(oneDList(decor.featuredCategories), "FurnitureList", "Items");
         waitForElementToBeVisible(decor.saleItems);
         clickOnElement(decor.saleItems);
         clickOnElement(decor.dropDownSortBy);
-        waitForElementToBeVisible(decor.customerRating);
-        clickOnElement(decor.customerRating);
+        List<String> test = oneDList(decor.listOfProducts);
+        homepage.assertOneDList(test, "OverstockT1");
         database.insertDataFromListToSqlTable(oneDList(decor.listOfProducts), "ProductList", "Items");
     }
 
     @Test(enabled = false)
-    public void verifyDecorTest2() {
+    public void verifyDecorTest2() throws IOException {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();
         clickOnElement(decor.indoorFireplace);
@@ -37,6 +41,8 @@ public class TestDecorHomePage extends TestBase {
         clickOnElement(decor.dropDownPrice);
         clickJScript(decor.checkBoxPrice);
         waitForElementToBeVisible(decor.checkBoxPriceConfirm);
+        List<String> test = oneDList(decor.listOfProducts);
+        homepage.assertOneDList(test, "OverstockT2");
         database.insertDataFromListToSqlTable(oneDList(decor.listOfFireplace), "fireplaceList", "Items");
     }
 
@@ -117,11 +123,13 @@ public class TestDecorHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyDecorTest7() {
+    public void verifyDecorTest7() throws IOException {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();
+        scrollJS(2000);
         clickOnElement(decor.clickArticle);
-        oneDList(decor.listOfSteps);
+        List<String> test = oneDList(decor.listOfSteps);
+        homepage.assertOneDList(test,"OverstockT7");
         scrollJS(5500);
         foundIframe(decor.videoIframe);
         clickOnElement(decor.playButton);
@@ -136,7 +144,6 @@ public class TestDecorHomePage extends TestBase {
         clickOnElement(decor.newsRoom);
         printOutListOfElements(decor.teamPositions);
         database.insertDataFromListToSqlTable(oneDList(decor.teamNames),"overstockTeam","Names");
-        //database.insertDataFrom2ListsToSqlTable(oneDList(decor.teamNames),oneDList(decor.teamPositions),"Overstock Team","Names","Positions");
         waitForElementToBeVisible(decor.textForZIP);
         String actualText = decor.textForZIP.getText();
         String expectedText = "Download our press kit for logos and proper usage guidelines";
@@ -144,27 +151,25 @@ public class TestDecorHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyDecorTest9() {
+    public void verifyDecorTest9() throws IOException {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.hoverToDecor();
         clickOnElement(decor.clocks);
         scrollJS(10000);
         database.insertDataFrom2ListsToSqlTable(oneDList(decor.clockTypes),oneDhref(decor.clockTypesHREF),"ClockTypes","Names","Links");
-        //List<String> elementCopied = new ArrayList<>();
-        for (WebElement element : decor.feedBack) {
-            System.out.println(element.getAttribute("aria-label"));
-            //elementCopied.add(element.getAttribute("aria-label"));
-        }
+        List<String> test = oneDAttributes(decor.feedBack);
+        homepage.assertOneDList(test,"OverstockT9");
     }
 
     @Test(enabled = false)
-    public void verifyDecorTest10() {
+    public void verifyDecorTest10() throws IOException {
         Homepage homepage = getHomepage();
         DecorHomePage decor = homepage.navigateToDecor();
         clickOnElement(decor.lightningTab);
         printOutListOfElements(decor.lighningList);
         clickOnElement(decor.clickReadMore);
-        printOutListOfElements(decor.lighningStyles);
+        List<String> test = oneDList(decor.lighningStyles);
+        homepage.assertOneDList(test,"OverstockT10");
         database.insertDataFromListToSqlTable(oneDList(decor.lighningStyles),"overstockLightning","Steps");
     }
 

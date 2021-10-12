@@ -115,7 +115,7 @@ public class ShoppingHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"L2_C2_All_NewBags__btn0\"]")
     public WebElement bagTab;
 
-    @FindBy(xpath = "//*[@id=\"pg_category_list\"]/div[2]/div[1]/ol/li")
+    @FindBy(xpath = "//*[@id=\"pg_category_list\"]/div[2]/div[1]/ol/li/div/div[3]/div/a")
     public List<WebElement> bagsList;
 
     @FindBy(xpath = "//*[@data-title=\"Samsonite Mobile Solution Convertible Backpack\"]")
@@ -250,6 +250,9 @@ public class ShoppingHomePage extends BaseClass {
 
     @FindBy(xpath = "//*[@id=\"inventory-container\"]/div/div/div[2]/div/div/div/div[2]/div/div[1]/button[1]")
     public WebElement StyleButton;
+
+    @FindBy(xpath="//*[@id=\"featured-video\"]/div[2]/section/div/div[2]/div[2]/div[2]/p")
+    public WebElement vidText;
 
 
 }

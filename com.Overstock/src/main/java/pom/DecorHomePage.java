@@ -24,10 +24,10 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/nav/ul/li")
     public List<WebElement> featuredCategories;
 
-    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/nav/ul/li[14]/a")
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[1]/nav/ul/li[7]/a")
     public WebElement saleItems;
 
-    @FindBy(xpath="//*[@id=\"sort-by-wrapper\"]/div/div[1]/div[2]")
+    @FindBy(xpath="//*[@id=\"sort-by-wrapper\"]/div/div[1]")
     public WebElement dropDownSortBy;
 
     @FindBy(xpath="//*[@id=\"sort-by-wrapper\"]/div/div[2]/div/div[5]")
@@ -45,7 +45,7 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"priceListHeader\"]/button")
     public WebElement dropDownPrice;
 
-    @FindBy (xpath ="//*[@id=\"price-$30-$40\"]")
+    @FindBy (xpath ="//*[@id=\"price-$30-$50\"]")
     public WebElement checkBoxPrice;
 
     @FindBy(xpath="//*[@id=\"refinementNav\"]/div[1]/ul/li[2]/a")
@@ -147,7 +147,7 @@ public class DecorHomePage extends BaseClass {
     @FindBy(xpath=" //*[@class = \"_2prWDD\"]")
     public WebElement description;
 
-    @FindBy(xpath="//*[@id=\"buyingGuide_tierOneGuideReadmoreBtn__1aq-v\"]")
+    @FindBy(xpath="//*[@id=\"sn-wrapper\"]/section[3]/div/a/button")
     public WebElement clickArticle;
 
     @FindBy(xpath="//*[@id=\"content\"]//div[5]//div[2]/span/h2")

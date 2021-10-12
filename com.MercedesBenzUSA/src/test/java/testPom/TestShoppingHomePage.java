@@ -6,6 +6,7 @@ import pom.Homepage;
 import pom.ShoppingHomePage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +14,12 @@ import java.util.List;
 public class TestShoppingHomePage extends TestBase {
 
     @Test(enabled = false)
-    public void verifyShoppingTest1() {
+    public void verifyShoppingTest1() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.OwnersLink, elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied, "OwnersList", "links");
+        List<String> test = oneDList(shopping.OwnersLink);
+        homepage.assertOneDList(test, "MercedesT1");
+        database.insertDataFromListToSqlTable(oneDList(shopping.OwnersLink), "OwnersList", "links");
     }
 
     @Test(enabled = false)
@@ -39,20 +40,18 @@ public class TestShoppingHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest3() {
+    public void verifyShoppingTest3() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.specialOffers);
         clickOnElement(shopping.imInterested);
         clickOnElement(shopping.classButton);
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.classList, elementCopied);
+        printOutListOfElements(shopping.classList);
         clickOnElement(shopping.CLA);
         clickOnElement(shopping.model);
-        List<String> elementCopied2 = new ArrayList<>();
-        getListOfElements(shopping.modelList, elementCopied2);
+        List<String> test = oneDList(shopping.modelList);
+        homepage.assertOneDList(test, "MercedesT3");
         clickOnElement(shopping.claCoup);
-
     }
 
     @Test(enabled = false)
@@ -73,7 +72,7 @@ public class TestShoppingHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest5() {
+    public void verifyShoppingTest5() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.lifestyleAccessories);
@@ -81,22 +80,22 @@ public class TestShoppingHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(shopping.cookiesAcceptButton);
         clickOnElement(shopping.bagTab);
-        List<String> elementCopied2 = new ArrayList<>();
-        getListOfElements(shopping.bagsList, elementCopied2);
+        List<String> test = oneDList(shopping.bagsList);
+        homepage.assertOneDList(test, "MercedesT5");
         clickOnElement(shopping.firstProduct);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest6() {
+    public void verifyShoppingTest6() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.resourcesTab);
         clickOnElement(shopping.vehicleManual);
         clickOnElement(shopping.downloadManuel);
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.typesofVehicles, elementCopied);
+        List<String> test = oneDList(shopping.typesofVehicles);
+        homepage.assertOneDList(test, "MercedesT6");
     }
 
     @Test(enabled = false)
@@ -109,10 +108,14 @@ public class TestShoppingHomePage extends TestBase {
         foundIframe(shopping.iframeContainer);
         clickOnElement(shopping.subtitlesButton);
         clickOnElement(shopping.pause);
+        waitForElementToBeVisible(shopping.vidText);
+        String actualText = shopping.vidText.getText();
+        String expectedText = "Discover all of the helpful features within the free Mercedes me owners app.";
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest8() {
+    public void verifyShoppingTest8() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.tires);
@@ -129,13 +132,14 @@ public class TestShoppingHomePage extends TestBase {
 
         addingKeyboardInput(shopping.zipCode, "11377");
         clickOnElement(shopping.searchZip);
-        printOutHrefListOfElements(shopping.linksToShops);
+        List<String> test = oneDhref(shopping.linksToShops);
+        homepage.assertOneDList(test, "MercedesT8");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest9() {
+    public void verifyShoppingTest9() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.tires);
@@ -149,9 +153,9 @@ public class TestShoppingHomePage extends TestBase {
         clickOnElement(shopping.submitButtonVehSize);
         addingKeyboardInput(shopping.zipCode, "11794");
         clickOnElement(shopping.searchZip);
-        printOutListOfElements(shopping.ameneties);
+        List<String> test = oneDList(shopping.ameneties);
+        homepage.assertOneDList(test, "MercedesT9");
         clickOnElement(shopping.choose);
-
         addingKeyboardInput(shopping.firstName, "Sabreen");
         addingKeyboardInput(shopping.lastName, "Mostafa");
         addingKeyboardInput(shopping.email, "smostafa199*@gmail.com");
@@ -164,17 +168,15 @@ public class TestShoppingHomePage extends TestBase {
 
 
     //work on this later
-    @Test(enabled = false)
-    public void verifyShoppingTest10() {
+    @Test(enabled = true)
+    public void verifyShoppingTest10() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShopping();
         clickOnElement(shopping.financialServices);
         clickOnElement(shopping.getBrochures);
         printOutListOfElements(shopping.getVehicleTitles);
-        printOutHrefListOfElements(shopping.downloadPDFs);
-        clickOnElement(shopping.clickInventory);
-        clickOnElement(shopping.ZIPCode);
-       // clickOnElement(shopping.clickFilter);
+        List<String> test = oneDhref(shopping.downloadPDFs);
+        homepage.assertOneDList(test, "MercedesT10");
     }
 
 

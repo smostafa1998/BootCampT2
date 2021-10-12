@@ -23,6 +23,9 @@ public class Homepage extends BaseClass {
     @FindBy(xpath="//*[@id=\"TopNav\"]/div[1]/div[3]/a")
     public WebElement decorTab;
 
+    @FindBy(xpath="//*[@id=\"TopNav\"]/div[1]/div[5]/a")
+    public WebElement anotherTab;
+
     @FindBy(xpath="//*[@id=\"push_notifications_container\"]/div[4]/div[1]")
     public WebElement notification_no_thanks;
 
@@ -37,12 +40,14 @@ public class Homepage extends BaseClass {
      * @return
      */
     public DecorHomePage navigateToDecor(){
+        clickOnElement(anotherTab);
         clickOnElement(decorTab);
         System.out.println("clicked");
         return new DecorHomePage();
     }
 
     public DecorHomePage hoverToDecor(){
+        clickOnElement(anotherTab);
         clickOnElement(decorTab);
         hoverAction(decorTab);
         return new DecorHomePage();
