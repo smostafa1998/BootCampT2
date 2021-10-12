@@ -31,6 +31,9 @@ public class ShoppingHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"scroll-top-target\"]/div[2]/div/div[2]/div[4]/div[1]")
     public List<WebElement> pricesNewCars;
 
+    @FindBy(xpath="//*[@id=\"scroll-top-target\"]/div[2]/div[1]/div[2]/div[4]/div[1]")
+    public WebElement firstPrice;
+
     @FindBy(xpath="//div[1]//div[5]/div[2]//div[2]/div[2]/nav[1]/ul/li[2]/a")
     public WebElement estimateButton;
 
@@ -90,5 +93,12 @@ public class ShoppingHomePage extends BaseClass {
 
     @FindBy(xpath="//div[2]//div[3]//bmw-template-switch[2]//ul/li[2]/div//div[2]/div[1]/ul/li")
     public List<WebElement> infoList;
+
+    @FindBy(xpath="/html/body/div[2]/div[1]/div/div[8]/div/div/form/input")
+    public WebElement zipInpit;
+
+    @FindBy(xpath="/html/body/div[2]/div[1]/div/div[8]/div/div/form/button")
+    public WebElement zipButton;
+
 
 }

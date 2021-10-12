@@ -6,28 +6,32 @@ import pom.Homepage;
 import pom.ShoppingHomePage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestShoppingHomePage extends TestBase {
 
     @Test(enabled = false)
-    public void verifyShoppingTest1() {
+    public void verifyShoppingTest1() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.shoppingLinks, elementCopied);
+        List<String> test = oneDList(shopping.shoppingLinks);
+        homepage.assertOneDList(test, "BMWT1");
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest2() {
+    public void verifyShoppingTest2() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         addingKeyboardInput(shopping.zipCode, "11377");
         clickOnElement(shopping.shopNew);
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.pricesNewCars, elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied, "NewCar11377", "prices");
+        printOutListOfElements(shopping.pricesNewCars);
+        waitForElementToBeVisible(shopping.firstPrice);
+        String actualText = shopping.firstPrice.getText();
+        String expectedText = "$42,010";
+        Assert.assertEquals(actualText, expectedText);
+        database.insertDataFromListToSqlTable(oneDList(shopping.pricesNewCars), "NewCar11377", "prices");
     }
 
     @Test(enabled = false)
@@ -48,20 +52,21 @@ public class TestShoppingHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest4() {
+    public void verifyShoppingTest4() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.shopPartsTab);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.listAccessories, elementCopied);
+        printOutListOfElements(shopping.listAccessories);
+        List<String> test = oneDList(shopping.listAccessories);
+        homepage.assertOneDList(test, "BMWTEST2");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest5() {
+    public void verifyShoppingTest5() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.shopPartsTab);
@@ -72,15 +77,16 @@ public class TestShoppingHomePage extends TestBase {
         clickOnElement(shopping.kidTab);
         clickOnElement(shopping.buttonSort);
         clickOnElement(shopping.lowTohigh);
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.kidItems, elementCopied);
-        database.insertDataFromListToSqlTable(elementCopied, "BMWKids", "items");
+        //printOutListOfElements(shopping.kidItems);
+        List<String> test = oneDList(shopping.kidItems);
+        homepage.assertOneDList(test, "BMWT3");
+        database.insertDataFromListToSqlTable(oneDList(shopping.kidItems), "BMWKids", "items");
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
 
-    @Test(enabled = false)
-    public void verifyShoppingTest6() {
+    @Test(enabled = true)
+    public void verifyShoppingTest6() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
         clickOnElement(shopping.leaseAndFinancing);
@@ -91,12 +97,13 @@ public class TestShoppingHomePage extends TestBase {
         dropdownSelectByIndex(shopping.vehicleSelect, 4);
 
         clickOnElement(shopping.yearsSelect);
-        dropdownSelectByIndex(shopping.yearsSelect, 2);
+        dropdownSelectByIndex(shopping.yearsSelect, 1);
 
+        addingKeyboardInput(shopping.zipInpit, "11377");
+        clickOnElement(shopping.zipButton);
         clickOnElement(shopping.moreInfo);
-        List<String> elementCopied = new ArrayList<>();
-        getListOfElements(shopping.infoList, elementCopied);
-
+        List<String> test = oneDList(shopping.infoList);
+        homepage.assertOneDList(test, "BMWT6");
     }
 
     @Test(enabled = false)
