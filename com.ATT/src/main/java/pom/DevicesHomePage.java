@@ -43,6 +43,9 @@ public class DevicesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"closeVideo\"]")
     public WebElement closeButton;
 
+    @FindBy(xpath="//*[@id=\"pageContainer\"]/div[1]/div[1]/div[2]/div/h1")
+    public WebElement phoneTitle;
+
     @FindBy(xpath="//*[@id=\"filter_tray_collapse_section\"]//div[3]//div[2]//li[3]/div/div/div/div")
     public WebElement filterTrayCollapseSection;
 
@@ -52,7 +55,7 @@ public class DevicesHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"oo_tab\"]")
     public WebElement feedBack;
 
-    @FindBy(xpath="//*[@id=\"overall_4\"]")
+    @FindBy(xpath="//*[@id=\"rater_buttons\"]/div[5]")
     public WebElement rating4;
 
     @FindBy(xpath="//*[contains(@id,\"answer_\")]")
@@ -60,6 +63,9 @@ public class DevicesHomePage extends BaseClass {
 
     @FindBy(xpath="//*[@id=\"comment_box\"]")
     public WebElement commentBox;
+
+    @FindBy(xpath="//*[@id=\"headerText\"]")
+    public WebElement headerText;
 
     @FindBy(xpath="//*[@id=\"Categories-4\"]")
     public WebElement hotspotsRouter;

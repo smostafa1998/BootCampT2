@@ -6,7 +6,9 @@ import pom.DevicesHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestDevicesHomePage extends TestBase {
 
@@ -24,16 +26,11 @@ public class TestDevicesHomePage extends TestBase {
         clickOnElement(devices.productPicked);
         clickOnElement(devices.videoPicked);
         clickOnElement(devices.videoButton);
-
-        /*
-        Actions action= new Actions(driver);
-        action.clickAndHold(devices.slider);
-        int width=devices.slider.getSize().getWidth();
-        action.moveToElement(devices.slider, ((width*4)/100), 0).click();
-        action.release().build();
-        */
-
         clickOnElement(devices.closeButton);
+        waitForElementToBeVisible(devices.phoneTitle);
+        String actualText = devices.phoneTitle.getText();
+        String expectedText = "iPhone 13";
+        Assert.assertEquals(actualText, expectedText);
     }
 
 
@@ -44,13 +41,17 @@ public class TestDevicesHomePage extends TestBase {
         clickOnElement(devices.prepaidPhone);
         clickOnElement(devices.filterTrayCollapseSection);
         clickOnElement(devices.feedBack);
-        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         waitForElementToBeVisible(devices.rating4);
         clickOnElement(devices.rating4);
-        dropdownSelectByVisibleText(devices.selectIssue,"Website Feedback");
+        dropdownSelectByVisibleText(devices.selectIssue, "Website Feedback");
         clickOnElement(devices.commentBox);
-        sendKeysToInput(devices.commentBox,"This is a good website keep up work!");
+        sendKeysToInput(devices.commentBox, "This is a good website keep up work!");
+        waitForElementToBeVisible(devices.headerText);
+        String actualText = devices.headerText.getText();
+        String expectedText = "We'd love your feedback.";
+        Assert.assertEquals(actualText, expectedText);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
 
@@ -65,12 +66,12 @@ public class TestDevicesHomePage extends TestBase {
         clickOnElement(devices.productOne);
         clickOnElement(devices.deliveryOptions);
         clickOnElement(devices.changeZip);
-        addingKeyboardInput(devices.inputNum,"11377");
+        addingKeyboardInput(devices.inputNum, "11377");
         clickOnElement(devices.buttonSubmit);
         waitForElementToBeVisible(devices.textStore);
         String actualText = devices.textStore.getText();
         String expectedText = "AT&T Authorized Retailer";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
@@ -79,50 +80,55 @@ public class TestDevicesHomePage extends TestBase {
         DevicesHomePage devices = homepage.navigateToDevicesHomePage();
         clickOnElement(devices.tabletsAndLaptops);
         clickOnElement(devices.clickOffersOnWhat);
-        addingKeyboardInput(devices.firstName,"Sabreen");
-        addingKeyboardInput(devices.lastName,"Mostafa");
-        addingKeyboardInput(devices.address,"blahblahblah");
-        addingKeyboardInput(devices.socialsnn,"123456789");
+        addingKeyboardInput(devices.firstName, "Sabreen");
+        addingKeyboardInput(devices.lastName, "Mostafa");
+        addingKeyboardInput(devices.address, "blahblahblah");
+        addingKeyboardInput(devices.socialsnn, "123456789");
         clickOnElement(devices.dob);
-        sendKeysToInput(devices.dob,"10091998");
-        addingKeyboardInput(devices.email,"smostafa1998@gmail.com");
-        addingKeyboardInput(devices.phone,"7186665678");
+        sendKeysToInput(devices.dob, "10091998");
+        addingKeyboardInput(devices.email, "smostafa1998@gmail.com");
+        addingKeyboardInput(devices.phone, "7186665678");
         clickOnElement(devices.checkBox);
         clickOnElement(devices.checkNo);
         waitForElementToBeVisible(devices.dialogText);
         String actualText = devices.dialogText.getText();
         String expectedText = "See what you'll pay for your device";
-        Assert.assertEquals(actualText,expectedText);
+        Assert.assertEquals(actualText, expectedText);
         clickOnElement(devices.cancelButton);
     }
 
     @Test(enabled = false)//works if i personally slide down
-    public void verifyDevicesHomePage5() {
+    public void verifyDevicesHomePage5() throws IOException {
         Homepage homepage = getHomepage();
         DevicesHomePage devices = homepage.navigateToDevicesHomePage();
         clickOnElement(devices.smartphoneTab);
         fluentWaitMethod(devices.smartphoneTab);
         printOutListOfElements(devices.productNames);
         scrollJS(10000);
+        //slide down more to work
         clickOnElement(devices.clickSmartWatchArticle);
-        printOutListOfElements(devices.healthThings);
+        List<String> test = oneDList(devices.healthThings);
+        homepage.assertOneDList(test, "ATTT5");
     }
 
-    @Test(enabled = false)
-    public void verifyDevicesHomePage6() {
+    @Test(enabled = true)
+    public void verifyDevicesHomePage6() throws IOException {
         Homepage homepage = getHomepage();
         DevicesHomePage devices = homepage.navigateToDevicesHomePage();
         clickOnElement(devices.product0);
         clickOnElement(devices.clickFeaturesAndSpecs);
-        printOutListOfElements(devices.features);
+        //printOutListOfElements(devices.features);
+        List<String> test = oneDList(devices.features);
+        homepage.assertOneDList(test, "ATTT6");
+        /*
         clickOnElement(devices.clickGuide);
         clickOnElement(devices.clickVideo);
         clickOnElement(devices.pauseButton);
         clickOnElement(devices.captions);
         clickOnElement(devices.closeVidButton);
+
+         */
     }
-
-
 
 
 }
