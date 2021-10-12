@@ -199,6 +199,63 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"seller-success-stories\"]//div[1]/div[2]/div[1]/p")
     public WebElement videoText;
 
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[2]/ul/li[2]/a")
+    public WebElement funkoLink;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/section[2]/div[1]/div[2]/a")
+    public WebElement seeAll;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[2]/div/div/div/ul/li[2]/a")
+    public WebElement topRated;
+
+    @FindBy(xpath="//*[@id=\"s0-0-18-5-9-1\"]/section/ol/li/div/a")
+    public List<WebElement> topRatedList;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[2]/ul/li[1]/a")
+    public WebElement urbanLink;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/section[6]/div[2]/div/a")
+    public List<WebElement> urbanBrandList;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[2]/ul/li[3]/a")
+    public WebElement memorabelia;
+
+    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[2]-0-0-0\"]/ul/li[2]/a")
+    public WebElement shopEvents;
+
+    @FindBy(xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-0-bModCarousel-18-list\"]/li/div/a")
+    public WebElement goFlow;
+
+    @FindBy(xpath="//*[@id=\"keywordSearch\"]/form/div/input")
+    public WebElement airInput;
+
+    @FindBy(xpath="//*[@id=\"keywordSearch\"]/form/button")
+    public WebElement submit;
+
+    @FindBy(xpath="//*[@id=\"s0-27_1-9-0-1[0]-0-1\"]/ul/li/div/div[2]/a/h3")
+    public WebElement itemAC;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[2]/ul/li[4]/a")
+    public WebElement militaria;
+
+    @FindBy(xpath="//*[@id=\"s0-27_2-9-0-1[0]-0-1\"]/ul/li[2]/div/div[2]/a")
+    public WebElement clickOnSecondProduct;
+
+    @FindBy(xpath="//*[@id=\"review-ratings-cntr\"]")
+    public WebElement reviewsButton;
+
+    @FindBy(xpath="//*[contains(@id,\"review_\")]/div[1]/a")
+    public List<WebElement> reviewsLink;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]/div[2]/div[1]/nav[1]/ul/li[6]/a")
+    public WebElement potteryLink;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/section[1]/div[2]/a[5]")
+    public WebElement royalCopen;
+
+    @FindBy(xpath="//*[@id=\"mainContent\"]/section[5]/div[2]/div/a")
+    public List<WebElement> royalCopenMore;
+
 
 
 

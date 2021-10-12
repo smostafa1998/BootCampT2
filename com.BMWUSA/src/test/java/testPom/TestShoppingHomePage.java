@@ -77,7 +77,6 @@ public class TestShoppingHomePage extends TestBase {
         clickOnElement(shopping.kidTab);
         clickOnElement(shopping.buttonSort);
         clickOnElement(shopping.lowTohigh);
-        //printOutListOfElements(shopping.kidItems);
         List<String> test = oneDList(shopping.kidItems);
         homepage.assertOneDList(test, "BMWT3");
         database.insertDataFromListToSqlTable(oneDList(shopping.kidItems), "BMWKids", "items");
@@ -85,7 +84,7 @@ public class TestShoppingHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(0));
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyShoppingTest6() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
@@ -107,28 +106,72 @@ public class TestShoppingHomePage extends TestBase {
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest7() {
+    public void verifyShoppingTest7() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
-
+        clickOnElement(shopping.shopOnline);
+        addingKeyboardInput(shopping.inputZip,"11377");
+        clickOnElement(shopping.searchButton);
+        clickOnElement(shopping.showMore);
+        waitForElementsToBeVisible(shopping.Locations);
+        List<String> test = oneDList(shopping.Locations);
+        homepage.assertOneDList(test, "BMWT7");
     }
 
     @Test(enabled = false)
     public void verifyShoppingTest8() {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+        clickOnElement(shopping.shopPartsTab);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        clickOnElement(shopping.holiday);
+        ArrayList<String> tabs3 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs3.get(2));
+        foundIframe(shopping.iframe);
+        clickOnElement(shopping.download);
+        driver.switchTo().window(tabs3.get(1));
+        waitForElementToBeVisible(shopping.holidayText);
+        String actualText = shopping.holidayText.getText();
+        String expectedText = "2021 Holiday Catalog.";
+        Assert.assertEquals(actualText, expectedText);
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
     public void verifyShoppingTest9() {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+        clickOnElement(shopping.shopPartsTab);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        clickOnElement(shopping.learnRewards);
+        ArrayList<String> tabs3 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs3.get(2));
+        waitForElementsToBeVisible(shopping.rewardList);
+        printOutListOfElements(shopping.rewardList);
+        String actualText = shopping.rewardList.get(0).getText();
+        String expectedText = "$70 credit\n" +
+                "annually at BMW Centers 1";
+        Assert.assertEquals(actualText, expectedText);
+        driver.switchTo().window(tabs3.get(1));
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
     }
 
     @Test(enabled = false)
-    public void verifyShoppingTest10() {
+    public void verifyShoppingTest10() throws IOException {
         Homepage homepage = getHomepage();
         ShoppingHomePage shopping = homepage.navigateToShoppingPage();
+        clickOnElement(shopping.shopPartsTab);
+        ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        waitForElementsToBeVisible(shopping.mustHaves);
+        List<String> test = oneDhref(shopping.mustHaves);
+        homepage.assertOneDList(test, "BMWT10");
+        driver.close();
+        driver.switchTo().window(tabs2.get(0));
     }
 
 

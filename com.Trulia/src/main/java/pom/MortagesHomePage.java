@@ -203,5 +203,35 @@ public class MortagesHomePage extends BaseClass {
     @FindBy(xpath="//*[contains(@id,\"post-\")]//div[3]/div/div[2]/a/h6")
     public WebElement nextArticleTitle;
 
+    @FindBy(xpath="//*[@id=\"__next\"]/div[2]/header/nav/ul/li[2]/a")
+    public WebElement rentTab;
+
+    @FindBy(xpath="//*[@id=\"__next\"]/div[2]/header/nav/ul/li[2]/ul/li/a")
+    public WebElement postRental;
+
+    @FindBy(xpath="//*[@id=\"post-rental-address-search\"]")
+    public WebElement postRentalEmail;
+
+    @FindBy(xpath="//*[@id=\"main-content\"]/div[2]/div[2]/ul/div[1]/div[2]/li/ul/li/div[1]")
+    public List<WebElement> rentalQuestions;
+
+    @FindBy(xpath="//*[@id=\"__next\"]/div[2]/header/nav/ul/li[1]/a")
+    public WebElement buyTab;
+
+    @FindBy(xpath="//*[@id=\"__next\"]/div[2]/header/nav/ul/li[1]/ul/li[3]/a/div")
+    public WebElement openHouses;
+
+    @FindBy(xpath="//*[@id=\"resultsColumn\"]/div[1]/div/div/div/div/div/div")
+    public WebElement resultsBox;
+
+    @FindBy(xpath="//*[@id=\"resultsColumn\"]/div[1]/div/div/div/div/div/div/select")
+    public WebElement selectResults;
+
+    @FindBy(xpath="//*[@id=\"resultsColumn\"]/div[1]/div/div/div/div/div/div/select/option[6]")
+    public WebElement mortage;
+
+    @FindBy(xpath="//*[@id=\"resultsColumn\"]/div[1]/ul/li//div/div[2]/div[3]/div/div/div")
+    public List<WebElement> roomSpace;
+
 
 }

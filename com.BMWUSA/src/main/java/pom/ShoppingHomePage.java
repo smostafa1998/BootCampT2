@@ -100,5 +100,40 @@ public class ShoppingHomePage extends BaseClass {
     @FindBy(xpath="/html/body/div[2]/div[1]/div/div[8]/div/div/form/button")
     public WebElement zipButton;
 
+    @FindBy(xpath="//div[1]/div/div/div[5]/div[2]/div/div/div/div[2]/div[2]/nav[1]/ul/li[5]/a")
+    public WebElement shopOnline;
+
+    @FindBy(xpath="//*[contains(@id,\"background-\")]/div/div[3]/div/div/div[3]/div[1]/form/fieldset/div/input")
+    public WebElement inputZip;
+
+    @FindBy(xpath="//*[contains(@id,\"background-\")]/div/div[3]/div/div/div[3]/div[1]/form/fieldset/div/div/div/section/a")
+    public WebElement searchButton;
+
+    @FindBy(xpath="//*[contains(@id,\"background-\")]/div/div[3]/div/div/div[3]/section/div/div/div[1]/div[1]/ul/li/div/p[3]")
+    public List<WebElement> Locations;
+
+    @FindBy(xpath="//*[contains(@id,\"background-\")]/div/div[3]/div/div/div[3]/section/div/div/div[2]/button")
+    public WebElement showMore;
+
+    @FindBy(xpath="//*[@id=\"divBody\"]/div/div[6]/section[2]/div[2]/a")
+    public WebElement holiday;
+
+    @FindBy(xpath="//*[@id=\"q4NoCrm\"]")
+    public WebElement iframe;
+
+    @FindBy(xpath="//*[@id=\"ird3-main\"]/div/div/div[1]/div[2]/div[1]/div/div")
+    public WebElement download;
+
+    @FindBy(xpath="//*[@id=\"divBody\"]/div/div[6]/section[2]/div[2]/span")
+    public WebElement holidayText;
+
+    @FindBy(xpath="//*[@id=\"divBody\"]/div/div[6]/section[1]/div[2]/a")
+    public WebElement learnRewards;
+
+    @FindBy(xpath="//*[@id=\"contentText\"]/div[1]/div/div[2]/div[1]/ul/li")
+    public List<WebElement> rewardList;
+
+    @FindBy(xpath="//*[@id=\"carousel-home\"]/div[1]/div/div/div/a")
+    public List<WebElement> mustHaves;
 
 }

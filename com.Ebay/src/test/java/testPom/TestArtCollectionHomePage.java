@@ -146,7 +146,7 @@ public class TestArtCollectionHomePage extends TestBase {
         clickOnElement(artCollection.closeButton);
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyArtCollectionTest9(){
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.hoverToArt();
@@ -173,6 +173,68 @@ public class TestArtCollectionHomePage extends TestBase {
         foundIframe(artCollection.iframe);
         clickOnElement(artCollection.playButton);
         clickOnElement(artCollection.pauseButton);
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest11() throws IOException {
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.funkoLink);
+        clickOnElement(artCollection.seeAll);
+        clickOnElement(artCollection.topRated);
+        waitForElementsToBeVisible(artCollection.topRatedList);
+        List<String> test = oneDhref(artCollection.topRatedList);
+        homepage.assertOneDList(test,"EbayT11");
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest12() throws IOException {
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.urbanLink);
+        waitForElementsToBeVisible(artCollection.urbanBrandList);
+        List<String> test = oneDList(artCollection.urbanBrandList);
+        homepage.assertOneDList(test,"EbayT12");
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest13() throws IOException {
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.memorabelia);
+        clickOnElement(artCollection.shopEvents);
+        waitForElementToBeVisible(artCollection.goFlow);
+        clickOnElement(artCollection.goFlow);
+        addingKeyboardInput(artCollection.airInput,"AC");
+        clickOnElement(artCollection.submit);
+        waitForElementToBeVisible(artCollection.itemAC);
+        String actualText = artCollection.itemAC.getText();
+        String expectedText = "GermGuardian® AC4900CA Factory Reconditioned 4-in-1 Air Purifying System";
+        Assert.assertEquals(actualText,expectedText);
+
+    }
+
+    @Test(enabled = false)
+    public void verifyArtCollectionTest14() throws IOException {
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.militaria);
+        clickOnElement(artCollection.clickOnSecondProduct);
+        waitForElementToBeVisible(artCollection.reviewsButton);
+        clickOnElement(artCollection.reviewsButton);
+        List<String> test = oneDhref(artCollection.reviewsLink);
+        homepage.assertOneDList(test,"EbayT14");
+    }
+
+    @Test(enabled = true)
+    public void verifyArtCollectionTest15() throws IOException {
+        Homepage homepage = getHomepage();
+        ArtCollectionHomePage artCollection = homepage.hoverToArt();
+        clickOnElement(artCollection.potteryLink);
+        clickOnElement(artCollection.royalCopen);
+        waitForElementsToBeVisible(artCollection.royalCopenMore);
+        List<String> test = oneDList(artCollection.royalCopenMore);
+        homepage.assertOneDList(test,"EbayT15");
     }
 
 

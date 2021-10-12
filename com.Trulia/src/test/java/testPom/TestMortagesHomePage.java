@@ -156,4 +156,29 @@ public class TestMortagesHomePage extends TestBase {
         clickOnElement(mortages.nextArticle);
     }
 
+    @Test(enabled = false)
+    public void verifyMortagesTest11() throws IOException {
+        Homepage homepage = getHomepage();
+        MortagesHomePage mortages = homepage.navigateToMortagesPage();
+        hoverAction(mortages.rentTab);
+        clickOnElement(mortages.postRental);
+        addingKeyboardInput(mortages.postRentalEmail,"smostafa1998@gmail.com");
+        List<String> test = oneDList(mortages.rentalQuestions);
+        homepage.assertOneDList(test, "RentT11");
+    }
+
+    @Test(enabled = true)
+    public void verifyMortagesTest12() throws IOException {
+        Homepage homepage = getHomepage();
+        MortagesHomePage mortages = homepage.navigateToMortagesPage();
+        clickOnElement(mortages.buyTab);
+        hoverAction(mortages.buyTab);
+        clickOnElement(mortages.openHouses);
+        buttonSelect(mortages.resultsBox,mortages.mortage);
+        waitForElementsToBeVisible(mortages.roomSpace);
+        List<String> test = oneDList(mortages.roomSpace);
+        homepage.assertOneDList(test, "BuyT12");
+    }
+
+
 }
