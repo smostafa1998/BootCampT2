@@ -6,37 +6,48 @@ import pom.CreditCardHomePage;
 import pom.Homepage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestCreditCardHomePage extends TestBase {
 
     @Test(enabled = false)
-    public void verifyCreditCardTest1() {
+    public void verifyCreditCardTest1() throws IOException {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();
-        oneDList(credit.creditLinks);
+        List<String> test = oneDList(credit.creditLinks);
+        homepage.assertOneDList(test, "BOAT1");
     }
 
     //works but needs an extra wait
     @Test(enabled = false)
-    public void verifyCreditCardTest2() {
+    public void verifyCreditCardTest2() throws IOException {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();
         clickOnElement(credit.btnCompareCreditCards);
         oneDList(credit.cardNames);
         oneDList(credit.cardDescriptions);
         database.insertDataFrom2ListsToSqlTable(oneDList(credit.cardNames), oneDList(credit.cardDescriptions), "cardTable", "cardName", "Description");
+        waitForElementToBeVisible(credit.browseCardCategory);
+        String actualText = credit.browseCardCategory.getText();
+        String expectedText = "Browse card categories";
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
-    public void verifyCreditCardTest3() {
+    public void verifyCreditCardTest3() throws IOException {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();
         clickOnElement(credit.cardsForStudents);
         clickOnElement(credit.cardsForStudentsTC);
         ArrayList<String> windows2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(windows2.get(1));
-        oneDList(credit.rowName);
+        printOutListOfElements(credit.rowName);
+        waitForElementToBeVisible(credit.rowNameOne);
+        String actualText = credit.rowNameOne.getText();
+        String expectedText = "Annual Percentage Rate (APR) for Purchases";
+        Assert.assertEquals(actualText, expectedText);
         driver.close();
         driver.switchTo().window(windows2.get(0));
     }
@@ -56,8 +67,8 @@ public class TestCreditCardHomePage extends TestBase {
         oneDhref(credit.lifeServicesLabels);
     }
 
-    @Test(enabled = false)
-    public void verifyCreditCardTest5() {
+    @Test(enabled = true)
+    public void verifyCreditCardTest5() throws IOException {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();
         clickOnElement(credit.cashRewardsCards);
@@ -65,9 +76,11 @@ public class TestCreditCardHomePage extends TestBase {
         oneDList(credit.glossaryA);
         clickOnElement(credit.indexK);
         oneDhref(credit.creditHREF);
+        List<String> test = oneDhref(credit.creditHREF);
+        homepage.assertOneDList(test, "BOAT2");
     }
 
-    @Test()
+    @Test(enabled = false)
     public void verifyCreditCardTest6() {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();

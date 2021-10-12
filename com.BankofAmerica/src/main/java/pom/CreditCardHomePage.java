@@ -25,6 +25,9 @@ public class CreditCardHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"btnCompareCreditCards\"]")
     public WebElement btnCompareCreditCards;
 
+    @FindBy(xpath="//*[@id=\"browse-categories-tab\"]")
+    public WebElement browseCardCategory;
+
     @FindBy(xpath="//*[@id=\"popularCards\"]/div/div//h2")
     public List<WebElement> cardNames;
 
@@ -39,6 +42,9 @@ public class CreditCardHomePage extends BaseClass {
 
     @FindBy(xpath="//*[@id=\"termsAndConditions\"]/div[4]/div/div[1]/b")
     public List<WebElement> rowName;
+
+    @FindBy(xpath="//*[@id=\"termsAndConditions\"]/div[4]/div[1]/div[1]/b")
+    public WebElement rowNameOne;
 
     @FindBy(xpath="//*[@id=\"lifeServicesLink\"]")
     public WebElement lifeServices;
