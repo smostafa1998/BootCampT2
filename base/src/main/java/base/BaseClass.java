@@ -14,11 +14,13 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.asserts.SoftAssert;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
 import java.util.*;
@@ -311,6 +313,11 @@ public class BaseClass {
         return printOut;
     }
 
+    public List<String> convertToString(List<WebElement> elementsCopied1) {
+        List<String> printOut = oneDList(elementsCopied1);
+        return printOut;
+    }
+
     public void getListOfhref(List<WebElement> elements, List<String> elementCopied) {
         try {
             webDriverWait.until(ExpectedConditions.visibilityOfAllElements(elements));
@@ -435,6 +442,7 @@ public class BaseClass {
         }
         action.dragAndDropBy(element, x, y).build().perform();
     }
+
 
 
     /*

@@ -6,7 +6,9 @@ import pom.Homepage;
 import pom.OnlineExperiencesHomePage;
 import testBase.TestBase;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestOnlineExperiencesHomePage extends TestBase {
 
@@ -35,25 +37,32 @@ public class TestOnlineExperiencesHomePage extends TestBase {
         clickOnElement(onlineExperience.guestsNumberButton);
         clickOnElement(onlineExperience.saveButton);
         clickOnElement(onlineExperience.artsButton);
-        waitForElementToBeVisible(onlineExperience.firstResult);
+        waitForElementToBeVisible(onlineExperience.artsLabel);
+        String actualText = onlineExperience.artsLabel.getText();
+        String expectedText = "Arts & writing";
+        Assert.assertEquals(actualText, expectedText);
     }
 
     @Test(enabled = false)
     public void verifyOnlineExperiencesTest3() {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
+        clickOnElement(onlineExperience.clickMore);
         printOutHrefListOfElements(onlineExperience.hostList);
         clickOnElement(onlineExperience.clickFirst);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
         waitForElementToBeVisible(onlineExperience.randomText);
+        String actualText = onlineExperience.randomText.getText();
+        String expectedText = "Airbnb Online Experiences";
+        Assert.assertEquals(actualText, expectedText);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
 
     }
 
     @Test(enabled = false)
-    public void verifyOnlineExperiencesTest4() {
+    public void verifyOnlineExperiencesTest4() throws IOException {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
         clickOnElement(onlineExperience.clickBestSeller);
@@ -61,15 +70,17 @@ public class TestOnlineExperiencesHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(1));
         clickOnElement(onlineExperience.playButton);
         clickOnElement(onlineExperience.showAll);
-        printOutListOfElements(onlineExperience.whatToBring);
+        List<String> tested = oneDList(onlineExperience.whatToBring);
+        database.insertDataFromListToSqlTable(oneDList(onlineExperience.whatToBring), "WhatToBring", "Items");
         clickOnElement(onlineExperience.closeButton);
         clickOnElement(onlineExperience.playButton);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
+        homepage.assertOneDList(tested, "AirBnBT4");
     }
 
     @Test(enabled = false)
-    public void verifyOnlineExperiencesTest5() {
+    public void verifyOnlineExperiencesTest5() throws IOException {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
         waitForElementToBeVisible(onlineExperience.filterButton);
@@ -77,12 +88,7 @@ public class TestOnlineExperiencesHomePage extends TestBase {
 
         addingKeyboardInput(onlineExperience.priceFilterMin, "100");
         addingKeyboardInput(onlineExperience.priceFilterMax, "200");
-
-        waitForElementToBeVisible(onlineExperience.showResults);
-        clickOnElement(onlineExperience.showResults);
-
-        printOutArributesListOfElements(onlineExperience.basedOnFilters);
-
+        clickOnElement(onlineExperience.filterButtonT5);
         clickOnElement(onlineExperience.clickLink);
 
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
@@ -94,11 +100,12 @@ public class TestOnlineExperiencesHomePage extends TestBase {
 
         driver.close();
         driver.switchTo().window(tabs2.get(0));
-
+        List<String> test = oneDAttributes(onlineExperience.basedOnFilters);
+        homepage.assertOneDList(test, "AirBnBT5");
     }
 
-    @Test(enabled = false)
-    public void verifyOnlineExperiencesTest6() {
+    @Test(enabled = true)
+    public void verifyOnlineExperiencesTest6() throws IOException {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
         printOutListOfElements(onlineExperience.categoryList);
@@ -106,8 +113,14 @@ public class TestOnlineExperiencesHomePage extends TestBase {
         clickOnElement(onlineExperience.clickArtLink);
         ArrayList<String> tabs2 = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(tabs2.get(1));
+        waitForElementToBeVisible(onlineExperience.firstReview);
+        String actualText = onlineExperience.firstReview.getText();
+        String expectedText = "Chris\n" +
+                "October 2021";
+        Assert.assertEquals(actualText, expectedText);
         printOutListOfElements(onlineExperience.reviewers);
         driver.close();
         driver.switchTo().window(tabs2.get(0));
+
     }
 }

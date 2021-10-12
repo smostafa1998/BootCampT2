@@ -52,7 +52,7 @@ public class TestNFLHomePage extends TestBase {
         System.out.println("done");
     }
 
-    @Test(enabled = false)
+    @Test()
     public void verifyNFLHomePage3() throws InterruptedException {
         Homepage homepage = getHomepage();
         NFLHomePage nflHomePage = homepage.navigateToNFLHomePage();

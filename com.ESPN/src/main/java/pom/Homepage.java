@@ -16,16 +16,19 @@ public class Homepage extends BaseClass {
     /**
      * this is to navigate to the NFL page
      */
-    @FindBy(xpath="//*[@id=\"global-nav\"]/ul/li[1]/a/span/span[1]")
+    @FindBy(xpath = "//*[@id=\"global-nav\"]/ul/li[1]/a/span/span[1]")
     public WebElement nfl;
+
+    @FindBy(xpath = "//*[@id=\"global-nav\"]/ul/li[1]/div/ul[1]/li[1]/a")
+    public WebElement nfl2;
 
 
     public NFLHomePage navigateToNFLHomePage() {
         waitForElementToBeVisible(nfl);
         clickOnElement(nfl);
+        clickOnElement(nfl2);
         return new NFLHomePage();
     }
-
 
 
 }

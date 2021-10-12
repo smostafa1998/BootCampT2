@@ -19,7 +19,7 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]/div[1]//div[3]//div[2]/div[2]/div")
     public WebElement onlineLabel;
 
-    @FindBy(xpath = "//*[@id=\"menuItemButton-dynamicMoreFilters\"]")
+    @FindBy(xpath = "//*[@id=\"filter-menu-chip-group\"]/div[2]/div[1]/div[3]/button")
     public WebElement filterButton;
 
     @FindBy(xpath = "//*[@id=\"price_filter_min\"]")
@@ -28,13 +28,13 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"price_filter_max\"]")
     public WebElement priceFilterMax;
 
-    @FindBy(xpath = "/html/body/div[13]//div[2]//footer/button")
+    @FindBy(xpath = "//div[12]//div[2]/div/div[2]//footer/a")
     public WebElement showResults;
 
     @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]//div[1]/div[2]//div[1]//h2/div")
     public WebElement showOffersResults;
 
-    @FindBy(id = "menuItemButton-experience_group_size")
+    @FindBy(xpath = "//*[@id=\"menuItemButton-experience_group_size\"]/button")
     public WebElement groupSizeButton;
 
     @FindBy(xpath = "//*[@id=\"11-30 guests\"]")
@@ -43,22 +43,25 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"filter-panel-save-button\"]")
     public WebElement saveButton;
 
-    @FindBy(id = "menuItemButton-toggleItem-taxonomy-Arts & writing-Arts & writing")
+    @FindBy(xpath = "//*[@id=\"menuItemButton-toggleItem-ghost-platform-quick-filters-Arts & writing-Arts & writing\"]/button")
     public WebElement artsButton;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]//div[1]/div[2]//div[3]//div[1]//div[1]/a")
-    public WebElement firstResult;
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]/div/div/div/div/div/div/div/div[1]/div/div/div/h2/div")
+    public WebElement artsLabel;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]/div[2]/div[1]/div[2]/div/div[1]/div/div/div/div[2]/div/div/div/div[2]//a")
+    @FindBy(xpath="//*[@id=\"site-content\"]/div[3]//div[2]//div[1]/div[2]/a")
+    public WebElement clickMore;
+
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]//div[3]//a")
     public List<WebElement> hostList;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]//div[2]/div/div[1]/div/div/div/div[2]/div/div/div/div[2]/div/div/div/div[1]//a")
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]//div[3]//a[1]")
     public WebElement clickFirst;
 
     @FindBy(xpath = "//*[@id=\"site-content\"]/div[1]/div[4]/div/div/div/div[2]/section/div[1]/div/h2")
     public WebElement randomText;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]//div[2]/div/div/div/div[2]//div[2]//div[4]//a")
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[4]//div[2]//div[2]//div[1]/div/div/div/div/div[1]/a")
     public WebElement clickBestSeller;
 
     @FindBy(xpath = "//*[@id=\"site-content\"]/div[1]/div[1]/div[3]//div[1]/button")
@@ -73,10 +76,13 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"site-content\"]/div/div/div/div/div/div[1]/div/button")
     public WebElement closeButton;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]/div//a")
+    @FindBy(xpath="//div/div/div[2]/div/div[2]//footer/a")
+    public WebElement filterButtonT5;
+
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]//div/div/div[1]/a")
     public List<WebElement> basedOnFilters;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]/div[1]//a")
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]//div[1]/div/div[1]/a")
     public WebElement clickLink;
 
     @FindBy(xpath = "//*[@data-testid=\"experiences-change-dates\"]/button")
@@ -97,16 +103,22 @@ public class OnlineExperiencesHomePage extends BaseClass {
     @FindBy(xpath = "//*[@id=\"site-content\"]/div[1]/div[3]//div[4]/button")
     public WebElement saveButton1;
 
-    @FindBy(xpath = "//*[@id=\"filter-menu-chip-group\"]/div[2]/div/div[5]/div[2]/div/div/button/span[1]")
+    @FindBy(xpath = "//*[@id=\"filter-menu-chip-group\"]/div[2]/div[3]/div[2]/div/div/button/span[1]")
     public List<WebElement> categoryList;
 
-    @FindBy(xpath = "//*[@id=\"menuItemButton-toggleItem-taxonomy-Arts & writing-Arts & writing\"]/button")
+    @FindBy(xpath = "//*[@id=\"menuItemButton-toggleItem-ghost-platform-quick-filters-Arts & writing-Arts & writing\"]/button")
     public WebElement clickArts;
 
-    @FindBy(xpath = "//*[@id=\"ExploreLayoutController\"]/div//div[6]/div/div[1]/a")
+    @FindBy(xpath = "//*[@id=\"site-content\"]/div[2]//div[3]//div[3]/div/div[1]/a")
     public WebElement clickArtLink;
 
     @FindBy(xpath = "//*[contains(@id,\"review_\")]")
     public List<WebElement> reviewers;
+
+    @FindBy(xpath="//*[@id=\"site-content\"]/div[1]/div[5]//div[2]/div/div/div/div[1]/div/div[1]/div[2]")
+    public WebElement firstReview;
+
+    @FindBy(xpath = "//*[@id=\"filter-menu-chip-group\"]//div[1]/div/label/div[1]/div[1]")
+    public WebElement addGuests;
 
 }
