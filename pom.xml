@@ -47,6 +47,55 @@
                 <version>3.141.59</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-java</artifactId>
+                <version>6.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-junit</artifactId>
+                <version>6.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-core</artifactId>
+                <version>6.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-picocontainer</artifactId>
+                <version>6.9.1</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-html -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-html</artifactId>
+                <version>0.2.7</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm-deps -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>cucumber-jvm-deps</artifactId>
+                <version>1.0.6</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+            <dependency>
+                <groupId>io.cucumber</groupId>
+                <artifactId>gherkin</artifactId>
+                <version>15.0.2</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
             <dependency>
                 <groupId>io.github.bonigarcia</groupId>
