@@ -12,6 +12,10 @@ import java.util.List;
 
 public class TestShoppingHomePage extends TestBase {
 
+    /**
+     * TEST CASE 1: NAVIGATE TO THE SHOPPING PAGE AND ASSERT THE LINKS THERE
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyShoppingTest1() throws IOException {
         Homepage homepage = getHomepage();
@@ -20,6 +24,12 @@ public class TestShoppingHomePage extends TestBase {
         homepage.assertOneDList(test, "BMWT1");
     }
 
+    /**
+     * TEST CASE 2: ENTERS IN THE ZIP CODE AND LOOKS FOR THE NEW CARS, AND THE PRICES OF
+     * NEW CARS, THE FIRST PRICE OF THE NEW CAR IS THEN ASSERTED AND I LOAD THE DATABASE
+     * WITH ALL THE PRICES
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyShoppingTest2() throws IOException {
         Homepage homepage = getHomepage();
@@ -34,6 +44,10 @@ public class TestShoppingHomePage extends TestBase {
         database.insertDataFromListToSqlTable(oneDList(shopping.pricesNewCars), "NewCar11377", "prices");
     }
 
+    /**
+     * TEST CASE 3: THIS CLICKS ON THE ESTIMATE PAYMENTS BUTTON AND ENTERS INFORMATION
+     * ABOUT THE CAR AND MODEL IN QUESTION
+     */
     @Test(enabled = false)
     public void verifyShoppingTest3() {
         Homepage homepage = getHomepage();
@@ -51,6 +65,11 @@ public class TestShoppingHomePage extends TestBase {
         Assert.assertEquals(actualText, expectedText);
     }
 
+    /**
+     * TEST CASE 4: THIS CLICKS ON THE SHOP PARTS TAB AND THEN GOES TO ANOTHER
+     * TAB, AND THEN CLICK ON THE ACCESSORIES TAB AND ASSERT A LIST THERE.
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyShoppingTest4() throws IOException {
         Homepage homepage = getHomepage();
@@ -65,6 +84,11 @@ public class TestShoppingHomePage extends TestBase {
         driver.switchTo().window(tabs2.get(0));
     }
 
+    /**
+     * TEST CASE 5 : THIS GOES TO THE ACCESSORIES PAGE AND GOES TO THE APPAREL PAGE AND CLICKS ON THE FILTERS
+     * AND OBTAIN A LIST OF ALL THE KID ELEMENTS AND PUT IT IN A DATABASE. ALSO ASSERT THIS LIST
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyShoppingTest5() throws IOException {
         Homepage homepage = getHomepage();
@@ -83,6 +107,11 @@ public class TestShoppingHomePage extends TestBase {
         driver.close();
         driver.switchTo().window(tabs2.get(0));
     }
+
+    /**
+     *
+     * @throws IOException
+     */
 
     @Test(enabled = false)
     public void verifyShoppingTest6() throws IOException {

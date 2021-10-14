@@ -26,7 +26,7 @@ public class TestBuyHousesHomePage extends TestBase {
         database.insertDataFromListToSqlTable(oneDList(houses.listAdresses), "RedFinList", "addresses");
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void verifyBuyHousesTest2() {
         Homepage homepage = getHomepage();
         BuyHousesHomePage houses = homepage.navigateToBuy();

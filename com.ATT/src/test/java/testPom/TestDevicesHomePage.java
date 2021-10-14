@@ -12,6 +12,12 @@ import java.util.List;
 
 public class TestDevicesHomePage extends TestBase {
 
+    /**
+     * TEST CASE 1: THIS CLICKS ON ALL THE 3 FAV BUTTONS AND THEN WAITS FOR
+     * THE FAV LIST TO BE VISIBLE. ONE PRODUCT IS PICKED AND THEN THE VIDEO
+     * IS PLAYED AND PAUSED AND THATS CLOSED AND THEN, I ASSERT THE TITLE OF
+     * THE PHONE
+     */
     @Test(enabled = false)
     public void verifyDevicesHomePage1() {
         Homepage homepage = getHomepage(); // att
@@ -33,7 +39,11 @@ public class TestDevicesHomePage extends TestBase {
         Assert.assertEquals(actualText, expectedText);
     }
 
-
+    /**
+     * TEST CASE 2: THIS TEST CLICKS ON THE PREPAID PHONE TAB AND WANTS TO
+     * GIVE FEEDBACK, TAKES ME TO DIFFERENT WINDOW. AND FILLS OUT A FEEDBACK
+     * SHEET, ASSERTS ONE OF THE ELEMENTS ON THIS FEEDBACK WINDOW.
+     */
     @Test(enabled = false)
     public void verifyDevicesHomePage2() {
         Homepage homepage = getHomepage();
@@ -57,7 +67,14 @@ public class TestDevicesHomePage extends TestBase {
 
     }
 
+
     //stale element but works
+
+    /**
+     * TEST CASE 3: THE TEST CLICKS ON THE HOTSPOTS ROUTER AND THEN CLICKS ON THE FIRST PRODUCT
+     * AND THEN CLICKS ON DELIEVERY OPTIONS AND SUBMITS THE ZIPCODE. THIS WILL THEN SHOW US
+     * THE LIST OF STORES
+     */
     @Test(enabled = false)
     public void verifyDevicesHomePage3() {
         Homepage homepage = getHomepage();
@@ -73,6 +90,11 @@ public class TestDevicesHomePage extends TestBase {
         String expectedText = "AT&T Authorized Retailer";
         Assert.assertEquals(actualText, expectedText);
     }
+
+    /**
+     * TEST CASE 4:  ENTER INFO ABOUT USERS NAME, PHONE NUMBER, SSN. THIS IS TO CLICK ON OFFERS
+     * FOR THE TABLETS AND LAPTOPS
+     */
 
     @Test(enabled = false)
     public void verifyDevicesHomePage4() {
@@ -97,6 +119,12 @@ public class TestDevicesHomePage extends TestBase {
         clickOnElement(devices.cancelButton);
     }
 
+    /**
+     * TEST CASE 5:THIS IS TO CLICK ON THE SMARTPHONE TAB AND THEN CLICK ON A ARTICLE AND THEN
+     * ASSERTING THE LIST OF HEALTH THINGS
+     * @throws IOException
+     */
+
     @Test(enabled = false)//works if i personally slide down
     public void verifyDevicesHomePage5() throws IOException {
         Homepage homepage = getHomepage();
@@ -111,7 +139,12 @@ public class TestDevicesHomePage extends TestBase {
         homepage.assertOneDList(test, "ATTT5");
     }
 
-    @Test(enabled = true)
+    /**
+     * TEST CASE 6: CLICK ON THE PRODUCT AND THEN CLICK ON THE FEATURES AND SPECS AND ASSERT THIS
+     * LIST
+     * @throws IOException
+     */
+    @Test(enabled = false)
     public void verifyDevicesHomePage6() throws IOException {
         Homepage homepage = getHomepage();
         DevicesHomePage devices = homepage.navigateToDevicesHomePage();

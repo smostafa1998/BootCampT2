@@ -226,7 +226,7 @@ public class TestArtCollectionHomePage extends TestBase {
         homepage.assertOneDList(test,"EbayT14");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyArtCollectionTest15() throws IOException {
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.hoverToArt();
@@ -236,7 +236,5 @@ public class TestArtCollectionHomePage extends TestBase {
         List<String> test = oneDList(artCollection.royalCopenMore);
         homepage.assertOneDList(test,"EbayT15");
     }
-
-
 
 }

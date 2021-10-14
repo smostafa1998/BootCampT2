@@ -46,7 +46,7 @@ public class TestMortagesHomePage extends TestBase {
         database.insertDataFromListToSqlTable(oneDList(mortages.queenCounties), "Queens", "counties");
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void verifyMortagesTest4() throws IOException {
         Homepage homepage = getHomepage();
         MortagesHomePage mortages = homepage.navigateToMortagesPage();
@@ -167,7 +167,7 @@ public class TestMortagesHomePage extends TestBase {
         homepage.assertOneDList(test, "RentT11");
     }
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void verifyMortagesTest12() throws IOException {
         Homepage homepage = getHomepage();
         MortagesHomePage mortages = homepage.navigateToMortagesPage();

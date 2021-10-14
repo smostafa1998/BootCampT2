@@ -12,6 +12,11 @@ import java.util.List;
 
 public class TestCreditCardHomePage extends TestBase {
 
+
+    /**
+     * TEST CASE 1: THIS ASSERTS THE CREDIT CARD LINKS
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyCreditCardTest1() throws IOException {
         Homepage homepage = getHomepage();
@@ -20,6 +25,12 @@ public class TestCreditCardHomePage extends TestBase {
         homepage.assertOneDList(test, "BOAT1");
     }
 
+    /**
+     * TEST CASE 2: THIS TEST IS USED TO COMPARE CREDIT CARDS AND USE A DATABASE
+     * TO LOAD IN THE CARD NAMES AND CARD DESCRIPTIONS
+     * WE THEN ASSERT THIS WITH A STRING
+     * @throws IOException
+     */
     //works but needs an extra wait
     @Test(enabled = false)
     public void verifyCreditCardTest2() throws IOException {
@@ -35,6 +46,11 @@ public class TestCreditCardHomePage extends TestBase {
         Assert.assertEquals(actualText, expectedText);
     }
 
+    /**
+     * TEST CASE 3: CLICK ON THE CARDS FOR STUDENTS AND THEN LOOK AT THE STATIC TABLE
+     * ON THAT PAGE AND GRAB A ROW. PRINT THIS ROW OUT AND USE ASSERT
+     * @throws IOException
+     */
     @Test(enabled = false)
     public void verifyCreditCardTest3() throws IOException {
         Homepage homepage = getHomepage();
@@ -52,6 +68,10 @@ public class TestCreditCardHomePage extends TestBase {
         driver.switchTo().window(windows2.get(0));
     }
 
+    /**
+     * TEST CASE 4: THIS CASE IS USED TO NAVIGATE TO THE LIFE SERVICES PAGE AND GO TO
+     * THE POWER OF ATTORNY PAGE WITH QUESTIONS
+     */
     @Test(enabled = false)
     public void verifyCreditCardTest4() {
         Homepage homepage = getHomepage();
@@ -67,7 +87,12 @@ public class TestCreditCardHomePage extends TestBase {
         oneDhref(credit.lifeServicesLabels);
     }
 
-    @Test(enabled = true)
+    /**
+     * TEST CASE 5: CARD REWARDS AND THEN CLICK ON THE GLOSSARY TABLE, AND ASSERT ONE
+     * OF THE DEFINITIONS
+     * @throws IOException
+     */
+    @Test(enabled = false)
     public void verifyCreditCardTest5() throws IOException {
         Homepage homepage = getHomepage();
         CreditCardHomePage credit = homepage.navigateToCreditCard();
@@ -80,6 +105,10 @@ public class TestCreditCardHomePage extends TestBase {
         homepage.assertOneDList(test, "BOAT2");
     }
 
+    /**
+     * TEST CASE 6: GOES TO THE POINTS REWARDS CARDS AND ENTERS INFORMATION AND THIS
+     * WOULD PRODUCE A ERROR MESSAGE, THIS WILL BE ASSERTED
+     */
     @Test(enabled = false)
     public void verifyCreditCardTest6() {
         Homepage homepage = getHomepage();
@@ -99,36 +128,6 @@ public class TestCreditCardHomePage extends TestBase {
         String actualText = credit.errorMessage.getText();
         String expectedText = "The information you entered does not match our records";
         Assert.assertEquals(actualText, expectedText);
-    }
-
-
-    @Test(enabled = false)
-    public void verifyCreditCardTest7() {
-        Homepage homepage = getHomepage();
-        CreditCardHomePage credit = homepage.navigateToCreditCard();
-
-    }
-
-    @Test(enabled = false)
-    public void verifyCreditCardTest8() {
-        Homepage homepage = getHomepage();
-        CreditCardHomePage credit = homepage.navigateToCreditCard();
-
-    }
-
-
-    @Test(enabled = false)
-    public void verifyCreditCardTest9() {
-        Homepage homepage = getHomepage();
-        CreditCardHomePage credit = homepage.navigateToCreditCard();
-
-    }
-
-    @Test(enabled = false)
-    public void verifyCreditCardTest10() {
-        Homepage homepage = getHomepage();
-        CreditCardHomePage credit = homepage.navigateToCreditCard();
-
     }
 
 
