@@ -17,7 +17,7 @@ public class TestOnlineExperiencesHomePage extends TestBase {
      * ON THE FILTER IT WILL GIVE US RESULTS OF THE EXPERIENCES THAT ARE WITHIN THAT PRICE
      * RANGE, I ASSERT BY USING THE NUMBER OF RESULTS ON PAGE
      */
-    @Test(enabled = false)
+    @Test()
     public void verifyOnlineExperiencesTest1() {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();
@@ -41,7 +41,7 @@ public class TestOnlineExperiencesHomePage extends TestBase {
      * ART RELATED EXPERIENCES
      */
 
-    @Test(enabled = false)
+    @Test()
     public void verifyOnlineExperiencesTest2() {
         Homepage homepage = getHomepage();
         OnlineExperiencesHomePage onlineExperience = homepage.navigateToOnlineExperiences();

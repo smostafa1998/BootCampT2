@@ -33,7 +33,7 @@ public class TestArtCollectionHomePage extends TestBase {
     /**
      * This one tests hover actions, add assert here
      */
-    @Test(enabled=false)
+    @Test(enabled = false)
     public void verifyArtCollectionTest2() throws IOException {
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
@@ -71,7 +71,7 @@ public class TestArtCollectionHomePage extends TestBase {
         database.insertDataFromListToSqlTable(oneDList(artCollection.productList),"EbayListProducts","productList");
     }
 
-    @Test(enabled=false)
+    @Test(enabled = false)
     public void verifyArtCollectionTest4() throws IOException {
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.navigateToArtCollection2();
@@ -146,7 +146,7 @@ public class TestArtCollectionHomePage extends TestBase {
         clickOnElement(artCollection.closeButton);
     }
 
-    @Test(enabled = false)
+    @Test()
     public void verifyArtCollectionTest9(){
         Homepage homepage = getHomepage();
         ArtCollectionHomePage artCollection = homepage.hoverToArt();

@@ -19,7 +19,7 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"s0-15-6-0-1[1]-0\"]/div[1]/div[2]/h1")
     public WebElement artlabel;
 
-    @FindBy (xpath = "//*[@id=\"s0-16-13-0-1[0]-0-0\"]/ul/li[1]/a")
+    @FindBy (xpath = "//*[@id=\"s0-16-12_2-0-1[0]-0-0\"]/ul/li[4]/a")
     public WebElement teddyLabel;
 
     @FindBy (xpath = "//*[@id=\"mainContent\"]/section/div[2]/a")
@@ -166,7 +166,7 @@ public class ArtCollectionHomePage extends BaseClass {
     @FindBy(xpath="//*[@id=\"mainContent\"]/div[1]/ul/li[6]//nav[2]/ul/li[7]/a")
     public WebElement bullionButton;
 
-    @FindBy(xpath="//*[@id=\"s0-16-13-0-1[3]-0-0-0\"]/ul/li[1]/a")
+    @FindBy(xpath="//*[@id=\"s0-16-12-0-1[3]-0-0-0\"]/ul/li[1]/a")
     public WebElement bullionGlossary;
 
     @FindBy(xpath="//*[@id=\"glossary-nav\"]/div/a[21]")
