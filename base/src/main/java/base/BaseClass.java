@@ -124,15 +124,28 @@ public class BaseClass {
         System.out.println("\n\t***" + methodName + "***\n");
     }
 
-    @Parameters({"browser"})
+    @Parameters({"browser", "url"})
     @BeforeMethod(alwaysRun = true)
-    public void driverSetup(@Optional("chrome") String browser) {
+    public void driverSetup(@Optional("chrome") String browser,String url) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
-        driver.get(URL);
+        driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
     }
+
+    /**
+     *   @Parameters({"browser"})
+     *     @BeforeMethod(alwaysRun = true)
+     *     public void driverSetup(@Optional("chrome") String browser) {
+     *         driver = initDriver(browser);
+     *         webDriverWait = new WebDriverWait(driver, 20);
+     *         driver.get(URL);
+     *         driver.manage().deleteAllCookies();
+     *         driver.manage().window().maximize();
+     *     }
+     * @param result
+     */
 
     @AfterMethod
     public void extentFlush(ITestResult result) {
