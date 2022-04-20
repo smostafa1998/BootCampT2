@@ -83,11 +83,8 @@ public class BaseClass {
     @Parameters({"browser", "url"})
     @BeforeMethod(alwaysRun = true)
     public void driverSetup(@Optional("chrome") String browser, String url) {
-        //driver = initDriver(browser);
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
-
         driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
