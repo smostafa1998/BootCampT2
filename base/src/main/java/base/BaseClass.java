@@ -82,7 +82,7 @@ public class BaseClass {
 
     @Parameters({"browser", "url"})
     @BeforeMethod(alwaysRun = true)
-    public void driverSetup(@Optional("chrome") String browser, String url) {
+    public void driverSetup(String browser, String url) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
         driver.get(url);
