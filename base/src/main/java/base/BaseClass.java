@@ -82,7 +82,7 @@ public class BaseClass {
 
     @Parameters({"browser", "url"})
     @BeforeMethod(alwaysRun = true)
-    public void driverSetup(@Optional("chrome") String browser, @Optional String url) {
+    public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
         driver.get(url);
@@ -116,12 +116,11 @@ public class BaseClass {
     @AfterMethod
     public void driverClose() {
         driver.close();
-        driver.quit();
-
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterSuite (alwaysRun = true)
     private void afterSuiteTearDown() {
+        driver.quit();
         extent.close();
     }
 
