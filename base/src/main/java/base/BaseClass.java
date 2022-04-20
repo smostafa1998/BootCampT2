@@ -124,13 +124,12 @@ public class BaseClass {
         System.out.println("\n\t***" + methodName + "***\n");
     }
 
-    @Parameters({"browser", "url"})
+    @Parameters({"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void driverSetup(@Optional("chrome") String browser, String url) {
+    public void driverSetup(@Optional("chrome") String browser) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
-        url=URL;
-        driver.get(url);
+        driver.get(URL);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
     }
