@@ -33,6 +33,7 @@ public class BaseClass {
     public static ExtentReports extent;
     public static DataReader dataReader;
     public MySQLConnection database;
+    public static String URL;
 
     private Properties properties;
     public final String ABSOLUTE_PATH = System.getProperty("user.dir");
@@ -43,6 +44,48 @@ public class BaseClass {
     public void beforeSuiteExtentSetup(ITestContext context) {
         ExtentManager.setOutputDirectory(context);
         extent = ExtentManager.getInstance();
+        if (context.getOutputDirectory().contains("com.AirBnB")){
+            URL = "https://www.airbnb.com";
+        }
+        if (context.getOutputDirectory().contains("com.ATT")){
+            URL = "https://www.att.com";
+        }
+        if (context.getOutputDirectory().contains("com.BankofAmerica")){
+            URL = "https://www.bankofamerica.com";
+        }
+        if (context.getOutputDirectory().contains("com.BMWUSA")){
+            URL = "https://www.bmwusa.com";
+        }
+        if (context.getOutputDirectory().contains("com.CBSSports")){
+            URL = "https://www.cbssports.com";
+        }
+        if (context.getOutputDirectory().contains("com.ChaseBanking")){
+            URL = "https://www.chase.com";
+        }
+        if(context.getOutputDirectory().contains("com.Ebay")){
+            URL = "https://www.ebay.com";
+        }
+        if (context.getOutputDirectory().contains("com.ESPN")){
+            URL = "https://www.espn.com";
+        }
+        if (context.getOutputDirectory().contains("com.Expedia")){
+            URL = "https://www.expedia.com";
+        }
+        if (context.getOutputDirectory().contains("com.MercedesBenzUSA")){
+            URL = "https://www.mbusa.com/en/home";
+        }
+        if (context.getOutputDirectory().contains("com.Overstock")){
+            URL = "https://www.overstock.com";
+        }
+        if(context.getOutputDirectory().contains("com.Redfin")){
+            URL = "https://www.redfin.com";
+        }
+        if (context.getOutputDirectory().contains("com.Trulia")){
+            URL = "https://www.trulia.com";
+        }
+        if (context.getOutputDirectory().contains("com.Verizon")){
+            URL = "https://www.verizon.com";
+        }
     }
 
     @BeforeSuite(alwaysRun = true)
@@ -72,6 +115,7 @@ public class BaseClass {
     @BeforeMethod(alwaysRun = true)
     public static void beforeEachMethodExtentInit(Method method) {
         String className = method.getDeclaringClass().getSimpleName();
+        System.out.println(className);
         String methodName = method.getName();
 
         ExtentTestManager.startTest(methodName);
@@ -85,6 +129,7 @@ public class BaseClass {
     public void driverSetup(@Optional("chrome") String browser, String url) {
         driver = initDriver(browser);
         webDriverWait = new WebDriverWait(driver, 20);
+        url=URL;
         driver.get(url);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
